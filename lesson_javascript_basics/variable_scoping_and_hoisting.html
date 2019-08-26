@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <script>
+            var a = "cat"; // is global
+            x = 3; // is also global, but without var not recommended!
+            function f() {
+                x = 5; // x is global, if x not found, makes a new global!
+            }
+            console.log("x before ", x);
+            f()
+            console.log("x after ", x);
+            function f2() {
+                var x = 0; // y is local
+                console.log(x);
+            }
+            f2();
+            console.log("x after f2 ", x);
+            for(let i=1; i<=100; i++) {}
+            // the following will fail, because i no longer exists
+            // console.log(i);
+            // will fail, because i no longer exists
+            const ALLOWED_NAMES = ["Python", "JavaScript"];
+            ALLOWED_NAMES.push("ECMAScript"); // works!
+            // will trigger TypeError: Assignment to constant variable.
+            ALLOWED_NAMES = ["PHP"];
+        </script>
+    </body>
+</html>

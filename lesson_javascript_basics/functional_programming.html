@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <script>
+            function printArray(a) {
+                console.log(a.toString());
+            }
+            let a = [1, 2, 3, 10, 0, 100];
+            printArray(a);
+            printArray(a.filter(x => x%2==0));
+            printArray(a.map(x => x*x));
+            printArray(a.reduce((x, y) => x+y));
+            
+            let sentence = ["Programming is hard work", "but rewarding"];
+            let words = sentence.flatMap(x => x.split(" "));
+            printArray(words);
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+        function checkresult() {
+            // trim() removes surround whitespace, not needed!
+            //var input = parseFloat(document.getElementById("number").value.trim());
+            var input = parseFloat(document.getElementById("number").value);
+            var result = "";
+            if (isNaN(input)) {
+                result = "Invalid number";
+            } else if (input<0) {
+                result = "Negative number";
+            } else if (input>0) {
+                result = "Positive number";
+            } else {
+                result = "Zero";
+            }
+            document.getElementById("result").innerHTML = result;
+        }
+        </script>
+    </head>
+    <body>
+<form action="">
+    <label for="number">Number:</label>
+    <input type="number" id="number" min="-10" max="10">
+    <input type="button" value="Check" onclick="checkresult()"><br>
+    <output id="result"></output>
+</form>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+    <style>
+        #container {
+            padding: 6px;
+            max-width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Test Form</h1>
+        <form action="">
+            <label for="name">Name:</label>
+            <input type="text" id="name" size="40"><br>
+            <label for="birthdate">Birth date:</label>
+            <input type="date" id="birthdate" size="40"><br>
+            <label for="height">Height (cm):</label>
+            <input type="range" id="height" min="25" max="300" value="175"><br>
+            <label for="address">Address:</label>
+            <input type="text" id="address" size="40" placeholder="Your address"><br>
+            <fieldset data-role="controlgroup" data-type="horizontal">
+                <legend>Gender:</legend>
+                <input type="radio" name="gender" id="gender-choice-m" value="m" checked="checked">
+                <label for="gender-choice-m">Male</label>
+                <input type="radio" name="gender" id="gender-choice-f" value="f">
+                <label for="gender-choice-f">female</label>
+            </fieldset>
+
+        </form>
+    </div>
+</body>
+
+</html>

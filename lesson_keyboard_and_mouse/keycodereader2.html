@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script>
+    function keyEventhandler(e, updown) {
+      var code, elem;
+      e = e || window.event;
+      if (e.keyCode)
+        code = e.keyCode;
+      else if (e.which)
+        code = e.which;
+ 
+      elem = document.getElementById(updown + "display");
+      elem.innerHTML = code + " " + String.fromCharCode(code);
+      document.getElementById("altdisplay").innerHTML = e.altKey;
+      document.getElementById("controldisplay").innerHTML = e.ctrlKey;
+      document.getElementById("shiftdisplay").innerHTML = e.shiftKey;
+      return true;
+    }
+  </script>
+</head>
+<body onkeydown="keyEventhandler(event, 'down')" onkeyup="keyEventhandler(event, 'up')">
+  <p>Key down: <span id="downdisplay"></span></p>
+  <p>Key up: <span id="updisplay"></span></p>
+  <p>Alt: <span id="altdisplay"></span></p>
+  <p>Control: <span id="controldisplay"></span></p>
+  <p>Shift: <span id="shiftdisplay"></span></p>
+</body>
+</html>

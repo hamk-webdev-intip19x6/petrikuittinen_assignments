@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+<script>
+var jack = {name: "Jack Smith", age: 23};
+var jill = {name: "Jill Taylor", age: 25};
+var bob = {name: "Bob Smith", age: 44};
+var persons = [jack, jill, bob];
+for(let person of persons) {
+    console.log(person.name+" "+person.age);
+}
+for(let person of persons) {
+    person.age++; // increase age by 1 year
+    console.log(person.name+" "+person.age);
+}
+// each person is unique and can have unique attributes/abilities
+jack.address = "Homestreet 10, 12345 Wonderland";
+jill.phone = "0501234567";
+jill.sing = function() {console.log("I can sing like an angel!");};
+bob.love = function() {console.log("Everybody loves me and I luv 'em");};
+console.log(jack.address);
+jill.sing(); // let Jill sing
+bob.love(); // yeah, Bob can do it!
+
+for(let person of persons) {
+    var s = "Name: "+person.name+" Age: "+person.age;
+    if (person.hasOwnProperty("address")) {
+        s += " Address: "+person.address;
+    }
+    if (person.hasOwnProperty("phone")) {
+        s += " Phone: "+person.phone;
+    }
+    console.log(s);
+}
+
+</script>
+    </body>
+</html>

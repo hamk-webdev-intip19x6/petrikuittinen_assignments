@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+        var playMode = true;
+            function play() {
+                if (playMode) {
+                    document.getElementById("music").play();
+                    document.getElementById("play_button").value = "Pause";
+                } else {
+                    document.getElementById("music").pause();
+                    document.getElementById("play_button").value = "Play";
+                }
+                playMode = !playMode; // reverse 
+            }
+        </script>
+    </head>
+    <body>
+        <h1>HTML5 Audio Example</h1>
+    <audio src="../assets/sloprano_swears.mp3" id="music"></audio>
+    <form>
+        <input type="button" onclick="play()" id="play_button" value="Play"
+        style="width:150px">
+    </form>
+    </body>
+</html>

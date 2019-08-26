@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+<script>
+class Stack {
+    constructor() {
+        this.stack = [];
+    }
+    set latest(value) {
+        this.stack.push(value);
+    }
+    get latest() {
+        return this.stack.pop();
+    }
+}
+let x = new Stack();
+x.latest = 1;
+x.latest = 2;
+console.log(x.latest);
+console.log(x.latest);
+console.log(x.latest);
+</script>
+    </body>
+</html>

@@ -1,0 +1,9 @@
+Python 2.x  vs      Python 3.x
+print "hello"       print("hello")
+raw_input("?")      input("?")
+u"unicode"          "unicode"
+5/2                 5//2 (integer division, rounding down)
+default ASCII       default UNICODE
+
+More:
+https://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html

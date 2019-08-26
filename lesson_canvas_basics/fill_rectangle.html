@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            var canvas, ctx;
+            function draw() {
+                canvas = document.getElementById("canvas");
+                ctx = canvas.getContext("2d");
+
+                // fill rectangle fillrect(x, y, width, height)
+                // x, y are coordinates of the upper left hand corner
+                ctx.fillStyle = "red";
+                ctx.fillRect(10, 10, 400, 300);
+                ctx.fillStyle = "#f0dd00";
+                ctx.fillRect(500, 10, 100, 300);
+
+                // draw the outer edge of the rectange (x, y, width, height)
+                ctx.strokeStyle = "#000";
+                ctx.lineWidth = 5;
+                ctx.strokeRect(500, 10, 100, 300);
+                ctx.strokeRect(700, 10, 100, 300);
+            }
+        </script>
+    </head>
+    <body onload="draw()">
+    <canvas id="canvas" width="1024" height="768"></canvas>
+    </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <title>Canvas Usage Template</title>
+  <meta charset="utf-8">
+  <script type="text/javascript">
+  var sprite, canvas, ctx, angle;
+function startup() {
+  sprite = new Image();
+  sprite.onload = loaded;
+  sprite.src = "../assets/emoticon.png";
+}
+function loaded() {
+  angle = 0; // points up, like 12 clock
+  canvas = document.getElementById('canvasid');
+  if (canvas.addEventListener) {
+	   // IE9, Chrome, Safari, Opera
+	   canvas.addEventListener("mousewheel", mouseWheelHandler, false);
+	   // Firefox
+	   canvas.addEventListener("DOMMouseScroll", mouseWheelHandler, false);
+  }
+  animLoop();
+}
+
+function animLoop() {
+    requestAnimationFrame(animLoop);
+    canvas = document.getElementById('canvasid');
+    if (canvas.getContext){
+        ctx = canvas.getContext('2d');
+        // do your drawing here
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        var rad = (angle-90)/180*Math.PI;
+        var r = 200;
+        var cx = 300;
+        var cy = 300;
+        var x = cx+r*Math.cos(rad);
+        var y = cy+r*Math.sin(rad);
+        ctx.drawImage(sprite, x, y);
+    }
+}
+function mouseWheelHandler(e) {
+	var e = window.event || e; // old IE support
+	var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+  if (delta<0) {
+    angle -= 10;
+  } else if (delta>0) {
+    angle += 10;
+  }  
+}
+  </script>
+  </head>
+  <body onload="startup()">
+    <canvas id="canvasid" width="1024" height="768"></canvas>
+  </body>
+</html>

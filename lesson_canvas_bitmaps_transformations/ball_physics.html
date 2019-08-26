@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Poor Man's Physics</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            // Poor man's physics engine simulation by Petri Kuittinen
+            var canvas, ctx, sprite;
+            var balls;
+            class Ball {
+                constructor(sprite, x, y, xSpeed=0, ySpeed=0, xAccel=0, yAccel=0,
+                bounce=1, gravity=0) {
+                    this.sprite = sprite;
+                    this.x = x;
+                    this.y = y;
+                    this.xSpeed = xSpeed;
+                    this.ySpeed = ySpeed;
+                    this.xAccel = xAccel; // acceleration
+                    this.yAccel = yAccel;
+                    this.bounce = bounce; // bounce factor, 1.0 = retain energy
+                    this.gravity = gravity; // positive gravity = downwards
+                }
+                update(canvas, ctx) {
+                    this.xSpeed += this.xAccel;
+                    this.ySpeed += this.yAccel+this.gravity;
+                    this.x += this.xSpeed;
+                    this.y += this.ySpeed;
+                    if (this.x < 0) {
+                        this.x = 0;
+                        this.xSpeed = -this.bounce*this.xSpeed;
+                        this.xAccel = -this.bounce*this.xAccel;
+                    } else if (this.x+sprite.width >= canvas.width) {
+                        this.x = canvas.width - sprite.width;
+                        this.xSpeed = -this.bounce*this.xSpeed;
+                        this.xAccel = -this.bounce*this.xAccel;
+                    }
+                    if (this.y < 0) {
+                        this.y = 0;
+                        this.ySpeed = -this.bounce*this.ySpeed;                        
+                        this.yAccel = -this.bounce*this.yAccel;
+                    } else if (this.y+sprite.height >= canvas.height) {
+                        this.y = canvas.height - sprite.height;
+                        this.ySpeed = -this.bounce*this.ySpeed;
+                        this.yAccel = -this.bounce*this.yAccel;
+                    }
+                }
+                draw(ctx) {
+                    ctx.drawImage(sprite, Math.round(this.x), Math.round(this.y));
+                }
+            }
+            function preload() {
+                canvas = document.getElementById("canvas");
+                ctx = canvas.getContext("2d");
+                sprite = new Image();
+                sprite.onload = create; // call draw() after image is fully loaded
+                sprite.src = "../assets/redball.png"; // start loading bitmap
+            }
+            function create() {
+                balls = [];
+                for(let i=0; i<3; i++) {
+                    balls.push(new Ball(sprite,
+                    Math.random()*900+30, Math.random()*200,
+                    Math.random()*6-3, Math.random()*6-3, 0, 0, 0.85, 1));
+                }
+                draw();  
+            }
+            // now this won't be executed until sprite is loaded
+            function draw() {
+                window.requestAnimationFrame(draw);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for(let ball of balls) {
+                    ball.update(canvas, ctx);
+                    ball.draw(ctx);
+                }
+            }
+        </script>
+    </head>
+    <body onload="preload()">
+    <canvas id="canvas" width="1024" height="768" style="border:1px solid #000"></canvas>
+    </body>
+</html>

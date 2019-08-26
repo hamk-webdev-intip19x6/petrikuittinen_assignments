@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+<script>
+var x = 10;
+function f() {
+    x = 5; // this will refer to global x
+}
+console.log("x before ", x);
+f();
+console.log("x after ", x);
+function f2() {
+    y = 100; // creates a new global variable y
+}
+f2();
+console.log("global y is", y);
+function f3() {
+    var y = 50; // this is now referring to a local y, not affecting global y
+    console.log(y);
+}
+f3();
+console.log("global y is", y);
+
+</script>
+    </body>
+</html>

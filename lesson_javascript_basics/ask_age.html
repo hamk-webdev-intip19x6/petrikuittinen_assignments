@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            function calc() {
+                var age = parseInt(document.getElementById("id_age").value);
+                var birth = 2019-age;
+                document.getElementById("id_result").value = birth;    
+            }
+        </script>
+    </head>
+    <body>
+        <form action="">
+            <label for="id_age">Your age:</label>
+            <input type="text" id="id_age" name="age" size="40"><br>
+            <input type="button" value="Calculate Birth Year"
+            onclick="calc()"><br>
+            <label for="id_result">Your birth year:</label>
+            <output id="id_result"></output>
+        </form>
+    </body>
+</html>

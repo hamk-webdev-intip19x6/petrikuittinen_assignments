@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+    <script>
+        function printMany(s, n) {
+            console.log(s+" "+n);
+            if (n > 1) printMany(s, n-1);
+        }
+        printMany("Hello", 3);
+    </script>
+    </body>
+</html>

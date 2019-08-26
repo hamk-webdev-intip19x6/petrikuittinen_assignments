@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function validateMyForm() {
+            var date = document.getElementById("date").value;
+            if (date.match(/^(3[01]|[12]\d|0?[1-9])\.(1[012]|0?[1-9])\.[1-9]\d{3}$/)) {
+                return true;
+            }
+            alert("invalid input");
+            return false;
+        }
+    </script>
+    </head>
+    <body>
+<form onsubmit="validateMyForm()">
+<label for="date">Date in format dd.mm.yyyy:</label>
+<input type="type" id="date" autofocus><br>
+<input type="submit" value="Check">
+</form>
+    </body>
+</html>

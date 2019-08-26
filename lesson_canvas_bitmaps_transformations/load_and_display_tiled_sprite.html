@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            var canvas, ctx, sprite;
+            const NUMBER_OF_BITMAPS = 1; // the total number of images to load
+            var loadCounter;
+            function begin() {
+                canvas = document.getElementById("canvas");
+                ctx = canvas.getContext("2d");
+                loadCounter = 0;
+                sprite = new Image();
+                sprite.onload = draw; // call draw() after image is fully loaded
+                sprite.src = "../assets/sprites.png"; // start loading bitmap
+            }
+            // now this won't be executed until sprite is loaded
+            function draw() {
+                if (++loadCounter < NUMBER_OF_BITMAPS) return;
+                
+                // image, srcX, srcY, srcWidth, srcHeight, dstX, dstY, dstW, dstH
+                ctx.drawImage(sprite, 0, 0, 70, 64, 10, 10, 2*70, 2*64);
+                ctx.drawImage(sprite, 70, 0, 70, 64, 200, 10, 70, 64);
+
+            }
+        </script>
+    </head>
+    <body onload="begin()">
+    <canvas id="canvas" width="1024" height="768"></canvas>
+    </body>
+</html>

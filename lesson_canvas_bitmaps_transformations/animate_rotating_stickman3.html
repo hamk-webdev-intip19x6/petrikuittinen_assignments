@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            var playMode = false;
+            var canvas, ctx, counter = 0;
+            function draw() {
+                requestAnimationFrame(draw);
+                canvas = document.getElementById("canvas");
+                ctx = canvas.getContext("2d");
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.save();
+                ctx.lineWidth = 5;
+                ctx.translate(Math.floor(canvas.width/2),
+                Math.floor(canvas.height/2));
+                ctx.rotate(counter*0.04);
+                if (playMode) {               
+                    counter++;
+                }
+                ctx.beginPath();
+                ctx.moveTo(0, -200);
+                ctx.lineTo(0, 200);
+                ctx.moveTo(0, -200);
+                ctx.lineTo(-200, 0);
+                ctx.moveTo(0, -200);
+                ctx.lineTo(200, 0);
+                ctx.moveTo(0, 200);
+                ctx.lineTo(200, 400);
+                ctx.moveTo(0, 200);
+                ctx.lineTo(-200, 400);
+                ctx.moveTo(50, -250);
+                ctx.arc(0, -250, 50, 0, Math.PI*2, false);
+                ctx.stroke();
+                ctx.restore();
+            }
+            function togglePlay() {
+                let button = document.getElementById("id_play_button");
+                let music = document.getElementById("id_music");
+                if (playMode) {
+                    button.value = "Play";
+                    music.pause();
+                } else {
+                    button.value = "Pause";
+                    music.play();
+                }
+                playMode = !playMode;
+            }
+        </script>
+    </head>
+    <body onload="draw()">
+    <audio src="../assets/sloprano_swears.mp3" id="id_music" preload="auto" loop></audio>
+    <canvas id="canvas" width="1024" height="768"></canvas>
+    <input type="button" value="Play" id="id_play_button" onclick="togglePlay()">
+    </body>
+</html>

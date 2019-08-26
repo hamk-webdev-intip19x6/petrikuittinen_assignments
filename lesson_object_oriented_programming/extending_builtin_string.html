@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+<script>
+var s = "kissa";
+// example of XSS = Cross Site Scripting vulnerability
+var hacker = "<script src='evil.js'>x='evil code';<\/script>Pretending Good";
+
+String.prototype.lastCharacter = function() {
+    return this.charAt(this.length-1);
+}
+
+String.prototype.entitify = function() {
+    return this.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
+}
+document.write(s.lastCharacter()+"<br>");
+document.write(hacker.entitify()+"<br>");
+</script>
+    </body>
+</html>

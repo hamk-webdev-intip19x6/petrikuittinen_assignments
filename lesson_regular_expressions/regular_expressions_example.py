@@ -1,0 +1,10 @@
+import re
+m = re.search(r"\d{5}", "Zip code is: 12345")
+m = re.match(r"^\d{5}$", "123456")
+m = re.fullmatch(r"\d{5}", "12345")
+print(m.string)
+print(re.findall(r"\d{5}", "Some zip codes: 11100, 11130 and 00200"))
+numbers = re.split(r", ", "1, 2, 100, -5")
+s = ", ".join(numbers)
+print(s)
+print(re.sub(r"\d{5}", "xxxxx", "Zip codes to be censored: 12345 and 00200"))

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            var canvas, ctx, sprite;
+            const NUMBER_OF_BITMAPS = 1; // the total number of images to load
+            var loadCounter;
+            function begin() {
+                canvas = document.getElementById("canvas");
+                ctx = canvas.getContext("2d");
+                loadCounter = 0;
+                sprite = new Image();
+                sprite.onload = draw; // call draw() after image is fully loaded
+                sprite.src = "../assets/emoticon.png"; // start loading bitmap
+            }
+            // now this won't be executed until sprite is loaded
+            function draw() {
+                if (++loadCounter < NUMBER_OF_BITMAPS) return;
+                // translations and all other transformations are cumulative
+                ctx.translate(100, 100);
+                ctx.drawImage(sprite, 0, 0);
+                // so this really means 400+100 and 100+100 translation
+                ctx.translate(400, 100);
+                ctx.drawImage(sprite, 0, 0);
+
+
+            }
+        </script>
+    </head>
+    <body onload="begin()">
+    <canvas id="canvas" width="1024" height="768"></canvas>
+    </body>
+</html>

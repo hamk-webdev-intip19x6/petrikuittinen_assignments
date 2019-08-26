@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+        $(function() {
+            $("li").attr("style", "position:relative");
+            $("#GoRight").click(function() {
+                $("li:odd").animate({left: '200px'}, 2000); 
+            });
+            $("#GoLeft").click(function() {
+                $("li:odd").animate({left: '0px'}, 2000); 
+            });
+            $("#zoom_button").click(function() {
+                $("#box").animate({
+                    left: '250px',
+                    height: '+=150px',
+                    width: '+=150px'
+                });
+            });
+        });
+        </script>
+    </head>
+    <body>
+        <input type="button" id="GoRight" value="Go Right">
+        <input type="button" id="GoLeft" value="Go Left">
+        <input type="button" id="zoom_button" value="Zoom Box">
+        <ul>
+            <li>yksi</li>            
+            <li>kaksi</li>
+            <li>kolme</li>
+            <li>neljä</li>
+            <li>viisi</li>
+        </ul>
+        <div id="box"
+        style="position:relative;width:300px;height:300px;background:#ccc"></div>
+    </body>
+</html>

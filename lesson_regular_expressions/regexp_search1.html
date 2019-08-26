@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+<script>
+function findFirstInteger(s) {
+    // returns the index of first match, or -1 if nothing found
+    return s.search(/-?\d+/);
+}
+var s = "Here are some numbers: 1, -2 and 100";
+var i = findFirstInteger(s);
+console.log(s.substr(i));
+</script>
+    </body>
+</html>

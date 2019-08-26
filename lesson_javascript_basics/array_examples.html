@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <script>
+            var a = ["feline", "dog", "ape"];
+            a[0] = "cat"; // arrays are mutable
+            var n = a.length; // 4
+            a.sort(); // a is now sorted to alphabetical order
+            a.reverse() // reverse the order ["dog", "cat", "ape"]
+            a.push("human"); // insert "human" to end of array a
+            var lastOne = a.pop() // remove & return last element
+            a.unshift("insect"); // insert to start
+            var firstOne = a.shift(); // remove and return first item
+            var s = a.join(", ") // "dog, cat, ape"
+            var b = a.slice(1); // slice from 2nd element to end b=["cat", "ape"]
+            a.splice(0, 2); // delete two elements from start, a=["ape"]
+            var c = new Array(1, 2, 3, 4, 5); // using Array constructor
+            c.fill("spam", 1, 3);
+            console.log(c);
+            a = ["React", "Angular", "Vue"];
+            for(let i in a) console.log(i); // 1, 2, 3
+            // same as
+            for(let i of a.keys()) console.log(i);
+            for(let value of a) console.log(value);
+            for(let [i, value] of a.entries()) console.log(i, value);
+            
+            
+        </script>
+    </body>
+</html>

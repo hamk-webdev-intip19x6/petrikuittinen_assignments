@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <script>
+function* fibGenerator() {
+    let current = 0;
+    let next = 1;
+    while (true) {
+        [next, current] = [next + current, next];
+        yield current;
+    }
+}
+
+let fib = fibGenerator();
+for (let i = 0; i < 20; i++) {
+    console.log(fib.next().value);
+}
+    </script>
+</body>
+</html>

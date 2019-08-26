@@ -1,0 +1,17 @@
+Tietokonegrafiikassa on 4 perustransformaatiota:
+- translaatio eli origon siirto annettuihin koordinaatteihin (x, y)
+- skaalaus eli akselien venytys annetun määrän verran (tämä skaalaa ihan kaiken
+eli skaalaa sekä koordinaatit, leveydet, korkeudet mutta myös viivan paksuuden)
+- rotaatio eli pyöritys origon ympäri
+- viistoustus (eli skew)
+
+Tyypillinen järjestys on:
+1. translaatio
+2. skaalaus
+3. rotaatio
+
+Nämä kaikki eri transformaatiot voidaan kaikki kombinoida 2D-grafiikassa 3x3
+matriisiksi, jonka alarivi on aina vakio, näin ollen tarvitaan yhteensä 6
+lukua, joilla voidaan toteuttaa kaikki mahdolliset transformaatiot ja niiden
+yhdistelmät. Näin tehtynä kaikki voidaan tehdä yhdellä 3x3 matriisin
+kertolaskulla.

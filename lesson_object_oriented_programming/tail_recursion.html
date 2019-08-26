@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+<script>
+// function which takes arguments, but has no return value
+// sometimes useful, in OOP most setter methods are this type
+// print given string s n times
+/*function printMany(s, n) {
+    while(n-- > 0) {
+        console.log(s);
+    }
+}*/
+
+// same as above using tail recursion
+function printMany(s, n) {
+    console.log(s+" "+n);
+    if (n > 1) printMany(s, n-1);
+}
+
+printMany("Hello", 5);
+</script>
+    </body>
+</html>

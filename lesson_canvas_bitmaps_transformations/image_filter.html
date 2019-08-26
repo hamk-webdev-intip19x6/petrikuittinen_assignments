@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Basic Image Filters by Petri Kuittinen</title>
+  <script>
+    // pre-defined 3x3 convulution matrixes
+    // explanation at https://docs.gimp.org/2.8/en/plug-in-convmatrix.html
+    const EDGE_MATRIX = [0, 1, 0, 1, -4, 1, 0, 1, 0]; // edge detect
+    const BLUR_MATRIX = [1, 1, 1, 1, 1, 1, 1, 1, 1]; // blur
+    const SHARPEN_MATRIX = [0, -1, 0, -1, 5, -1, 0, -1, 0]; // sharpen
+    var canvas, ctx, img;
+
+    function begin() {
+      canvas = document.getElementById("canvas1");
+      ctx = canvas.getContext("2d");
+      img = new Image();
+      img.onload = loaded;
+      img.src = "../assets/fitness.jpg";
+    }
+    function calcIndex(x, y, xOffset, yOffset, width, height) {
+      if (x + xOffset < 0 || x + xOffset >= width) xOffset = 0;
+      if (y + yOffset < 0 || y + yOffset >= height) yOffset = 0;
+      return 4 * (((y + yOffset) * width) + x + xOffset);
+    }
+    function loaded() {
+      ctx.drawImage(img, 0, 0);
+      let imgdata = ctx.getImageData(0, 0, img.width, img.height);
+      let data = imgdata.data;
+      let data2 = data.slice(0); // make a shallow copy
+      filter(data, data2, BLUR_MATRIX, 9);
+      ctx.putImageData(imgdata, 0, 0);
+      filter(data, data2, SHARPEN_MATRIX);
+      ctx.putImageData(imgdata, 640, 0);
+      filter(data, data2, EDGE_MATRIX);
+      ctx.putImageData(imgdata, 1280, 0);
+    }
+    /* implement a filter 
+    data the */
+    function filter(data, data2, matrix, scale=1) {
+      
+      for (let y = 0; y < img.height; y++) {
+        for (let x = 0; x < img.width; x++) {
+          var i = [];
+          i[0] = calcIndex(x, y, -1, -1, img.width, img.height);
+          i[1] = calcIndex(x, y, 0, -1, img.width, img.height);
+          i[2] = calcIndex(x, y, 1, -1, img.width, img.height);
+          i[3] = calcIndex(x, y, -1, 0, img.width, img.height);
+          i[4] = calcIndex(x, y, 0, 0, img.width, img.height);
+          i[5] = calcIndex(x, y, 1, 0, img.width, img.height);
+          i[6] = calcIndex(x, y, -1, 1, img.width, img.height);
+          i[7] = calcIndex(x, y, 0, 1, img.width, img.height);
+          i[8] = calcIndex(x, y, 1, 1, img.width, img.height);
+          let r = g = b = 0;
+          for (let j = 0; j < 9; j++) {
+            let index = i[j]
+            r += matrix[j] * data2[index];
+            g += matrix[j] * data2[index + 1];
+            b += matrix[j] * data2[index + 2];
+          }
+          let index = calcIndex(x, y, 0, 0, img.width, img.height);
+          data[index] = Math.round(r / scale);
+          data[index + 1] = Math.round(g / scale);
+          data[index + 2] = Math.round(b / scale);
+        }
+      }
+    }
+  </script>
+</head>
+<body onload="begin()">
+  <canvas id="canvas1" width="1920" height="480"></canvas>
+</body>
+</html>

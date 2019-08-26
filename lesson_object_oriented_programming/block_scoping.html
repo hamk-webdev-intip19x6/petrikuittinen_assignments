@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+<script>
+// Originally JS had no block scope
+for(var i=1; i <= 10; i++) {
+    console.log(i);
+    var j = 5; 
+}
+// both i and j still exist!
+console.log(i);
+console.log(j);
+// ES6 let allows us to have proper block scope
+for(let x=1; x <= 10; x++) {
+    console.log(x);
+    let y = 5; 
+}
+console.log(x); // fail, x doesn't exist anymore
+console.log(y); // fail, y doesn't exist anymore
+// ALWAYS use let instead of var, unless you really know what you are doing!
+</script>
+    </body>
+</html>

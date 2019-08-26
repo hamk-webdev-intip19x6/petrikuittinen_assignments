@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            var canvas, ctx;
+            function defineCircle(x, y, r) {
+                // arc(x, y, radius, startAngle, endAngle, antiClockwise)
+                ctx.arc(x, y, r, 0, Math.PI*2, false);
+            }
+            function draw() {
+                canvas = document.getElementById("canvas");
+                ctx = canvas.getContext("2d");
+                
+                ctx.strokeStyle = "#000";
+                ctx.fillStyle = "#ff0";
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                defineCircle(350, 300, 250);
+                ctx.fill();
+                ctx.stroke();
+            }
+        </script>
+    </head>
+    <body onload="draw()">
+    <canvas id="canvas" width="1024" height="768"></canvas>
+    </body>
+</html>

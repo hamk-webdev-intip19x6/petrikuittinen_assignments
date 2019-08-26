@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        var canvas, ctx, sprite;
+        class Player {
+            constructor(x, y, sprite) {
+                this.x = x;
+                this.y = y;
+                this.sprite = sprite;
+            }
+            moveLeft(amount, canvas) {
+                this.x -= amount;
+                if (this.x<0) this.x = 0;
+            }
+            moveRight(amount, canvas) {
+                this.x += amount;
+                if (this.x+this.sprite.width>canvas.width) this.x = canvas.width-this.sprite.width;
+            }
+            moveUp(amount, canvas) {
+                this.y -= amount;
+                if (this.y<0) this.y = 0;
+            }
+            moveDown(amount, canvas) {
+                this.y += amount;
+                if (this.y+this.sprite.height>canvas.height) this.y = canvas.height-this.sprite.height;
+            }
+            shoot(bulletList) {
+                bulletList.push(new Bullet(this.x+this.sprite.width/2-bullet.width/2, this.y, 0, -10, bullet));
+            }
+        }
+        class Bullet {
+            constructor(x, y, xSpeed, ySpeed, sprite) {
+                this.x = x;
+                this.y = y;
+                this.xSpeed = xSpeed;
+                this.ySpeed = ySpeed;
+                this.sprite = sprite;
+            }
+            update(canvas, bulletList) {
+                this.x += this.xSpeed;
+                this.y += this.ySpeed;
+                if (this.y<-this.sprite.height) {
+                    this.kill(bulletList);
+                }
+            }
+            kill(bulletList) {
+                var index = bulletList.indexOf(this);
+                console.log("Kill: "+index);
+                if (index > -1) {
+                    bulletList.splice(index, 1);
+                }
+            }
+        }
+        var speed = 4;
+        var players = [];
+        var sprite, bullet;
+        var bullets = [];
+        var left = right = up = down = false;
+        var loadCounter = 0;
+        const NUMBER_OF_BITMAPS = 2; // the total number of images to load
+        function begin() {
+            canvas = document.getElementById("canvas");
+            ctx = canvas.getContext("2d");
+            // do your drawing here
+            sprite = new Image();
+            sprite.onload = loaded; // call draw() after image is fully loaded
+            sprite.src = "../assets/redball.png"; // start loading bitmap
+            bullet = new Image();
+            bullet.onload = loaded;
+            bullet.src = "../assets/bullet.png";
+        }
+        function loaded() {
+            if (++loadCounter < NUMBER_OF_BITMAPS) return;
+            for(var i=0;i<1;i++) {
+                players.push(new Player(50+900*Math.random(), 100+600*Math.random(), sprite));
+            }
+            draw();
+        }
+        // now this won't be executed until sprite is loaded
+        function draw() {
+            requestAnimationFrame(draw);
+            ctx.fillStyle = "#000";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            // image, x, y (upper left hand corner)
+            for(let bullet of bullets) {
+                ctx.drawImage(bullet.sprite, Math.round(bullet.x), Math.round(bullet.y));
+                bullet.update(canvas, bullets);
+            }
+            for(let player of players) {
+                if (left) player.moveLeft(speed, canvas);
+                if (right) player.moveRight(speed, canvas);
+                if (up) player.moveUp(speed, canvas);
+                if (down) player.moveDown(speed, canvas);
+                ctx.drawImage(player.sprite, Math.round(player.x), Math.round(player.y));
+            }
+        }
+
+        function keyHandler(e, updown) {
+            var code, elem;
+            e = e || window.event;
+            if (e.keyCode)
+                code = e.keyCode;
+            else if (e.which)
+                code = e.which;
+            if (code == 37) {
+                left = updown;
+            }
+            if (code == 39) {
+                right = updown;
+            }
+            if (code == 38) {
+                up = updown;
+            }
+            if (code == 40) {
+                down = updown;
+            }
+            if (code == 32 && updown) {
+                for(let player of players) {
+                    player.shoot(bullets);
+                }
+            }
+            
+        }
+    </script>
+</head>
+<body onload="begin()" onkeydown="keyHandler(event, true)" onkeyup="keyHandler(event, false)">
+    <canvas id="canvas" width="1024" height="768" style="border:1px solid #000"></canvas>
+</body>
+</html>

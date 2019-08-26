@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <title>Canvas Usage Template</title>
+  <meta charset="utf-8">
+  <script type="text/javascript">
+  var sprite, canvas, ctx, angle;
+
+function startup() {
+  sprite = new Image();
+  sprite.onload = loaded;
+  sprite.src = "../assets/emoticon.png";
+  
+}
+function loaded() {
+  counter = 0;
+  canvas = document.getElementById('canvasid');
+  if (canvas.addEventListener) {
+	   // IE9, Chrome, Safari, Opera
+	   canvas.addEventListener("mousewheel", mouseWheelHandler, false);
+	   // Firefox
+	   canvas.addEventListener("DOMMouseScroll", mouseWheelHandler, false);
+  }
+  animLoop();
+}
+
+function animLoop() {
+    requestAnimationFrame(animLoop);
+    canvas = document.getElementById('canvasid');
+    if (canvas.getContext){
+        ctx = canvas.getContext('2d');
+        // do your drawing here
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(sprite, 300, 200+counter);
+    }
+}
+function mouseWheelHandler(e) {
+	var e = window.event || e; // old IE support
+	var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+  if (delta<0) {
+    counter -= 5;
+  } else if (delta>0) {
+    counter += 5;
+  }  
+}
+  </script>
+  </head>
+  <body onload="startup()">
+    <canvas id="canvasid" width="1024" height="768"></canvas>
+  </body>
+</html>

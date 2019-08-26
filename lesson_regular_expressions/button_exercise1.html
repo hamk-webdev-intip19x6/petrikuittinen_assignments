@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+        var number = 0;
+        function update() {
+            document.getElementById("result").innerHTML = number;
+        }
+        function increment(amount) {
+            number += amount;
+            update();
+        }
+        function multiply(amount) {
+            number = Math.floor(amount*number);
+            update();
+        }
+        </script>
+    </head>
+    <body>
+<form action="">
+    <input type="button" value="+1" onclick="increment(1)">
+    <input type="button" value="-1" onclick="increment(-1)">
+    <input type="button" value="*2" onclick="multiply(2)">
+    <input type="button" value="/2" onclick="multiply(0.5)">
+    <input type="button" value="Reset" onclick="multiply(0)">
+    <br>
+    <output id="result">0</output>
+</form>
+    </body>
+</html>

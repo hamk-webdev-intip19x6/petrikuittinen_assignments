@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+<script>
+var jack = {name: "Jack Smith", age: 25};
+var jill = {"name": "Jill Taylor", "age": 23};
+var bob = {name: "Bob Boing", age: 60};
+var persons = [jack, jill, bob]
+for(let person of persons) {
+    console.log(person.name+" "+person.age);
+}
+for(let person of persons) {
+    person.age++;
+    console.log(person.name+" "+person.age);
+}
+jill.address = "Kaartokatu 2"
+jack.phone = "12345678"
+for(let person of persons) {
+    console.log(person.name+" "+person.age);
+    if (person.hasOwnProperty("address")) {
+        console.log(person.address);
+    }
+    if (person.hasOwnProperty("phone")) {
+        console.log(person.phone);
+    }
+}
+</script>
+    </body>
+</html>

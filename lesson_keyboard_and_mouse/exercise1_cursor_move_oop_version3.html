@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        var canvas, ctx, sprite;
+        class Player {
+            constructor(x, y, sprite) {
+                this.x = x;
+                this.y = y;
+                this.sprite = sprite;
+            }
+            moveLeft(amount, canvas) {
+                this.x -= amount;
+                if (this.x<0) this.x = 0;
+            }
+            moveRight(amount, canvas) {
+                this.x += amount;
+                if (this.x+this.sprite.width>canvas.width) this.x = canvas.width-this.sprite.width;
+            }
+            moveUp(amount, canvas) {
+                this.y -= amount;
+                if (this.y<0) this.y = 0;
+            }
+            moveDown(amount, canvas) {
+                this.y += amount;
+                if (this.y+this.sprite.height>canvas.height) this.y = canvas.height-this.sprite.height;
+            }
+        }
+        var speed = 4;
+        var players;
+        var left = right = up = down = false;
+        function begin() {
+            canvas = document.getElementById("canvas");
+            ctx = canvas.getContext("2d");
+            // do your drawing here
+            sprite = new Image();
+            sprite.onload = loaded; // call draw() after image is fully loaded
+            sprite.src = "../assets/redball.png"; // start loading bitmap
+        }
+        function loaded() {
+            console.log("loaded");
+            players = [];
+            for(var i=0;i<1000;i++) {
+                players.push(new Player(50+900*Math.random(), 100+600*Math.random(), sprite));
+            }
+            draw();
+        }
+        // now this won't be executed until sprite is loaded
+        function draw() {
+            requestAnimationFrame(draw);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // image, x, y (upper left hand corner)
+            for(let player of players) {
+                if (left) player.moveLeft(speed, canvas);
+                if (right) player.moveRight(speed, canvas);
+                if (up) player.moveUp(speed, canvas);
+                if (down) player.moveDown(speed, canvas);
+                ctx.drawImage(player.sprite, Math.round(player.x), Math.round(player.y));
+            }
+        }
+
+        function keyHandler(e, updown) {
+            var code, elem;
+            e = e || window.event;
+            if (e.keyCode)
+                code = e.keyCode;
+            else if (e.which)
+                code = e.which;
+            if (code == 37) {
+                left = updown;
+            }
+            if (code == 39) {
+                right = updown;
+            }
+            if (code == 38) {
+                up = updown;
+            }
+            if (code == 40) {
+                down = updown;
+            }
+        }
+    </script>
+</head>
+<body onload="begin()" onkeydown="keyHandler(event, true)" onkeyup="keyHandler(event, false)">
+    <canvas id="canvas" width="1024" height="768" style="border:1px solid #000"></canvas>
+</body>
+</html>

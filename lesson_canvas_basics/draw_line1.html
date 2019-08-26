@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            var canvas, ctx;
+            function draw() {
+                canvas = document.getElementById("canvas");
+                ctx = canvas.getContext("2d");
+                
+                ctx.strokeStyle = "#000";
+                ctx.lineWidth = 5;
+                // draw an X
+                ctx.beginPath();
+                ctx.moveTo(50, 50);
+                ctx.lineTo(550, 550);
+                ctx.moveTo(550, 50);
+                ctx.lineTo(50, 550);
+                ctx.stroke();
+            }
+        </script>
+    </head>
+    <body onload="draw()">
+    <canvas id="canvas" width="1024" height="768"></canvas>
+    </body>
+</html>

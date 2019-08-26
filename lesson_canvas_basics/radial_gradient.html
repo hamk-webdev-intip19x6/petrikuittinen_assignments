@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            var canvas, ctx;
+            function draw() {
+                canvas = document.getElementById("canvas");
+                ctx = canvas.getContext("2d");
+                
+                ctx.strokeStyle = "#000";
+                ctx.lineWidth = 3;
+                var grad = ctx.createRadialGradient(500, 350, 300, 400, 250, 12);
+                grad.addColorStop(0.05, "#009");
+                grad.addColorStop(0.95, "#44f");
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(500, 350, 300, 0, Math.PI*2, false);
+                ctx.fill();
+                //ctx.stroke();
+            }
+        </script>
+    </head>
+    <body onload="draw()">
+    <canvas id="canvas" width="1024" height="768"></canvas>
+    </body>
+</html>

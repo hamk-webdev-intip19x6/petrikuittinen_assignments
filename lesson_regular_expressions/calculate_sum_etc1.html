@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+function matchAllIntegers(s) {
+    // g = global = matches more than the first one
+    return s.match(/-?\d+/g);
+}
+// return the sum of array of numbers
+function sum(a) {
+    var x = 0;
+    for(let number of a) {
+        x += number;
+    }
+    return x;
+}
+// assumes array of strings, returning new array of integers, 0 for non-ints
+function convertIntoInteger(a) {
+    var b = [];
+    for(let i of a) {
+        let number = parseInt(i);
+        if(isNaN(number)) {
+            number = 0;
+        }
+        b.push(number);
+    }
+    return b;
+}
+// return the sum of all integers found from string s
+function sumAllIntegers(s) {
+    return sum(convertIntoInteger(matchAllIntegers(s)));
+}
+function calculate() {
+    var s = document.getElementById("id_numbers").value;
+    document.getElementById("id_result").innerHTML = sumAllIntegers(s);
+}
+</script>
+    </head>
+    <body>
+        <form>
+            <label for="id_numbers">Numbers:</label>
+            <input type="text" id="id_numbers" size="80"><br>
+            <input type="button" onclick="calculate()" value="Calculate">
+            <br>
+            <label for="id_result">Result:</label>
+            <output id="id_result"></output>
+        </form>
+    </body>
+</html>

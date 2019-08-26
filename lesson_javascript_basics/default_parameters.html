@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <script>
+            function printMany(s, n=5) {
+                while(n-- > 0 ) console.log(s);
+            }
+            printMany("two", 2);
+            printMany("five");
+            printMany("test", 4, "extra");
+            function printSeveral() {
+                for(let arg of arguments) console.log(arg);
+            }
+            printSeveral("ding", "dong", "nobody home");
+            function printValues(...values) {
+                for(let value of values) console.log(value);
+            }
+            printValues(1, 2, 100, "cat");
+        </script>
+    </body>
+</html>

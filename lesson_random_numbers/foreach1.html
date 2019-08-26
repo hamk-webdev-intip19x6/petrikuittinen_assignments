@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+    <script>
+    class Person {
+        constructor(name) {
+            this.name = name;
+        }
+        toString() {
+            return this.name;
+        }
+        print() {
+            console.log(this.name);
+        }
+    }
+    var jack = new Person("Jack");
+    var bob = new Person("Bob");
+    var jill = new Person("Jill");
+    var persons = [jack, bob, jill];
+    persons.forEach(x => x.print());
+    </script>
+    </body>
+</html>

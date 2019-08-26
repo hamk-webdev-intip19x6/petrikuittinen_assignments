@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form Select Option Example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    function showSelected(form) {
+      var selected = $(':selected');
+      if (selected.length > 0) {
+        $('#result').html(selected[0].text);
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <form action="" method="get" name="myform">
+    <select name="country">
+  <option value="dk">Denmark</option>
+  <option value="fi" selected>Finland</option>
+  <option value="lv">Latvia</option>
+  <option value="no">Norway</option>
+  <option value="sv">Sweden</option>
+  <option value="ru">Russia</option>
+  </select>
+    <input type="button" value="Show" onclick="showSelected(document.myform)">
+    <label for="result">Result:</label>
+    <output id="result"></output>
+  </form>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+    <div id="output"></div>
+    <script>
+    // real time clock, including date, time and time zone
+    function showClock() {
+        // new Date() creates current time, which is autoconverted into String
+        document.getElementById("output").innerHTML = new Date(); 
+    }
+    showClock();
+    setInterval(showClock, 1000);
+    </script>
+    </body>
+</html>

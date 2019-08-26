@@ -1,0 +1,7 @@
+DO NOT EVER USE ANY OTHER CHARACTERS THAN THE FOLLOWING IN FILE OR
+DIRECTORY NAMES:
+a-z
+A-Z (lower / uppercase should not matter)
+0-9
+.-_
+

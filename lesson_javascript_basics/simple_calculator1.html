@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        var counter = 0;
+        function update() {
+            document.getElementById("result").innerHTML = String(counter);            
+        }
+        function plus(amount) {
+            counter += amount;
+            update();
+        }
+        function multiply(amount) {
+            counter = Math.floor(counter*amount);
+            update();
+        }
+        // clear everything and reset counter to zero
+        function clearall() {
+            counter = 0;
+            document.getElementById("result").innerHTML = "";
+        }
+    </script>
+</head>
+<body>
+    <form action="">
+        <input type="button" value="+1" onclick="plus(1)">
+        <input type="button" value="-1" onclick="plus(-1)">
+        <input type="button" value="*2" onclick="multiply(2)">
+        <input type="button" value="/2" onclick="multiply(0.5)">
+        <input type="button" value="+10" onclick="plus(10)">
+        <input type="button" value="-10" onclick="plus(-10)">
+        <input type="button" value="*10" onclick="multiply(10)">
+        <input type="button" value="/10" onclick="multiply(0.1)">
+
+        <!--<input type="button" value="Clear all" onclick="clearall()">-->
+        <br>
+        <output id="result">0</output>
+    </form>
+</body>
+</html>

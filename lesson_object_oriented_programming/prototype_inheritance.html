@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+<script>
+let object1 = {name: "Jack", age:25};
+let object2 = {hobby: "gaming"};
+Object.setPrototypeOf(object2, object1);
+console.log(object2.name, object2.age, object2.hobby);
+let object3 = Object.create(object1);
+object3.address = "Baker Street";
+console.log(object3.name, object3.age, object3.address);
+let proto = Object.getPrototypeOf(object3);
+console.log(proto);
+console.log("Object3 has address", object3.hasOwnProperty('address'));
+console.log("Object3 has name", object3.hasOwnProperty('name'));
+</script>
+    </body>
+</html>

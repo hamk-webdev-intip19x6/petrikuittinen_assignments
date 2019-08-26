@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form Select Option Example</title>
+  <!-- it seems jQuery Mobile 1.4.5 doesn't work with jQuery 3.x, so we are using an older version -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>  
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>  
+  <script>
+  </script>
+</head>
+<div style="margin: 5px;width:350px">
+<form>
+<label for="text-basic">Text input:</label>
+<input type="text" name="text-basic" id="text-basic" value=""><br>  
+<label for="slider">Slider:</label>
+<input type="range" name="slider" id="slider" value="50" min="0" max="100">
+<br>
+<label for="slider2">Flip switch:</label>
+<select name="slider2" id="slider2" data-role="slider">
+    <option value="off">Off</option>
+    <option value="on">On</option>
+</select>
+</form>
+</div>
+</body>
+</html>

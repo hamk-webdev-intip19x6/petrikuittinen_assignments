@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        var canvas, ctx, sprite;
+        var spriteX = 400,
+            spriteY = 300,
+            speed = 4;
+        var left = right = up = down = false;
+
+        function begin() {
+            canvas = document.getElementById("canvas");
+            ctx = canvas.getContext("2d");
+            // do your drawing here
+            sprite = new Image();
+            sprite.onload = draw; // call draw() after image is fully loaded
+            sprite.src = "../assets/redball.png"; // start loading bitmap
+        }
+        // now this won't be executed until sprite is loaded
+        function draw() {
+            requestAnimationFrame(draw);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // image, x, y (upper left hand corner)
+            ctx.drawImage(sprite, spriteX-sprite.width/2, spriteY-sprite.height/2);
+        }
+
+        function mouseMove(e) {
+            var e = e || window.event;
+            spriteX = e.pageX;
+            spriteY = e.pageY;
+        }
+    </script>
+</head>
+<body onload="begin()" onmousemove="mouseMove(event)">
+    <canvas id="canvas" width="1024" height="768" style="border:1px solid #000"></canvas>
+</body>
+</html>

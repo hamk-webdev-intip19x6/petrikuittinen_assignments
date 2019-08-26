@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+        var $;
+        $(function() {
+            $("#showbox").click(
+                function(e) {
+                    $('#toggletext').slideToggle(1000);
+            });
+        });
+        </script>
+    </head>
+    <body>
+        <form>
+            <label for="showbox"><input type="checkbox" id="showbox" name="showbox" value="x" checked>Visible text</label>
+        </form>
+        <div id="toggletext">
+            <p>You can toggle this text visible or not by click above.</p>
+            <p>Lorem ipsum dolor sit amet consectetuer mattis semper pretium fringilla pretium. Ut libero tellus Vestibulum Suspendisse consequat faucibus Pellentesque feugiat sem Fusce. Lacinia neque egestas platea egestas nibh sapien libero fames mollis dui. Ligula habitasse Nulla suscipit turpis aliquet tincidunt neque nec eros eu. Lobortis vitae Lorem Nulla semper Mauris velit consectetuer sagittis libero non. Vitae ligula Vivamus hendrerit adipiscing et fringilla scelerisque pede Lorem.</p>
+        </div>
+    </body>
+</html>

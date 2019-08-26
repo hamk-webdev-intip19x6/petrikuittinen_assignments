@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            function play(note) {
+                document.getElementById("note_"+note).play();
+            }
+        </script>
+    </head>
+    <body>
+        <h1>HTML5 Audio Example</h1>
+    <audio src="../assets/audio/c.wav" id="note_c" preload="auto"></audio>
+    <audio src="../assets/audio/d.wav" id="note_d" preload="auto"></audio>
+    <audio src="../assets/audio/e.wav" id="note_e" preload="auto"></audio>
+    <form>
+        <input type="button" onclick="play('c')" value="C">
+        <input type="button" onclick="play('d')" value="D">
+        <input type="button" onclick="play('e')" value="E">
+    </form>
+    </body>
+</html>

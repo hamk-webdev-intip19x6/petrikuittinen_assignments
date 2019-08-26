@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+<form>
+    <label for="password">Password:</label>
+    <input type="password" size="20" id="password" pattern="^[\w,.\-:;?!]{8,20}$"><br>
+    <fieldset><legend>gender</legend>
+    <label for="male"><input type="radio" name="gender" value="m" id="male">male</label>
+    <label for="female"><input type="radio" name="gender" value="f" id="female">female</label>
+    </fieldset>
+    <fieldset><legend>Country:</legend>
+    <select name="country">
+        <optgroup label="Scandinavia">
+        <option value="de">Denmark</option>
+        <option value="no">Norway</option>
+        <option value="sv">Sweden</option>
+        </optgroup>
+        <optgroup label="Baltic">
+        <option value="es" selected>Estonia</option>
+        <option value="lv">Latvia</option>
+        <option value="lt">Lithuania</option>
+        </optgroup>
+    </select>
+    </fieldset>
+    <label for="profession">Profession:</label>
+    <input list="professions" id="profession" size="40">
+    <datalist id="professions">
+      <option value="nurse">
+      <option value="teacher">
+      <option value="plumber">
+      <option value="bureaucrat">
+    </datalist>
+    <br>
+    <input type="submit" value="Send">
+</form>        
+    </body>
+</html>

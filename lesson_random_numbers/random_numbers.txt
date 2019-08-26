@@ -1,0 +1,14 @@
+random() returns a pseudo-random number between 0.0 to 0.99999 (very close to 1)
+
+let's try to make random integers from 1 to 3. So we have 3 choices: 1, 2 and 3
+
+return Math.round(Math.random()*2+1)
+
+Math.random()   2*x+1       Math.round()    probability
+0.0-0.2499      1+1.4999    1               25 %
+0.25-0.749      1.5-2.499   2               50 %
+0.75-0.999      2.5-2.999   3               25 %
+
+
+seed = seed*funnyconstant+funnyconstant2
+

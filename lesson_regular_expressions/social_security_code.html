@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <script>
+        //"080918A111N".match(/^(?<day>\d\d)(?<month>\d\d)(?<year>\d\d)(?<century>[+\-A])(?<number>\d\d\d)(?<checksum>[0-9A-FHJ-PR-Y])$/)
+        var code = "080918A111L";
+        var result = code.match(/^(?<day>\d\d)(?<month>\d\d)(?<year>\d\d)(?<century>[+\-A])(?<number>\d\d\d)(?<checksum>[0-9A-FHJ-PR-Y])$/)
+        var modulo = parseInt(result.groups.day + result.groups.month + result.groups.year + result.groups.number) % 31;
+        var checksumTable = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
+            "A", "B", "C", "D", "E", "F", "H", "J", "K", "L", "M", "N", "P", "R", "S",
+            "T", "U", "V", "W", "X", "Y"
+        ]
+        console.log(checksumTable[modulo])
+        console.log(result.groups.checksum);
+    </script>
+</body>
+
+</html>

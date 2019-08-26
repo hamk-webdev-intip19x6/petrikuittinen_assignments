@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .boxed {border: 3px solid red; padding: 5px;}
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+        $(function() {
+            $('h1:contains("summary"), h2:contains("summary"), h3:contains("summary")').addClass("boxed");
+        });
+        </script>
+    </head>
+    <body>
+        <h1>Otsikko</h1>
+        <p>Tässä on yksi pieni esimerkkiteksti. Vähän lisää tekstiä.</p>
+        <h2>Aliotsikko</h2>
+        <ul>
+            <li>yksi</li>            
+            <li>kaksi</li>
+            <li>kolme</li>
+            <li>neljä</li>
+            <li>viisi</li>
+        </ul>
+        <h3>Tässä on summary</h3>
+        <h2>Tässä ei ole summarya, vai onko?</h2>
+        <h1>This is the End</h1>
+    </body>
+</html>

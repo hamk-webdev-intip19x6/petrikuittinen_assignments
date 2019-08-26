@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+<script>
+class Account {
+    constructor(balance) {
+        this.balance = balance;
+    }
+    deposit(amount) {
+        this.balance += amount;
+        return this.balance;
+    }
+    draw(amount) {
+        this.balance = Math.max(0, this.balance-amount);
+        return this.balance;
+    }
+}
+let a = new Account(100);
+console.log(a.deposit(500));
+console.log(a.draw(200));
+console.log(a.draw(100000));
+</script>
+    </body>
+</html>

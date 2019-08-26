@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <script>
+    let obj = {'name': 'Jack', age: 25};
+    let jsonData = JSON.stringify(obj);
+    window.localStorage.setItem("mydata", jsonData);
+    let s = window.localStorage.getItem("mydata");
+    let obj2 = JSON.parse(jsonData);
+    console.log(obj2);
+    window.localStorage.removeItem("mydata");
+    window.localStorage.clear();
+    </script>
+</body>
+</html>

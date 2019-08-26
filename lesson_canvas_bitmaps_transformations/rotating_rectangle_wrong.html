@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            var canvas, ctx;
+            function draw() {
+                canvas = document.getElementById("canvas");
+                ctx = canvas.getContext("2d");
+                // do your drawing here
+                const N = 80;
+                ctx.translate(300, 250);
+                for(let i=0; i<N; i++) {
+                    ctx.rotate(Math.PI*2/N);
+                    ctx.strokeRect(-200, -150, 400, 300);
+                }
+            }
+        </script>
+    </head>
+    <body onload="draw()">
+    <canvas id="canvas" width="1024" height="768"></canvas>
+    </body>
+</html>

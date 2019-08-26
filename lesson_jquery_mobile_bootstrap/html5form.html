@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            function checkForm() {
+                var age2 = document.getElementById("id_age_input2").value;
+                alert(age2);
+                return false;
+            }
+        </script>
+    </head>
+    <body>
+    <form action="" onsubmit="checkForm()">
+        <label for="color">My favorite color:</label>
+        <input type="color" id="color"><br>
+        <label for="id_age_input">My favorite age:</label>
+        <input type="range" id="id_age_input" min="1" max="100" value="50"
+        onchange="id_age_output.value = id_age_input.value">
+        <output id="id_age_output">50</output><br>
+        <!-- even better with editable number field as well -->
+        <label for="id_age_input2">My favorite age 2:</label>
+        <input type="range" id="id_age_input2" min="1" max="100" value="50"
+        oninput="id_age_output2.value = this.value">
+        <input type="number" id="id_age_output2" value="50"
+        oninput="id_age_input2.value = this.value"><br>
+        <label for="birth">My birthdate:</label>
+        <input type="date" id="birth"><br>
+        <input type="submit" value="Send">
+    </form>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            var contestants = [];
+            function addContestant() {
+                var name = document.getElementById("id_name").value;
+                if (name.length>0) {
+                    contestants.push(name);
+                }
+                var s = "";
+                for(let name of contestants) {
+                    s += name+"<br>";
+                }
+                document.getElementById("id_contentants").innerHTML = s;
+            }
+            // return a random integer between 0 and n-1
+            function randInt(n) {
+                return Math.floor(Math.random()*n);
+            }
+            // return a random element of given array a
+            function choice(a) {
+                return a[randInt(a.length)];
+            }
+            function findWinner() {
+                var winner = choice(contestants);
+                document.getElementById("id_winner").innerHTML = winner;
+            }
+        </script>
+    </head>
+    <body>
+        <form action="">
+            <label for="id_name">Contestant Name:</label>
+            <input type="text" id="id_name" size="60"><br>
+            <input type="button" value="Add contestants" onclick="addContestant()">
+            <input type="button" value="Find a random winner" onclick="findWinner()">
+            <br>
+            <label for="id_winner">Winner:</label><br>
+            <output id="id_winner"></output>
+            <br>
+            <label for="id_contentants">Contestants:</label><br>
+            <output id="id_contentants"></output>
+        </form>
+    </body>
+</html>

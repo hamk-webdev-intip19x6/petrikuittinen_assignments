@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        // do NOT use this one, use your own API key
+        var api_key = "AIzaSyBv0pVN3QtrkcmqaN_5DJj4UUxbhTLnnBY";
+        var latitude = 60.734051400000006;
+        var longitude = 24.798190899999998;
+        var radius = 5000; // meters
+        var searchType = "restaurant"; // What to search for
+        $(function() {
+            $("#searchbutton").click(function(event) {
+                var address = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" +
+                    latitude + "," + longitude + "&radius=" + radius + "&type=" + searchType +
+                    "&key=" + api_key;
+                console.log(address);
+                $.ajax({
+                    url: address,
+                    type: "GET",
+                    headers: {
+                        'Access-Control-Allow-Credentials': true,
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods': 'GET',
+                        'Access-Control-Allow-Headers': 'application/json',
+                        'X-Content-Type-Options': 'nosniff'
+                    },
+                    contentType: 'application/json',
+                    dataType: 'jsonp',
+                    responseType: 'application/json',
+                    crossDomain: true,
+                    cache: false,
+                    success: function(response) {
+                        data = JSON.parse(response);
+                        console.log(data);
+                        //$("#result").text(data);
+                    }
+                });
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <form>
+        <input type="button" id="searchbutton" value="Find restaurants">
+    </form>
+    <div id="result"></div>
+</body>
+
+</html>

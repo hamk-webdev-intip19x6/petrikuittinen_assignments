@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+<script>
+// define a circle class with just one attribute r = radius of a circle
+// using ES6
+class Circle {
+    constructor(r) {
+        this.r = r;
+    }
+    area() {
+        return Math.PI*this.r*this.r;
+    }
+}
+
+var c = new Circle(5);
+var c2 = new Circle(10);
+console.log(c.r);
+console.log(c2.r);
+console.log(c.area());
+c.r = 4;
+console.log(c.r);
+console.log(c.area());
+console.log(c2.area());
+
+</script>
+    </body>
+</html>

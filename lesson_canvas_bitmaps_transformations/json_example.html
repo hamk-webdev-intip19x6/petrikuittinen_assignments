@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+    <script>
+        var student = {name: "Jack Student", age: 25};
+        // convert compatible JavaScript object into JSON string format
+        var json = JSON.stringify(student);
+        console.log(json);
+        delete student; // student data structure no longer exists after this
+        // parse JSON data back into JS objects
+        var student = JSON.parse(json);
+        console.log(student);
+        console.log(student.name+" "+student.age);
+    </script>
+    </body>
+</html>

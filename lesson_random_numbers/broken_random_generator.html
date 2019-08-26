@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+    <script>
+    // WARNING: DO NOT CODE LIKE THIS! THIS IS BROKEN!
+    // returns random integer from 1 to 3, but 2 is 50 % chance, instead of 33 %
+    function random1to3() {
+        return Math.round(Math.random()*2+1);
+    }
+    var count = [0, 0, 0];
+    const N = 1e6; // a million
+    for (let i=1; i<N; i++) {
+        let random = random1to3();
+        count[random-1]++; // update how many of certain number we get
+    }
+    console.log("ones: "+count[0]+" "+count[0]/N*100+" %");
+    console.log("twos: "+count[1]+" "+count[1]/N*100+" %");
+    console.log("threes: "+count[2]+" "+count[2]/N*100+" %");
+    
+
+    </script>
+    </body>
+</html>

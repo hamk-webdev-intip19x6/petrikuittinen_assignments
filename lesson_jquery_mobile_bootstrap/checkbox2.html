@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>My Hobbies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
+    <script type="text/javascript">
+        function hobbycheck() {
+            var hobbies = ["TV", "music", "games"];
+            var myHobbies = [];
+            var checked = $(":checked");
+            console.log(checked);
+            for(let c of checked) {
+                myHobbies.push(c.value);
+            }
+            if (myHobbies.length)
+                $('#result').html("Your hobbies are " + myHobbies.join(", "));
+            else
+                $('#result').html("You have no hobbies");
+        }
+    </script>
+</head>
+<body>
+    <form action="" name="myform">
+        Hobbies:
+        <label for="tv"><input type="checkbox" name="hobby" id="tv" value="TV">TV</label>
+        <label for="music"><input type="checkbox" name="hobby" id="music" value="music">music</label>
+        <label for="games"><input type="checkbox" name="hobby" id="games" value="games">games</label>
+        <input type="button" value="check" onclick="hobbycheck()">
+        <br>
+        <label for="result">Result:</label><output id="result"></output>
+    </form>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+<script>
+// function which takes arguments and returns something
+// perhaps the best kind of function IF it has no side effects
+// in other words it doesn't alter anything outside the function
+// or depend on things outside this function
+// return how many centimeters is given amount of inches
+function inchesToCm(inch) {
+    return inch*2.54;
+}
+// function which takes arguments, but has no return value
+// sometimes useful, in OOP most setter methods are this type
+// print given string s n times
+function printMany(s, n) {
+    while(n-- > 0) {
+        console.log(s);
+    }
+}
+// function which takes no arguments, but has a return value
+// rarely needed if you can design things well, but very commonly used
+// in OOP as getter methods
+// I have a secret and I will reveal it, if you call() me
+function tellSecret() {
+    return "secret is you";    
+}
+// function which takes no arguments and has no return value
+// try to avoid use of these kind of functions, except maybe to initialize
+// and clean up things
+function theEnd() {
+    console.log("This is the end.");
+} 
+console.log(inchesToCm(12).toFixed(1)); // round to nearest 1 decimal precision
+printMany("Hello", 3);
+console.log(tellSecret());
+theEnd();
+
+
+</script>
+    </body>
+</html>

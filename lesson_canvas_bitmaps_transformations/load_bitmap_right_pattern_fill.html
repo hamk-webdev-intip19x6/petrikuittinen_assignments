@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            var canvas, ctx, sprite;
+            function begin() {
+                canvas = document.getElementById("canvas");
+                ctx = canvas.getContext("2d");
+                // do your drawing here
+                sprite = new Image();
+                sprite.onload = draw; // call draw() after image is fully loaded
+                sprite.src = "../assets/redball.png"; // start loading bitmap
+            }
+            // now this won't be executed until sprite is loaded
+            function draw() {
+                // image, x, y (upper left hand corner)
+                let pattern = ctx.createPattern(sprite, 'repeat');
+                ctx.fillStyle = pattern;
+                ctx.fillRect(10, 10, 400, 300);
+                ctx.strokeStyle = "#000";
+                ctx.lineWidth = 4;
+                ctx.strokeRect(10, 10, 400, 300);
+            }
+        </script>
+    </head>
+    <body onload="begin()">
+    <canvas id="canvas" width="1024" height="768"></canvas>
+    </body>
+</html>

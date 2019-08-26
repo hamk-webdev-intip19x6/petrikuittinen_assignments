@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            function cleancode() {
+                var input = document.getElementById("input").value;
+                input = input.replace(/<.+?>/g, ""); // non greedy replace all tags with empty string
+                document.getElementById("result").innerHTML = input;
+            }
+        </script>
+    </head>
+    <body>
+    <form>
+        <label for="input">Put your valid HTML/XHTML/XML code here:</label><br>
+        <textarea id="input" rows="10" cols="80"></textarea><br>
+        <input type="button" value="clean" onclick="cleancode()"><br>
+    </form>
+    <pre id="result"></pre>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            // valid logins are 6-15 characters, start with A-Z, otherwise
+            // contain only A-Z, 0-9 or _ (case insensitive)
+            function check() {
+                var login = document.getElementById("id_login").value;
+                if (login.match(/^[a-z]\w{5,14}$/i)) {
+                    document.getElementById("id_result").innerHTML = "Login OK";
+                } else {
+                    document.getElementById("id_result").innerHTML = "Invalid Login";
+                }
+            }
+        </script>
+    </head>
+    <body>
+    <form>
+        <label for="id_login">Login:</label>
+        <input type="text" size="40" id="id_login"><br>
+        <label for="id_integer">Integer:</label>
+        <input type="text" size="40" id="id_integer"><br>
+        <input type="button" value="Check" onclick="check()"><br>
+        <output id="id_result"></output>
+    </form>
+    </body>
+</html>

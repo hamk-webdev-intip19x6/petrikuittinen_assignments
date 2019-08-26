@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+<script>
+// define a Person class using ES6 syntax
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    live() {
+        console.log("I have a life!");
+    }
+}
+// class Student inherits Person class and extends it with id
+class Student extends Person {
+    constructor(name, age, id) {
+        super(name, age); // call the super/father class constructor
+        this.id = id;
+    }
+    study() {
+        console.log("All days only study and work. No life!");
+    }
+    live() {
+        console.log("I used to have a life.");
+    }
+}
+var jack = new Student("Jack Student", 25, 13);
+var jill = new Student("Jill Student", 19, 101);
+console.log(jack.name+" "+jack.age+" "+jack.id);
+console.log(jill.name+" "+jill.age+" "+jill.id);
+jack.live();
+jack.study();
+</script>
+    </body>
+</html>

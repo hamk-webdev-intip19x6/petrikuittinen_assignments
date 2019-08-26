@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <script>
+            let square = x => x*x;
+            let add = (a, b) => a+b;
+            let printMany = (s, n=5) => {
+                while(n-- > 0) {
+                    console.log(s);
+                }
+            };
+            console.log(add(square(3), square(4)));
+            printMany("five");
+            printMany("three", 3);
+        </script>
+    </body>
+</html>

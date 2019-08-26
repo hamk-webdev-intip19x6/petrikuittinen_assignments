@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <label for="id_number_input">Number range with numberic entry:</label>
+        <input type="range" id="id_number_input" min="0" max="1000" value="500"
+        step=10 oninput="id_number_output.value = this.value">
+        <input type="number" id="id_number_output" value="500" min="0"
+        max="1000" step="10" oninput="id_number_input.value = this.value">
+    </body>
+</html>
