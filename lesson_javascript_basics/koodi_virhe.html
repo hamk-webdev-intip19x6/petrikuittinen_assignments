@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" />
+    </head>
+    <body>
+	<script>
+	 var i = 0;
+	 while (i <= 100) {
+	     document.write(i+"<br>");
+	     i += 5;
+	 }
+	 // does the same as above!
+	 for(let i = 0; i <= 100; i += 5) document.write(i+"<br>");
+
+	 var s = "hubba";
+	 for(let i = 0; i < s.length; i++) document.write(s[i]+"<br>");
+
+	 for(let c of s) document.write(c+"<br>");
+	</script>
+    </body>
+</html>

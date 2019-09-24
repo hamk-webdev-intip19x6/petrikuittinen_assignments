@@ -1,0 +1,8 @@
+Kissa
+ 1 pää
+ 4 raajaa
+ 1 häntä
+ osaa naukua
+
+KissaIlmanhäntääLuokka
+

@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" />
+    </head>
+    <body>
+	<script>
+	 function timeIt(f, n=100) {
+	     var time1 = new Date();
+	     while (n-- > 0) {
+		 f();
+	     }
+	     var time2 = new Date();
+	     return time2 - time1;
+	 }
+	 function createMillion() {
+	     var a = [];
+	     for(let i=0; i <= 1000000; i++) {
+		 a.push(i*i);
+	     }
+	 }
+	 console.log(timeIt(createMillion)+" ms");
+	</script>
+    </body>
+</html>

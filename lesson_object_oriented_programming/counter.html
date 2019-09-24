@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" />
+    </head>
+    <body>
+	<div>Counter:<span id="counter">0</span></div>
+	<form>
+	    <input type="button" value="Start" onclick="startCounter()">
+	    <input type="button" value="Reset" onclick="resetCounter()">
+	</form>
+	<script>
+	 var counter = 0;
+	 function updateCounter() {
+	     document.getElementById("counter").innerHTML = counter++;
+	 }
+	 function resetCounter() {
+	     counter = 0;
+	 }
+	 function startCounter() {
+	     updateCounter();
+	     return setInterval(updateCounter, 1000); // call every 1000 ms = 1 s
+	 }
+	</script>
+    </body>
+</html>

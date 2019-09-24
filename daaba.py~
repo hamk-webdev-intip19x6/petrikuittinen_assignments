@@ -1,0 +1,9 @@
+# tee luokka nimeltä Account eli suomeksi pankkitili
+# pankkitilillä on vain yksi ominaisuus balance eli suomeksi saldo
+# tilille voi panna rahaa metodilla deposit(amount)
+# tililtä voi nostaa rahaa metodilla draW(amount)
+# tilin saldo ei saa mennä negatiiviseksi, koska kyseessä ei ole luottotili
+# saat itse ratkaista miten se olisi järkevää
+# esim. a = Account(100)
+# a.deposit(200)
+# a.draw(150)

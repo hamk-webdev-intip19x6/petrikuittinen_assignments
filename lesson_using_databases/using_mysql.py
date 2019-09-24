@@ -10,7 +10,8 @@
 # sudo pip3 install mysqlclient
 
 import MySQLdb
-db = MySQLdb.connect("localhost", "petrikuittinen", "", "testdb")
+db = MySQLdb.connect(host="localhost", user="petrikuittinen",
+                     passwd="helppo,,MUISTAA13", db="testdb")
 c = db.cursor()
 c.execute("CREATE TABLE IF NOT EXISTS persons (id int, name varchar(200))")
 c.execute("insert into persons values(1, 'Jack')")
@@ -20,4 +21,7 @@ db.commit()
 c.execute("select * from persons")
 for id, name in c.fetchall():
     print(id, name)
-    
+# clean up
+c.execute("drop table persons")
+db.commit()
+

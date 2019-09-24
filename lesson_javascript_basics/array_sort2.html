@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" />
+	<!-- Tee web-sivu, joka kysyy käyttäjältä listaa kokonaislukuja
+	     esim 1 2, -5 ja 3
+	     ja sitten napin painalluksen jälkeen tulostaa numerot
+	     suuruusjärjestyksessä
+	     esim. -5, 1, 2, 3
+	     laske keski-arvo ja mediaani
+	     suosittelen funktioiden ja regular expressioneiden käyttöä
+	-->
+	<script>
+	 function sum(a) {
+	     var total = 0;
+	     for(let i of a) {
+		 total += i;
+	     }
+	     return total;
+	 }
+	 function average(a) {
+	     return sum(a)/a.length;
+	 }
+	 function median(a) {
+	     var b = a.slice(0);
+	     var n = b.length;
+	     b.sort((a, b) => a-b);
+	     if (n % 2 == 1) {  // odd
+		 return b[(n-1)/2];
+	     } else {  // even
+		 return (b[n/2] + b[n/2-1])/2;
+	     }
+	 }
+	 function calc() {
+	     var numberList = document.getElementById("numberlist").value;
+	     var n = numberList.match(/-?\d+/g);
+	     var n2 = n.map(x => parseInt(x));
+	     n2.sort((a, b) => a-b);
+	     document.getElementById("sorted").innerHTML = n2.toString();
+	     document.getElementById("average").innerHTML = average(n2);
+	     document.getElementById("median").innerHTML = median(n2);
+	 }
+	</script>
+    </head>
+    <body>
+	<form>
+	    <label for="numberlist">Numbers:</label>
+	    <input type="text" size="80" id="numberlist">
+	    <input type="button" value="Calculate" onclick="calc()">
+	    <br>
+	    <label for="sorted">Sorted:</label>
+	    <output id="sorted"></output><br>
+	    <label for="average">Average:</label>
+	    <output id="average"></output><br>
+	    <label for="median">Median:</label>
+	    <output id="median"></output><br>
+	</form>
+    </body>
+</html>

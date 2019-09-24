@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" />
+    </head>
+    <body>
+	<div>Counter: <span id="counter">0</span></div>
+	<div id="bar1" style="background:red; width:0;height:20px"> </div>
+	<form>
+	    <input type="button" value="Start" id="startbutton" onclick="toggleCounter()" style="width:80px">
+	    <input type="button" value="Reset" onclick="resetCounter()" style="width:80px">
+	</form>
+	<script>
+	 var counter = 0;
+	 var counterIntervalId = null;
+	 var playMode = true;
+	 function runCounter() {
+	     updateCounter();
+	     counter++;
+	 }
+	 function updateCounter() {
+	     document.getElementById("counter").innerHTML = counter;
+	     var bar = document.getElementById("bar1");
+	     bar.style.width = Math.min(counter, 800)+"px";
+	 }
+	 function resetCounter() {
+	     counter = 0;
+	     updateCounter();
+	 }
+	 function toggleCounter() {
+	     var newValue = "Stop";
+	     if (playMode) {
+		 counterIntervalId = setInterval(runCounter, 20);
+	     } else {
+		 clearInterval(counterIntervalId);
+		 newValue = "Start";
+	     }
+	     document.getElementById("startbutton").value = newValue;
+	     playMode = !playMode;
+	 }
+	</script>
+    </body>
+</html>

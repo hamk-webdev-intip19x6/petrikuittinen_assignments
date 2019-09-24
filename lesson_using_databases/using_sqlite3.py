@@ -10,4 +10,7 @@ c.execute("insert into persons values(3, 'Bob')")
 db.commit()
 for id, name in c.execute("select * from persons"):
     print(id, name)
+# clean up
+c.execute("drop table persons")
+db.commit()
     

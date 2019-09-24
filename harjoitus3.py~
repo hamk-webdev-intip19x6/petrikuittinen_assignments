@@ -1,0 +1,5 @@
+# kysy käyttäjältä lukua N
+# varmista että luku on välillä 1-100
+# tulosta luvut 1...N
+# esim. anna luku? 3
+# 1, 2, 3

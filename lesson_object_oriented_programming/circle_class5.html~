@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+<script>
+ // define a circle class with private value of r
+ // now instead of creating them in the function class, you use closures
+ function Circle(r) {
+     this.getRadius = function() {
+	 return r;
+     }
+     this.setRadius = function(newRadius) {
+	 r = newRadius;
+     }
+     this.area = function() {
+	 return Math.PI*r*r;
+     }
+ }
+ 
+ var c = new Circle(5);
+ console.log(c.area());
+ console.log(c.setRadius(3));
+ console.log(c.getRadius());
+ console.log(c.area());
+ c.r = 4; // will fail, because r attribute is private
+ </script>
+    </body>
+</html>

@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" />
+    </head>
+    <body>
+	<!-- Tee web-sivu, joka kysyy käyttäjältä listää kokonaislukuja
+	     esim 1 2, -5 ja 3
+	     ja sitten napin painalluksen jälkeen tulostaa numerot
+	     suuruusjärjestyksessä
+	     esim. -5, 1, 2, 3
+	     laske keski-arvo ja mediaani
+	     suosittelen funktioiden ja regular expressioneiden käyttöä
+	-->
+    </body>
+</html>

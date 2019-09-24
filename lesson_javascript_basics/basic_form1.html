@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+	<!--
+	     Luo web-sivu, jossa kysytään henkilön ikää vuosissa
+	     laske tästä henkilön syntymävuosi n. suurinpiirtein
+	     esim. jos ikä = 2, syntymävuosi = 2019-2 = 2017
+	     Tee toteutuksestasi mahdollisimman vikasietoinen
+	-->
+	<title></title>
+	<meta charset="utf-8">
+	<script>
+	 function makeMoney() {
+	     var money = parseFloat(document.getElementById("money").value);
+	     if (isNaN(money)) {
+		 document.getElementById("result").innerHTML = "error";
+	     }
+	     else {
+		 document.getElementById("result").innerHTML = money+1;
+	     }
+	 }
+	</script>
+    </head>
+    <body>
+	<form>
+	    <label for="money">Money:</label>
+	    <input type="number" id="money" 
+		   placeholder="your money in euros"
+		   min=0 step=10 value=100
+		   size=40
+		   autofocus>
+	    <input type="button" value="Multiply" onclick="makeMoney()">
+	    <br>
+	    <label for="result">New Money:</label>
+	    <output id="result"></output>
+	</form>
+    </body>
+</html>

@@ -1,6 +1,5 @@
 # range(begin, end, step)
-# for iterates through a sequence
-# 10..1
+
 names = ["Jack", "Bob", "Bill", "Alice", "Jane", "Liza"]
 
 # this will create a new list which is reversed, slow if list is huge

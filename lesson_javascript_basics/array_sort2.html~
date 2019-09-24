@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" />
+	<script>
+	    function calc() {
+	    var numberList = document.getElementById("numberlist").value;
+	    var n = numberList.match(/-?\d+/g);
+	    var n2 = n.map(x => parseInt(x));
+	    n2.sort((a, b) => a-b);
+	    document.getElementById("sorted").innerHTML = n2.toString();
+	    }
+	</script>
+    </head>
+    <body>
+	<!-- Tee web-sivu, joka kysyy käyttäjältä listaa kokonaislukuja
+	     esim 1 2, -5 ja 3
+	     ja sitten napin painalluksen jälkeen tulostaa numerot
+	     suuruusjärjestyksessä
+	     esim. -5, 1, 2, 3
+	     laske keski-arvo ja mediaani
+	     suosittelen funktioiden ja regular expressioneiden käyttöä
+	-->
+	<form>
+	    <label for="numberlist">Numbers:</label>
+	    <input type="text" size="80" id="numberlist">
+	    <input type="button" value="Calculate" onclick="calc()">
+	    <br>
+	    <label for="sorted">Sorted:</label>
+	    <output id="sorted"></output>
+	</form>
+    </body>
+</html>

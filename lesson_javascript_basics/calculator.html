@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" />
+    </head>
+    <body>
+	<script>
+	 while(true) {
+	     var input = prompt("?", "");
+	     if (!input) break;
+	     try {
+		 var result = eval(input);
+		 alert(input+" =\n"+result);
+	     } catch (e) {
+		 alert("Error: "+e);
+	     }
+	 }
+	</script>
+    </body>
+</html>

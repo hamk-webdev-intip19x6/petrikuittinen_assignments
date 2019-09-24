@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" />
+	<script>
+	 function validateForm(event) {
+	     var result = [];
+	     result.push("fullname = "+
+			 document.getElementById("fullname").value);
+	     result.push("password = "+
+			 document.getElementById("password").value);
+	     var genderChosen = "";
+	     for (let gender of ["male", "female", "other"]) {
+		 if (document.getElementById("gender_"+gender).checked) {
+		     genderChosen = gender;
+		     break;
+		 }
+	     }
+	     if (genderChosen) {
+		 result.push("gender = "+genderChosen);
+	     }
+	     var hobbies = [];
+	     for (let hobby of ["sports", "music", "games", "tv"]) {
+		 if (document.getElementById("hobby_"+hobby).checked) {
+		     hobbies.push(hobby);
+		 }
+	     }
+	     result.push("hobbies = "+hobbies.join(", "));
+	     document.getElementById("output").innerHTML =
+		 result.join("<br>");
+	     event.preventDefault();
+	     return false;
+	 }
+	</script>
+    </head>
+    <body>
+	<form onsubmit="validateForm(event)" action="">
+	    <label for="fullname">Full Name:</label>
+	    <input type="text" id="fullname" size="60" autofocus required>
+	    <br>
+	    <label for="password">Password:</label>
+	    <input type="password" id="password" size="60" required
+		   pattern="\w{8,16}"
+		   placeholder="8-16 alphanumeric characters only">
+	    <br>
+	    <label for="gender_male">Gender:</label>
+	    <input type="radio" name="gender"
+		   id="gender_male" value="male">
+	    <label for="gender_male">male</label>
+	    <input type="radio" name="gender"
+		   id="gender_female" value="female">
+	    <label for="gender_female">female</label>
+	    <input type="radio" name="gender"
+		   id="gender_other" value="other">
+	    <label for="gender_other">other</label>
+	    <br>
+	    <label for="hobby_sports">Hobbies:</label>
+	    <input type="checkbox" name="hobby" value="sports"
+		   id="hobby_sports">
+	    <label for="hobby_sports">sports</label>
+	    <input type="checkbox" name="hobby" value="tv"
+		   id="hobby_tv">
+	    <label for="hobby_tv">tv</label>
+	    <input type="checkbox" name="hobby" value="games"
+		   id="hobby_games">
+	    <label for="hobby_games">games</label>
+	    <input type="checkbox" name="hobby" value="music"
+		   id="hobby_music">
+	    <label for="hobby_music">music</label>
+	    <br>
+	    <input type="submit" value="Send">
+	    <br>
+	    <label for="output">Output:</label><br>
+	    <output id="output"></output>
+	</form>
+    </body>
+</html>
