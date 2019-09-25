@@ -27,6 +27,19 @@
 		 }
 	     }
 	     result.push("hobbies = "+hobbies.join(", "));
+	     var countryChosen = "";
+	     for (let country of ["finland", "sweden", "russia"]) {
+		 let checkCountry = document.getElementById(country);
+		 if (checkCountry.selected) {
+		     countryChosen = checkCountry.text;
+		     break;
+		 }
+	     }
+	     if (countryChosen) {
+		 result.push("country = "+countryChosen);
+	     }
+	     result.push("price = "+
+			 document.getElementById("price").value);
 	     document.getElementById("output").innerHTML =
 		 result.join("<br>");
 	     event.preventDefault();
@@ -68,6 +81,21 @@
 	    <input type="checkbox" name="hobby" value="music"
 		   id="hobby_music">
 	    <label for="hobby_music">music</label>
+	    <br>
+	    <label for="country">Country:</label>
+	    <select name="country" id="country">
+		<option value="fi" id="finland">Finland</option>
+		<optgroup label="Other Countries">
+		    <option value="sv" id="sweden">Sweden</option>
+		    <option value="ru" id="russia">Russia</option>
+		<optgroup>
+	    </select>
+	    <br>
+	    <label for="price">Price:</label>
+	    <input type="range" id="price" min="0" value="0" max="1000" step="10" oninput="pricenumber.value=price.value">
+	    <input type="number" id="pricenumber" value="0" min="0"
+		   max="1000" step="10"
+		   oninput="price.value=pricenumber.value">
 	    <br>
 	    <input type="submit" value="Send">
 	    <br>

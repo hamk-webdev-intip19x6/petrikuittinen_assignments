@@ -28,13 +28,14 @@
 	     }
 	     var countryChosen = "";
 	     for (let country of ["finland", "sweden", "russia"]) {
-		 if (document.getElementById(country).selected) {
-		     countryChosen = country;
+		 let checkCountry = document.getElementById(country);
+		 if (checkCountry.selected) {
+		     countryChosen = checkCountry.text;
 		     break;
 		 }
 	     }
 	     if (countryChosen) {
-		 result.push("country = "+country.capitalize());
+		 result.push("country = "+countryChosen);
 	     }
 
 	     result.push("hobbies = "+hobbies.join(", "));
