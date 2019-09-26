@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" />
+	<script src="util2.js"></script>
+    </head>
+    <body>
+	<script>
+	 var inch = prompt("How many inches?", "");
+	 alert(inch+" = "+inchesToCm(inch).toFixed(2)+" cm");
+	</script>
+    </body>
+</html>

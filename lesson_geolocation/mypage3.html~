@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" />
+	<script src="util3.js" type="module"></script>
+    </head>
+    <body>
+	<script>
+	 import {inchesToCm, cmToInches} from './util.js';
+	 var inch = prompt("How many inches?", "");
+	 alert(inch+" = "+myinchesToCm(inch).toFixed(2)+" cm");
+	</script>
+    </body>
+</html>
