@@ -10,11 +10,10 @@
                 canvas = document.getElementById("canvas");
                 ctx = canvas.getContext("2d");
                 // do your drawing here
-                const N = 80;
-                ctx.translate(300, 250);
+                const N = 16;
                 for(let i=0; i<N; i++) {
                     ctx.rotate(Math.PI*2/N);
-                    ctx.strokeRect(-200, -150, 400, 300);
+                    ctx.strokeRect(100, 100, 400, 300);
                 }
             }
         </script>

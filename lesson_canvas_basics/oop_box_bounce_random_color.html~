@@ -40,7 +40,8 @@
                 ctx = canvas.getContext("2d");
                 boxes = [];
                 for(var i=0; i<100; i++) {
-                    boxes.push(new Box(20+Math.random()*700, 20+Math.random()*600, 32, 32, Math.random()*8+2, Math.random()*8+2));                                
+		    let color = randomColor();
+                    boxes.push(new Box(20+Math.random()*700, 20+Math.random()*600, 32, 32, Math.random()*8+2, Math.random()*8+2), color);                                
                 }
                 anim();
             }

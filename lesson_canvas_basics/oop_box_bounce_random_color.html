@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+         var canvas, ctx, boxes;
+	 function randomColor() {
+	     let r = Math.floor(Math.random()*256);
+	     let g = Math.floor(Math.random()*256);
+	     let b = Math.floor(Math.random()*256);
+	     return "rgb("+r+","+g+","+b+")";
+	 }
+         class Box {
+             constructor (x, y, width, height, xSpeed, ySpeed, color) {
+                 this.x = x;
+                 this.y = y;
+                 this.width = width;
+                 this.height = height;
+                 this.xSpeed = xSpeed;
+                 this.ySpeed = ySpeed;
+		 this.color = color;
+                }
+             update(canvas) {
+                 this.x += this.xSpeed;
+                 this.y += this.ySpeed;
+                 if (this.x<0 || this.x+this.width>=canvas.width) {
+                     this.xSpeed = -this.xSpeed;
+                 }
+                 if (this.y<0 || this.y+this.height>=canvas.height) {
+                     this.ySpeed = -this.ySpeed;
+                 }
+             }
+             draw(ctx) {
+		 ctx.strokeStyle = this.color;
+                 ctx.strokeRect(Math.round(this.x), Math.round(this.y), this.width, this.height);
+             }
+            }            
+         function begin() {
+             canvas = document.getElementById("canvas");
+             ctx = canvas.getContext("2d");
+             boxes = [];
+             for(var i=0; i<50000; i++) {
+		 let color = randomColor();
+		 //console.log(color);
+                 boxes.push(new Box(20+Math.random()*700, 20+Math.random()*600, 32, 32, Math.random()*8+2, Math.random()*8+2, color));                                
+                }
+             anim();
+         }
+         function anim() {
+             window.requestAnimationFrame(anim);
+             ctx.clearRect(0, 0, canvas.width, canvas.height);
+             ctx.strokeStyle = "#000";
+             ctx.lineWidth = 1;
+             for(let box of boxes) {
+                 box.update(canvas);
+                 box.draw(ctx);
+             }
+         }
+        </script>
+    </head>
+    <body onload="begin()">
+    <canvas id="canvas" width="1024" height="768" style="border:1px solid #000"></canvas>
+    </body>
+</html>
