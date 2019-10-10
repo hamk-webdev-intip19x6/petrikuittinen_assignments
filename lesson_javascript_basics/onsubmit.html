@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" />
+	<script>
+	 function check(event) {
+	     let name = document.getElementById("name").value;
+	     if (name.length >= 3) {
+		 console.log("success");
+		 return true; // all ok, name must be >= 3 characters
+	     }
+	     console.log("fail");
+	     event.preventDefault();
+	     return false;
+	 }
+	</script>
+    </head>
+    <body>
+	<form onsubmit="check(event)" action="" method="post">
+	    <label for="name">Name:</label>
+	    <input type="text" id="name" name="name" size="40" autofocus>
+	    <br>
+	    <input type="submit" value="Send">
+	</form>
+    </body>
+</html>

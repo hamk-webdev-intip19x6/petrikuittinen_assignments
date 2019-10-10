@@ -1,0 +1,18 @@
+var question1 = {
+    text: "When was first Apple iPhone launched in USA?",
+    choices: [
+	{text: "2000", points: 0},
+	{text: "2001", points: 0},
+	{text: "2007", points: 1},
+	{text: "2008", points: 0}
+    ],
+};
+var question2 = {
+    text: "Who invented World Wide Wed?",
+    choices: [
+	{text: "Barack Obama", points: 0},
+	{text: "Tim Bernes-Lee", points: 1},
+	{text: "Linus Torvalds", points: 0},
+    ]
+};
+var questions = [question1, question2];

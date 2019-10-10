@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" />
+    </head>
+    <body>
+	<form onsubmit="check()">
+	    <label for="name">Name:</label>
+	    <input type="text" id="name" name="name" size="40" autofocus>
+	    <br>
+	    <input type="submit" value="Send">
+	</form>
+    </body>
+</html>
