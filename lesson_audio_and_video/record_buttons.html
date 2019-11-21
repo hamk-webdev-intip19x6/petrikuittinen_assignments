@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" />
+	<script>
+	 var startTime = null;
+	 function begin() {
+	     startTime = new Date();
+	 }
+	 function play(event, note) {
+	     let now = new Date();
+	     let delay = now - startTime;
+	     console.log(delay);
+	     document.getElementById("result").innerHTML +=
+		 note+" "+delay+" ms<br>";
+	     event.preventDefault();
+	     return false;
+	 }
+	</script>
+    </head>
+    <body onload="begin()">
+	<form>
+	    <button id="c" onclick="play(event, 'C')">C</button>
+	    <button id="d" onclick="play(event, 'D')">D</button>
+	    <button id="e" onclick="play(event, 'E')">E</button>
+	    <br>
+	    <label for="result">Events:</label><br>
+	    <output id="result"></output>
+	</form>
+    </body>
+</html>

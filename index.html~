@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" />
+    </head>
+    <body>
+	<h1>Otsikko</h1>
+	<p>Tässä vähän tekstiä</p>
+	<ul>
+	    <li>yksi</li>
+	    <li>kaksi</li>
+	</ul>
+    </body>
+</html>
