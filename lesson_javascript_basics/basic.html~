@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+	<h1>Hello world!</h1>
+	<script>
+	 const LOW_LIMIT = 1;
+	 const HIGH_LIMIT = 100;
+	 const MAX_GUESSES = 6;
+	 var correct = randInt(LOW_LIMIT, HIGH_LIMIT);
+	 var attempts = 0;
+	 function randInt(a, b) {
+	     return Math.floor(a+Math.random()*(b-a+1));
+	 }
+	 while(true) {
+	     let input = prompt(
+		 `Guess a number between {LOW_LIMIT} {HIGH_LIMIT}`, "")
+	     if (!input) break;
+	     let attempt = parseInt(input);
+	     if (isNaN(attempt) || attempt<LOW_LIMIT || attempt>HIGH_LIMIT) {
+		 alert("Invalid number");
+	     }
+	     else {
+		 if (attempt<correct) {
+		     alert("Guess larger next time");
+		 }
+		 else if (attempt>correct) {
+		     alert("Guess smaller next time");
+		 }
+		 else {
+		     alert("Correct!");
+		     break;
+		 }
+	     }
+	 }
+	</script>
+    </body>
+</html>

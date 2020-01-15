@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script>
+	 inventory = [];
+	 function add(item) {
+	     let itemname = document.getElementById("itemname").value;
+	     inventory.push(itemname);
+	     inventory.sort();
+	     document.getElementById("result").innerHTML =
+		 inventory.join("<br>");
+	 }
+	</script>
+    </head>
+    <body>
+	<form id="myform">
+	    <label for="itemname">Item name:</label>
+	    <input type="text" size="40" id="itemname" autofocus>
+	    <input type="button" onclick="add()" value="Add">
+	    <br>
+	    <output id="result"></output>
+	</form>
+    </body>
+</html>

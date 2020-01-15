@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script>
+	</script>
+    </head>
+    <body>
+	<form>
+	    <label for="itemname">Item name:</label>
+	    <input type="text" size="40" id=itemname" autofocus>
+	    <button>Add</button>
+	    <output id="result"></output>
+	</form>
+    </body>
+</html>

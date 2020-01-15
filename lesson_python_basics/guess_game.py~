@@ -1,0 +1,13 @@
+""" TASK: To make a game, where player is trying to guess a random
+number between 1...100. The player has maximum 10 guess attemps.
+If the player guesses the correct number within those attempts, he wins.
+The game tells if his guess is too small or large."""
+
+import random
+
+
+
+MIN_N = 1    # minimum integer to guess 
+MAX_N = 100  # maximum integer to guess
+n_guess = random.randint(MIN_N, MAX_N)  # random integer between MIN_N and MAX_N
+
