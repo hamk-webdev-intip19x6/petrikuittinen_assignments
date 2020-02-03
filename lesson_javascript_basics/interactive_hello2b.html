@@ -8,7 +8,8 @@
         function sayHello() {
             let name = document.getElementById("id_name").value;
             if (name) {
-                document.getElementById("result").innerHTML = "Hello "+name;
+                document.getElementById("result").innerHTML += "Hello "+
+							       name+"<br>";
             }
         }
         </script>
@@ -16,7 +17,7 @@
     <body>
     <form>
         <label for="id_name">Your name:</label>
-        <input type="text" id="id_name" size="40" autofocus placeholder="Your name">
+        <input type="text" id="id_name" size="40" autofocus>
         <input type="button" onclick="sayHello()" value="Say Hello"><br>
         <output id="result"></output>
     </form>

@@ -6,14 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-    <div id="output"></div>
     <script>
-     function updateClock() {
-	 document.getElementById("output").innerHTML = "Time is "+
-						       new Date();
-     }
-     updateClock();
-     setInterval(updateClock, 1000);
+    var names = ["Jack", "Jill", "Jane", "Bob"];
+    // for( x of array) iterates through array, for of and let are ES6 feat.
+    for (let name of names)  {
+        document.write(name+"<br>");
+    }
     </script>
     </body>
 </html>

@@ -7,9 +7,8 @@
         <script>
         function sayHello() {
             let name = document.getElementById("id_name").value;
-            if (name) {
-                document.getElementById("result").innerHTML = "Hello "+name;
-            }
+	     name = (name)? name : "unknown";
+             document.getElementById("result").innerHTML = "Hello "+name;
         }
         </script>
     </head>

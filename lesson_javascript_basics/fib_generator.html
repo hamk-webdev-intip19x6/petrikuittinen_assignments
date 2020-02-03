@@ -6,6 +6,18 @@
     </head>
     <body>
 	<script>
+	 function* fibGenerator() {
+	     let current = 0;
+	     let next = 1;
+	     while (true) {
+		 [next, current] = [next + current, next];
+		 yield current;
+	     }
+	 }
+	 let fib = fibGenerator();
+	 for (let i = 0; i < 20; i++) {
+	     console.log(fib.next().value);
+	 }
 	</script>
     </body>
 </html>

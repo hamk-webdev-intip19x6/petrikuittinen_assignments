@@ -6,12 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-    <script>
-    // for (init; condition; increment)
-    for (var x = 1; x <= 10; x++)  {
-        document.write(x+"<br>");
-    }
-    document.write(x);
-    </script>
+	<button>
+	    <strong>Hyväksy</strong><br>
+	    Accept
+	</button>
+	<button>
+	    <strong>Hylkää</strong><br>
+	    Cancel
+	</button>
+
     </body>
 </html>

@@ -1,0 +1,19 @@
+Object
+- has data e.g. name, price
+- has methods to process data e.g. close window, open connection
+
+Class
+- defines what attributes an object can have
+- each object belongs to a class
+- each class can inherit a class (or classes, if multiple inheritance is possible)
+
+
+Inheritance
+- copy everything from parent class and classes inherited by parent class
+
+Instance
+- an object created out of a class
+
+
+Data capsulation
+- public/private/protected

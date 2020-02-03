@@ -1,0 +1,10 @@
+d = {"cat": "kissa"}
+while True:
+    word = input("Word to search?")
+    if not word: break
+    if word in d:
+        print d[word]
+    else:
+        definition = input("Give definition for "+word+"?")
+        if not definition:
+            d[word] = definition
