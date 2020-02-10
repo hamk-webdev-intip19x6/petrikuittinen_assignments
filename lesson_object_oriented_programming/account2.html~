@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" />
+    </head>
+    <body>
+	<script>
+	 // Make a class Account, which has the following attributes:
+	 // - balance (in cents)
+	 // - deposit(amount)
+	 // - draw(amount) <-- balance cannot go below zero
+	 // make a new instance of class Account
+	 // test your methods and print out balance multiple times
+	 
+	</script>
+    </body>
+</html>
