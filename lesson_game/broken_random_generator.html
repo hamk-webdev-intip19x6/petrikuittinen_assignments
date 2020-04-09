@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+    <script>
+     /* WARNING: DO NOT CODE LIKE THIS! THIS IS BROKEN!
+	It returns random integer from 1 to 3, but 2 is 50 % chance
+	instead of 33 %
+     
+	Explanation:
+	random() returns a pseudo-random number between 0.0 to 0.99999
+	(very close to 1)
+
+	let's try to make random integers from 1 to 3. So we have 3
+	choices: 1, 2 and 3
+
+	return Math.round(Math.random()*2+1)
+
+	Math.random()   2*x+1       Math.round()    probability
+	0.0-0.2499      1+1.4999    1               25 %
+	0.25-0.749      1.5-2.499   2               50 %
+	0.75-0.999      2.5-2.999   3               25 %
+
+	In JavaScript random numbers are generated using
+	linear congruential generator (LCG), which is an algorithm
+	that yields a sequence of pseudo-randomized numbers calculated
+	with a discontinuous piecewise linear equation. Basically:
+	
+	seed = seed*funnyconstant+funnyconstant2
+
+	if you want higher quality pseudo-random numbers, consider using
+	better algorithm, such as Mersenne Twister:
+
+	https://en.wikipedia.org/wiki/Mersenne_Twister
+
+	https://gist.github.com/banksean/300494	
+      */
+
+     
+     function random1to3() {
+         return Math.round(Math.random()*2+1);
+     }
+     var count = [0, 0, 0];
+     const N = 1e6; // a million
+     for (let i=1; i<N; i++) {
+         let random = random1to3();
+         count[random-1]++; // update how many of certain number we get
+     }
+     console.log("ones: "+count[0]+" "+count[0]/N*100+" %");
+    console.log("twos: "+count[1]+" "+count[1]/N*100+" %");
+    console.log("threes: "+count[2]+" "+count[2]/N*100+" %");
+    
+
+    </script>
+    </body>
+</html>

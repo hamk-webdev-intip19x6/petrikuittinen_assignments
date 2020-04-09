@@ -18,7 +18,8 @@
                 ctx = canvas.getContext("2d");
                 // do your drawing here
                 ctx.strokeStyle = "red";
-                ctx.lineWidth = 5;
+		ctx.lineCap = "round";
+                ctx.lineWidth = 10;
                 line(100, 100, 400, 400);
                 line(100, 400, 400, 100);
             }

@@ -12,9 +12,13 @@
 		ctx.strokeStyle = "#000";
                 ctx.fillStyle = "#ff0";
                 ctx.lineWidth = 3;
-                ctx.font = "80px Arial";
-                ctx.fillText("Hello 123!", 50, 100);
-                ctx.strokeText("Hello 123!", 50, 100);
+                ctx.font = "140px Arial";
+		ctx.shadowBlur = 5;
+		ctx.shadowColor = "#888";
+		ctx.shadowOffsetX = 5;
+		ctx.shadowOffsetY = 5;
+                ctx.fillText("Hello 123!", 50, 200);
+                ctx.strokeText("Hello 123!", 50, 200);
                 
             }
         </script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            var canvas, ctx, explosionSprite, mummySprite;
+            const NUMBER_OF_BITMAPS = 2; // the total number of images to load
+            var loadCounter;
+            function begin() {
+                canvas = document.getElementById("canvas");
+                ctx = canvas.getContext("2d");
+                loadCounter = 0;
+                explosionSprite = new Image();
+                explosionSprite.onload = draw; // call draw() after image is fully loaded
+                explosionSprite.src = "../assets/exp2_0.png"; // start loading bitmap
+                mummySprite = new Image();
+                mummySprite.onload = draw;
+                mummySprite.src = "../assets/metalslug_mummy37x45.png";
+            }
+            // now this won't be executed until sprite is loaded
+            function draw() {
+                if (++loadCounter < NUMBER_OF_BITMAPS) return;
+                
+                // image, x, y (upper left hand corner)
+                ctx.drawImage(sprite, 10, 10);
+                // image, x, y, width, height
+                ctx.drawImage(sprite, 400, 10, sprite.width*2, sprite.height/2);
+                ctx.drawImage(ball, 700, 500);
+            }
+        </script>
+    </head>
+    <body onload="begin()">
+    <canvas id="canvas" width="1024" height="768"></canvas>
+    </body>
+</html>

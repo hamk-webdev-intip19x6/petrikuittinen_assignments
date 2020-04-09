@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="dice.js"></script>
+    </head>
+    <body>
+	<h1>Dice Rolls</h1>
+	<script>
+	 document.write("<p>d6 dice rolls<\/p><ul>");
+	 for(let  i= 0; i < 10; i++) {
+	     document.write("<li>"+d6());
+	 }
+	 document.write("<\/ul><p>10d6 dice rolls<\/p><ul>");
+	 for(let  i= 0; i < 10; i++) {
+	     document.write("<li>"+d6(10));
+	 }
+	 document.write("<\/ul><p>d20 dice rolls<\/p><ul>");
+	 for(let  i= 0; i < 10; i++) {
+	     document.write("<li>"+d20());
+	 }
+	 document.write("<\/ul>");
+	</script>
+    </body>
+</html>

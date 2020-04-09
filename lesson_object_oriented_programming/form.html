@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script>
+	 function validate(event) {
+	     let fullname = document.getElementById("fullname").value;
+	     /* document.getElementById("fullname").value = fullname+
+							 fullname.length; */
+	     console.log(fullname);
+	     document.getElementById("result").innerHTML =
+		 document.getElementById("password").value;
+	     if (fullname.length<3) {
+		 event.preventDefault();
+		 return false;
+	     }
+	     return true;
+	 }
+	</script>
+    </head>
+    <body>
+	<form name="myform" action="" method="post">
+	    <label for="fullname">Full name:</label>
+	    <input type="text" name="fullname" id="fullname" size="40"
+		   pattern="[a-zA-ZåäöÅÄÖ ]{6,}" required
+		   autofocus placeholder="Your First Lastname e.g. John Smith">
+	    <br>
+	    <label for="password">Password:</label>
+	    <input type="password" id="password" name="password" size="20" required>
+	    <br>
+	    <label for="message">Message:</label><br>
+	    <textarea cols="80" rows="5">Esitäytetty sisältöä</textarea>
+	    <br>
+	    
+	    <label>Age:</label>
+	    <input type="number" id="age" name="age" min="0" max="100" step="5">
+	    <br>
+	    <label for="id_number_input">Number range with numeric entry:</label><input type="range" id="id_number_input" min="0" max="1000" value="500" step=10 oninput="id_number_output.value = this.value"><input type="number" id="id_number_output"value="500" min="0" max="1000" step="10"oninput="id_number_input.value = this.value">
+	    <br>
+	    <label for="color">Color:</label>
+	    <input type="color" id="color" name="color"><br>
+	    <input type="submit" value="Send">
+	    <output id="result"></output>
+	</form>
+    </body>
+</html>

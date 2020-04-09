@@ -14,7 +14,8 @@
                 ctx.fillStyle = "#ff0";
                 ctx.lineWidth = 3;
                 ctx.beginPath();
-                ctx.arc(400, 300, 200, 0, Math.PI*2, false);
+		//      x, y,    radius, startangle, endangle, anticlockwise 
+                ctx.arc(400, 300, 200, 0, 3/2*Math.PI, true);
                 ctx.fill();
                 ctx.stroke();
             }

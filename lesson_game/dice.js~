@@ -1,0 +1,16 @@
+
+// return random integer 1...sides of dice
+function dice(sides) {
+    return Math.floor(sides*Math.random()+1);
+}
+// return the sum of sides sided dice rolls
+function die(n, sides) {
+    let total = 0;
+    while (n-- > 0) {
+	total += dice(sides);
+    }
+    return total;
+}
+let d4 = n => die(n=1, 4);
+let d6 = n => die(n=1, 6);
+let d2 = n => die(n=1, 20);

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+         var canvas;
+	 var ctx;
+	 var explosionSprite;
+	 var mummySprite;
+	 var explosionBitmap;
+	 var mummyBitmap;
+         const NUMBER_OF_BITMAPS = 2; // the total number of images to load
+         var loadCounter;
+	 class Sprite {
+	     constructor(x, y, spriteSheet, width, height, animList, animSpeed, looping=true, startIndex=0) {
+		 this.x = x;
+		 this.y = y;
+		 this.spriteSheet = spriteSheet;
+		 this.width = width;
+		 this.height = height;
+		 this.animList = animList;
+		 this.animSpeed = animSpeed;
+		 this.animCounter = 0;
+		 this.looping = looping;
+		 this.animIndex = startIndex;
+	     }
+	     draw(ctx) {
+		 if (++this.animCounter > this.animSpeed) {
+		     this.animCounter = 0;
+		     this.animIndex++;
+		     if (this.animIndex >= this.animList.length) {
+			 if (this.looping) {
+			     this.animIndex = 0;
+			 } else {
+			     this.animIndex = this.animList.length - 1;
+			 }
+		     }
+		 }
+		 let spritesPerRow = Math.floor(this.spriteSheet.width / this.width);
+		 
+		 let x = (this.animIndex % spritesPerRow) * this.width;
+		 let y = this.height * Math.floor(this.animIndex/spritesPerRow);
+		 ctx.drawImage(this.spriteSheet, x, y, this.width, this.height, this.x, this.y, this.width, this.height);
+	     }
+	 }
+	 
+         function begin() {
+             canvas = document.getElementById("canvas");
+             ctx = canvas.getContext("2d");
+             loadCounter = 0;
+             explosionBitmap = new Image();
+             explosionBitmap.onload = loaded; // call draw() after image is fully loaded
+             explosionBitmap.src = "../assets/exp2_0.png"; // start loading bitmap
+             mummyBitmap = new Image();
+             mummyBitmap.onload = loaded;
+             mummyBitmap.src = "../assets/metalslug_mummy37x45.png";
+         }
+         // now this won't be executed until sprite is loaded
+         function loaded() {
+             if (++loadCounter < NUMBER_OF_BITMAPS) return;
+	     mummySprite = new Sprite(200, 100, mummyBitmap, 37, 45, [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], 4);
+	     explosionSprite = new Sprite(100, 100, explosionBitmap, 64, 64, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 4, false);
+	     draw();
+	 }
+	 function draw() {
+	     window.requestAnimationFrame(draw);
+	     ctx.save();
+	     ctx.scale(2, 2);
+	     ctx.fillStyle = "#000";
+	     ctx.fillRect(0, 0, canvas.width, canvas.height);
+	     mummySprite.draw(ctx);
+	     explosionSprite.draw(ctx);
+	     ctx.restore();
+         }
+        </script>
+    </head>
+    <body onload="begin()">
+    <canvas id="canvas" width="1024" height="768"></canvas>
+    </body>
+</html>

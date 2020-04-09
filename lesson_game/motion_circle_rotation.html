@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+         var canvas, ctx;
+	 const gravity = 3;
+	 class Box {
+	     constructor(x, y, width, height, r, speed, phase=0) {
+		 this.xStart = x;
+		 this.yStart = y;
+		 this.x = x;
+		 this.y = y;
+		 this.width = width;
+		 this.height = height;
+		 this.r = r;
+		 this.speed = speed;
+		 this.phase = phase;
+	     }
+	     update(canvas) {
+		 this.x = this.xStart + this.r*Math.cos(this.phase);
+		 this.y = this.yStart + this.r*Math.sin(this.phase);
+		 this.phase += this.speed;
+	     }
+	     draw(ctx) {
+		 let x = Math.round(this.x);
+		 let y = Math.round(this.y);
+		 ctx.save();
+		 ctx.translate(x, y);
+		 //ctx.rotate(this.phase);
+		 ctx.rotate(this.phase+Math.PI/2);
+		 ctx.beginPath();
+		 ctx.moveTo(0, 0);
+		 ctx.lineTo(0+this.width, 0+this.height/2);
+		 ctx.lineTo(0, this.height);
+		 ctx.closePath();
+		 ctx.fill();
+		 ctx.stroke();
+		 ctx.restore();
+	     }
+	 }
+	 var boxes = [];
+	 function begin() {
+	     const N = 30;
+	     for(let i=0; i<N; i++) {
+		 boxes.push(new Box(500, 370, 32, 32, 300, 0.01,
+				    Math.PI*2/N*i));
+	     }
+	     draw();
+	 }
+         function draw() {
+             window.requestAnimationFrame(draw);
+             canvas = document.getElementById("canvas");
+             ctx = canvas.getContext("2d");
+             ctx.clearRect(0, 0, canvas.width, canvas.height);
+             ctx.strokeStyle = "#000";
+	     ctx.fillStyle = "#ff0";
+	     for(let box of boxes) {
+		 box.update(canvas);
+	     }
+	     for(let box of boxes) {
+		 box.draw(ctx);
+	     }
+         }
+        </script>
+    </head>
+    <body onload="begin()">
+    <canvas id="canvas" width="1024" height="768" style="border: 1px solid #000"></canvas>
+    </body>
+</html>
