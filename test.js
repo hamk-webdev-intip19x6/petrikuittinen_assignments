@@ -1,6 +1,6 @@
-function square(x) {
-    return x*x;
+for (let i = 0; i < 10; i++) {
+	console.log(i)
 }
-let s = "kiss"
-let q = square;
-alert(q(3));
+
+for (let i = 0; i < 10; i++) console.log(i);
+

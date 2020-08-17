@@ -1,7 +1,4 @@
-i = 1
-while True:
+print("Hello world!")
+for i in range(1, 11):
     print(i)
-    i += 1
-    if not i<=10: break
-    
-    
+

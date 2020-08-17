@@ -14,5 +14,5 @@ while True:
         else:
             print("Number must between 1 and 100")
     except ValueError:
-        print("invalid number")
-    
+        print("invalid number")  # test
+
