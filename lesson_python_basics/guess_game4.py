@@ -20,7 +20,7 @@ until user provides a valid integer and then returns the integer"""
         except ValueError:
             print(error_message)
 
-
+print("Guess a number between", MIN_N, "and", MAX_N)
 attempts = 0
 while attempts < MAX_ATTEMPTS:
     print("You have", MAX_ATTEMPTS-attempts, "attempts left")
