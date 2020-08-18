@@ -1,6 +1,0 @@
-d = {"cat": "kissa"}
-while True:
-    word = input("Search for word or press just enter to QUIT?")
-    if not word: break
-    if word in d:
-        print(word, "=", d[word])
