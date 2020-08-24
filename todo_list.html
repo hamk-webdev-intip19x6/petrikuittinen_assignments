@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>TODO - What Needs to Be Done?</h1>
+    <form onsubmit="handleSubmit(event)">
+        <input type="text" size="60" id="todo_text" onchange="add(event)" autofocus>
+        <input type="submit" value="Add">
+    </form>
+    <ul id="todo_list">
+    </ul>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            return 0;
+        }
+        function add(event) {
+            let todo_text = document.getElementById("todo_text").value;
+            if (todo_text.length == 0) return;
+            document.getElementById("todo_list").innerHTML += "<li>"+todo_text+"<\/li>";
+            document.getElementById("todo_text").value = "";
+        }
+    </script>
+</body>
+</html>
