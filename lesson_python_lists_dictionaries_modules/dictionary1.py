@@ -13,7 +13,12 @@ if "cat" in d: # checking if something exists in a dictionary
     print("cat found")
 print(d.values())
 print(d.keys())
+for key in d.keys():
+    print(key)
+for value in d.values():
+    print(value)
 for word, definition in d.items():
     print(word, "=", definition)
-
+for word in sorted(d):
+    print(word)
 del d["dog"] # remove

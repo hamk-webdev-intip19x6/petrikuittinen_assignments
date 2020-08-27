@@ -4,5 +4,3 @@ for y in range(1, N+1):
         print("%3d " % (x*y), end="")
     print()
     
-
-    
