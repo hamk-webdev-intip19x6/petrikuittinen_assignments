@@ -1,9 +1,8 @@
-x = 1
-# print numbers from 1...10
-
-while x <= 10:
+x = 100
+# print numbers from 100, 90, 80...0
+while x >= 0:
     print(x)
-    x += 1  # same as x = x+1
+    x -= 10
 
 print("end")
   

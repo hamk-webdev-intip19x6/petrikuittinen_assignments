@@ -5,7 +5,7 @@ The game tells if his guess is too small or large."""
 
 import random
 
-MAX_ATTEMPTS = 5  # maximum number of attempts
+MAX_ATTEMPTS = 7  # maximum number of attempts
 MIN_N = 1    # minimum integer to guess 
 MAX_N = 100  # maximum integer to guess
 n = random.randint(MIN_N, MAX_N)  # random integer between MIN_N and MAX_N

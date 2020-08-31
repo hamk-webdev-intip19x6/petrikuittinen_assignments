@@ -3,5 +3,7 @@ while True:
     if not s.isdigit():
         continue  # go to beginning
     i = int(s)
-    if i > 0:
+    if i >= 0:
         break
+print(i)
+
