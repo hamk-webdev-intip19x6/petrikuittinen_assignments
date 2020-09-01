@@ -19,10 +19,13 @@ ask("What is the capital of Australia?", \
     ("London", "Sydney", "Canberra", "Victoria"), 3)
 ask("When Finland gained independence?", \
     ("1900", "1917", "1919", "1939"), 2, 1)
+# Using keyword arguments the number of arguments doesn't matter
 ask(question = "What is the chemical symbol of Iron?", \
     correct=1, choices=("Fe", "R", "Ir", "I"))
-ask(question="How to delete a variable in Python?", \
-    retries=3, choices=("delete", "del", "remove", "destroy"), 2)
+# The following will not work, because there can be no position arguments after keyword arguments
+#ask(question="How to delete a variable in Python?", \
+#    retries=3, choices=("delete", "del", "remove", "destroy"), 2)
+# But this will work:
 ask("How to delete a variable in Python?", \
     ("delete", "del", "remove", "destroy"), \
     retries=3, correct=2)
