@@ -1,0 +1,5 @@
+Here is line number 1.
+This is 2nd line. The next line is empty.
+
+This is 4th line, which has some special characters, like ÄÖ.
+The End!

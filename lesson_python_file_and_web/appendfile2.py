@@ -1,2 +1,2 @@
-with open("testi.txt", "a") as f:
+with open("test.txt", "a") as f:
     f.write("one more line\n")
