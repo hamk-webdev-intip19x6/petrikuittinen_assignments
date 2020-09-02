@@ -16,3 +16,6 @@ def login(**parameters):
 
 
 login(user="root", password="qwerty")
+login(password="qwerty", user="root")
+# But the following will not work, because it uses positional arguments
+# login("root", "password")
