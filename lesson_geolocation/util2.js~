@@ -1,9 +1,0 @@
-var myutil= {
-    INCH_IN_CM : 2.54,
-    inchesToCm = function (inch) {
-	return inch*INCH_IN_CM;
-    },
-    cmToInches = function (cm) {
-	return cm/INCH_IN_CM;
-    }
-}
