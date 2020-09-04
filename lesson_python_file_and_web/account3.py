@@ -18,6 +18,6 @@ a.balance += 1000  # add 10 euros
 print(a)
 # you can no longer add new attributes to this class, because __slots__
 # has defined all existing attributes
-a.type = "säästö"  # this will FAIL!
+a.type = "saving"  # this will FAIL!
 print(a.type)
 
