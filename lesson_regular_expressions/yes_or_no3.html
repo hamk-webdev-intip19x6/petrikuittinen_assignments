@@ -4,12 +4,20 @@
         <meta charset="utf-8">
         <title></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            input:invalid { border-color: #f00; }
+            input, input:valid {border-color: #ccc; }
+        </style>
         <script>
             function validateMyForm(event) {
+                document.getElementById("answer").setCustomValidity("");
                 let answer = document.getElementById("answer").value;
                 console.log("User submitted", answer);
                 event.preventDefault();
                 return 0;
+            }
+            function invalidAnswer(event) {
+                event.target.setCustomValidity('Please reply either yes or no');
             }
         </script>
     </head>
@@ -17,7 +25,7 @@
 <form onsubmit="validateMyForm(event)">
 <label for="answer">Yes or No?</label>
 <input type="text" id="answer" pattern="^([yY][eE][sS]|[nN][oO])$" autofocus
-title="Please reply either yes or no">
+title="Please reply either yes or no" oninvalid="invalidAnswer(event)">
 <input type="submit" value="Check">
 </form>
     </body>

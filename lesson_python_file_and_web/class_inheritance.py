@@ -16,4 +16,3 @@ class Student(Person):
 jack = Student("Jack Student", 25, "10100")
 jack.age += 1
 print(jack)
-

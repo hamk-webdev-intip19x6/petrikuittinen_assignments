@@ -13,5 +13,3 @@ print(phone_re.match("050-1234567").group(1)) # '050'
 print(phone_re.match("050-1234567").group("operator"))
 print(phone_re.match("050-1234567").group(2)) # '1234567'
 print(phone_re.match("050-1234567").group("number"))
-
-

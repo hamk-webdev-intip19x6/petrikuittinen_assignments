@@ -15,4 +15,3 @@ def fib():
 f = fib()
 for x in range(2000):
     print(next(f))
-

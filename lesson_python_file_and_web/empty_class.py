@@ -19,6 +19,4 @@ for person in persons:
         print("", person.address)
     else:
         print()
-        
-    
-    
+
