@@ -11,7 +11,3 @@ while i>0:
     sumx += a[i]
 print("sum ", sumx)
 
-# BETTER way of doing the same in Python
-for i in reversed(a):
-    print(i)
-print("sum", sum(a))

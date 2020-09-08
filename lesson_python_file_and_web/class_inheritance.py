@@ -3,16 +3,17 @@ class Person:
         self.name = name
         self.age = age
     def __str__(self):
-        return "Person(%s, %d)" % (self.name, self.age)
+        return f"Person('{self.name}', {self.age})"
 
 class Student(Person):
-    def __init__(self, name, age, id):
+    def __init__(self, name, age, id_no):
         # in Python2 super(Student, self).__init__(name,age)
         super().__init__(name, age)
-        self.id = id
+        self.id_no = id_no
     def __str__(self):
-        return "Student(%s, %d, %s)" % (self.name, self.age, self.id)
+        return f"Student('{self.name}', {self.age}, '{self.id_no}')"
 
 jack = Student("Jack Student", 25, "10100")
 jack.age += 1
-print(jack)
+print(jack)  # Student('Jack Student', 26, '10100')
+

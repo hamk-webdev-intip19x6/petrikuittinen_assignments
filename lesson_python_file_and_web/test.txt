@@ -3,3 +3,9 @@ This is 2nd line. The next line is empty.
 
 This is 4th line, which has some special characters, like ÄÖ.
 The End!
+So the cat was stolen.
+Are this good English?
+
+Here is a spelling mistake.
+
+Where is sun?
