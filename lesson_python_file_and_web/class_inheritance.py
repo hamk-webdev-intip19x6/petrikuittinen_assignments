@@ -16,4 +16,8 @@ class Student(Person):
 jack = Student("Jack Student", 25, "10100")
 jack.age += 1
 print(jack)  # Student('Jack Student', 26, '10100')
-
+jill = Student("Jill Student", 23, "10101")
+jill.name = "Jill Taylor"
+print(jill)
+jill.address = "Example Street 12"
+print(jill.address)

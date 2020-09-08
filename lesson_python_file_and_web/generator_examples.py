@@ -13,5 +13,5 @@ def fib():
         a, b = b, a+b
 
 f = fib()
-for x in range(2000):
+for x in range(10):
     print(next(f))

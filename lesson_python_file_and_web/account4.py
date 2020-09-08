@@ -33,5 +33,5 @@ print(b.draw(100))
 print(b.draw(9999999))
 print(b.deposit(750))
 # the following will work, because balance is public!
-a.balance = 10**6
+a.balance = 10**8
 print(a)

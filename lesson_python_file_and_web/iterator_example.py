@@ -16,4 +16,4 @@ class Reverse:
 a = [1, 2, 100, 30]
 for i in Reverse(a):
     print(i)
-    
+        

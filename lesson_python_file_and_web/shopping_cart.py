@@ -40,7 +40,10 @@ class ShoppingCart:
     
     def get_total_price(self):
         return sum([item.product.price*item.amount for item in self.cart])
-        
+
+    def get_total_weight(self):
+        return sum([item.product.weight*item.amount for item in self.cart])
+
 
 hammer = Product("Hammer", 2000, 1000, "Excellent for hitting nails")
 nail = Product("Nail", 20, 10, "It is a 6 inch nail")
@@ -52,6 +55,7 @@ cart.add(nail, 20)
 print("Contents:", cart)
 print("Number of items:", cart.get_number_of_items())
 print("Total Price:", cart.get_total_price())
+print("Total weight:", cart.get_total_weight())
 cart.remove(nail)
 print(cart)
 

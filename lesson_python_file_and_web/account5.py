@@ -9,12 +9,12 @@ class Account:
         self.__balance = balance  # public by default
 
     def deposit(self, amount):
-        """deposit amount cents to account. Return current balance"""
+        """Deposit amount cents to account. Return current balance"""
         self.__balance += amount
         return self.__balance
     
     def draw(self, amount):
-        """draw amount of cents from account. Return current balance"""
+        """Draw amount of cents from account. Return current balance"""
         # make sure balance doesn't go below zero
         self.__balance = max(self.__balance-amount, 0)
         return self.__balance
