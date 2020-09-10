@@ -1,6 +1,6 @@
 def safe_divide(func):
     def inner(a, b):
-        print("Trying to divide", a, "and", b)
+        print("Trying to divide", a, "by", b)
         if b == 0:
             print("Division by Zero")
             return
@@ -14,5 +14,5 @@ def divide(a, b):
     print(a / b)
 
 
-print(divide(7, 2))
-print(divide(5, 0))
+divide(7, 2)
+divide(5, 0)

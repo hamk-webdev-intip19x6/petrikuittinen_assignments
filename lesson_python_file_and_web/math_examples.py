@@ -11,6 +11,3 @@ print("cos(0)", math.cos(0))
 print("tan(0)", math.tan(0))
 print("180 degrees in radians is", math.radians(180))
 print("PI in degrees is", math.degrees(math.pi))
-
-
-

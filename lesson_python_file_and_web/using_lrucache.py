@@ -1,5 +1,7 @@
 from functools import lru_cache
 from urllib.request import urlopen, HTTPError
+
+
 @lru_cache(maxsize=64)
 def get_pep(num):
     'Retrieve text of a Python Enhancement Proposal'
@@ -9,6 +11,7 @@ def get_pep(num):
             return s.read().decode("utf-8")
     except HTTPError:
         return 'Not Found'
+
 
 while True:
     s = input("Give me PEP number?")

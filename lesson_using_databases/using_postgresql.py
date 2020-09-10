@@ -1,13 +1,18 @@
 #!/usr/bin/python3
 
-# 1. First you must start postgresql service
+# 1. Install PostgreSQL and required things
+# sudo apt install postgresql postgresql-contrib libpq-dev
+# 2. Start postgresql server
 # sudo service postgresql start
-# 2. Second you must connect to Postgresql service, no password
+# 3. Connect to Postgresql server
 # sudo -u postgres psql
-# 3. When connected to PostgreSQL create a new database
+# psql
+# 4. When connected to PostgreSQL create a new database
+# CREATE DATABASE djangodb WITH ENCODING 'utf8' TEMPLATE=template0;
+# 5. Create user with password
+# CREATE USER django SUPERUSER PASSWORD 'helppoMUISTAA13';
 # and then press control-d to exit
-# create database testdb;
-# 4. Install posgresql psycopg2 driver to Python 3
+# 6. Install posgresql psycopg2 driver to Python 3
 # sudo pip3 install psycopg2
 
 import psycopg2
@@ -23,8 +28,8 @@ conn.commit()
 c.execute("select * from persons")
 for id, name in c.fetchall():
     print(id, name)
-# clean up
-c.execute("drop table persons")
+
+c.execute("drop table persons") # clean up
 conn.commit()
 c.close()
 conn.close()

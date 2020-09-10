@@ -8,5 +8,3 @@ print(delta)
 week_in_future = now + datetime.timedelta(days=7)
 delta2 = week_in_future-now
 print(delta2.days)
-
-

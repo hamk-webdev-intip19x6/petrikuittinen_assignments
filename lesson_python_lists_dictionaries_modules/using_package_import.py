@@ -11,3 +11,7 @@ print("Average:", average(numbers))
 
 import mypackage.mymath
 print("Average:", mymath.average(numbers))
+
+import mypackage 
+print("Average:", mymath.average(numbers))
+

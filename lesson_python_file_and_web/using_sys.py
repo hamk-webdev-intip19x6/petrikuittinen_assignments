@@ -11,5 +11,3 @@ with sys.stdin as f:
     d = f.readline()
     print(d)
 sys.exit(0)
-
-
