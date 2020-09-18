@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Picture Example</title>
+  </head>
+  <body>
+    <!--<h1>Example of Picture</h1>
+    <img src="../pic/rome_bridge_2560w.jpg" alt="Bridge in Rome">
+    -->
+    <h1>Dynamically choosing Image Based on Screen Resolution</h1>
+
+    <img
+      srcset="
+        ../pic/rome_bridge_640w.jpg   640w,
+        ../pic/rome_bridge_1280w.jpg 1280w,
+        ../pic/rome_bridge_2560w.jpg 2560w
+      "
+      sizes="(min-width: 2600px) 2560px,
+            (min-width: 1320px) 1280px,
+            640px"
+      src="../pic/rome_bridge_2560.jpg"
+      alt="Bridge in Rome"
+    />
+
+    <!-- More information:
+        https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images -->
+  </body>
+</html>
