@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <h1>Debug</h1>
+    <script>
+      id = Symbol();
+      id2 = Symbol("id");
+      id3 = Symbol("id");
+      console.log(id2); // undefined
+      console.log(id2.description); // "id"
+      console.log(id === id2); // false
+      console.log(id2 === id3); // false
+      g = Symbol.for("name"); // global symbol
+      g2 = Symbol.for("name"); // global symbols with same string are same
+      console.log(g === g2); // true
+      console.log(g); // Symbol(name)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String Examples</title>
+    <script>
+        function fixInput() {
+            let fullnameField = document.getElementById("fullname");
+            let fullname = fullnameField.value;
+            fullnameField.value = fullname.trim();
+            let creditCardField = document.getElementById("credit_no");
+            let creditCardNumber = creditCardField.value;
+            creditCardNumber = creditCardNumber.replace(/\s+/g, "");
+            let groups = creditCardNumber.match(/\d{4}/g);
+            if (groups !== null && groups.length === 4) {
+                creditCardNumber = groups.join(" ");
+            }
+            creditCardField.value = creditCardNumber;
+        }
+    </script>
+  </head>
+  <body>
+    <form>
+        <label for="fullname">Full name:</label>
+        <input type="text" id="fullname" size="40" autofocus
+        placeholder="FirstName LastName">
+        <br>
+        <label for="credit_no">Credit card number:</label>
+        <input type="text" id="credit_no" size="20" 
+        placeholder="1234 5678 9012 3456">
+        <br>
+        <input type="button" value="Fix" onclick="fixInput()">
+    </form>
+  </body>
+</html>
