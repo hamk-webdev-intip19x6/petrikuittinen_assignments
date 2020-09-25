@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Sorted List</h1>
+    <form onsubmit="add(event);handleSubmit(event);">
+        <input type="text" size="60" id="input_text" autofocus>
+        <input type="button" value="Add" onclick="add(event)">
+        <input type="button" value="Remove" onclick="remove(event)">
+    </form>
+    <ul id="input_list">
+    </ul>
+    <script>
+        var list = [];
+        function handleSubmit(event) {
+            event.preventDefault();
+            return 0;
+        }
+        function sortAndDisplay() {
+            list.sort();
+            let s = "";
+            for(let item of list) {
+                s += "<li>"+item+"<\/li>";
+                }
+            document.getElementById("input_list").innerHTML = s;
+            document.getElementById("input_text").value = "";
+        }   
+
+        function add(event) {
+            let input_text = document.getElementById("input_text").value;
+            if (input_text.length == 0) return;
+            list.push(input_text);
+            sortAndDisplay();
+        }
+        function remove(event) {
+            let input_text = document.getElementById("input_text").value;
+            if (input_text.length == 0) return;
+            list = list.filter(x => x !== input_text);
+            sortAndDisplay();
+        }
+
+    </script>
+</body>
+</html>

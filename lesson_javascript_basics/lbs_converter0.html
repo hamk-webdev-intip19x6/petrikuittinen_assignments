@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            return 0;
+        }
+        function lbsToKg(lbs) {
+            return 0.453592 * lbs;
+        }
+        function convert(event) {
+            var result = "Please provide a valid floating number.";
+            let lbsString = document.getElementById("lbs").value;
+            if (!isNaN(lbsString)) {
+                let lbs = Number(lbsString);
+                let kg = lbsToKg(lbs);
+                result = kg.toFixed(2) + " kg";
+            }
+            document.getElementById("result").innerHTML = result;
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="handleSubmit(event)">
+        <label for="lbs">Pounds (lbs):</label>
+        <input type="text" id="lbs" size="10" autofocus />
+        <input type="button" value="Convert to kg" onclick="convert(event)" />
+        <br />
+        <p>Result:</p>
+        <output id="result"> </output>
+    </form>
+</body>
+</html>
