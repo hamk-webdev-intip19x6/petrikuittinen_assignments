@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var a = ["feline", "dog", "ape"];
+      a[0] = "cat"; // arrays are mutable
+      var n = a.length; // 4
+      a.sort(); // a is now sorted to alphabetical order
+      a.reverse(); // reverse the order ["dog", "cat", "ape"]
+      a.push("human"); // insert "human" to the end of array a
+      var lastOne = a.pop(); // remove & return the last element
+      a.unshift("insect"); // insert to the start
+      var firstOne = a.shift(); // remove and return first item
+      var s = a.join(", "); // "dog, cat, ape"
+      var b = a.slice(1); // slice from 2nd element to end, ["cat", "ape"]
+      a.splice(0, 2); // delete two elements from start, a=["ape"]
+      var c = new Array(1, 2, 3, 4, 5); // using Array constructor
+      c.fill("spam", 1, 4);
+      console.log(c); // [1, "spam", "spam", "spam", 5]
+
+      var a = ["React", "Angular", "Vue"];
+      // The following will print array indexes/keys: 1, 2, 3
+      for (let i in a) console.log(i);
+      // same as
+      for (let i of a.keys()) console.log(i);
+      // to print values, use this:
+      for (let value of a) console.log(value);
+      // to enumerate and print values, use this:
+      for (let [i, value] of a.entries()) console.log(i, value);
+      if (a.includes("Vue")) console.log("Vue found");
+      let i = a.indexOf("Angular");
+      a[i] = "AngularJS";
+      // remove an item
+      a = a.filter((x) => x !== "AngularJS");
+      console.log(a);
+    </script>
+  </body>
+</html>

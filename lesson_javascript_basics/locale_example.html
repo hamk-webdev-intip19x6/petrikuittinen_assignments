@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <script>
+            // Converting Numbers to localized strings
+            let x = 1234.56789;
+            console.log(x) // 1234.56789
+            console.log(x.toLocaleString("en")); // "1,234.568"
+            console.log(x.toLocaleString("de")); // "1.234,568"
+            console.log(x.toLocaleString("fi")); // "1 234,568"
+            names = ["Aino", "Wille", "Valtteri", "Ville", "Viivi", "Örkki",
+            "örkki", "aito", "uber", "über"];
+            names.sort();
+            console.log(names);
+            names.sort((a, b) => a.localeCompare(b, "en"));
+            console.log(names);
+            names.sort((a, b) => a.localeCompare(b, "de"));
+            console.log(names);
+            names.sort((a, b) => a.localeCompare(b, "fi"));
+            console.log(names);
+            // better performance on large arrays
+            names.sort(new Intl.Collator("fi").compare);
+            console.log(names);
+        </script>
+    </body>
+</html>

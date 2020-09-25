@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+if (condition) {
+    // executed if condition true
+} else if (condition) {
+    /* executed if condition true and none of the above was true */
+} else {
+    // executed if none of above was true
+}
+if (age < 0) {
+    alert("Nobody can be that young!");
+} else if (age < 10) {
+    alert("You're still a child.");
+} else {
+    alert("You old fart!");
+}
+
+// easier, common idiom among JS programmers
+// but be careful if v is Number zero etc.
+if (v) {
+    // v has a value
+} else {
+    // v does not have a value
+}
+// more complex, but functions pretty much the same!
+if (v !== undefined && v !== null) {
+  // v has a value
+} else {
+    // v does not have a value
+}
+
+
+    </script>
+</body>
+</html>

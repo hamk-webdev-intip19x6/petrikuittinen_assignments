@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// Create a new instance of an object
+instance = new Object();
+a = new Array(1, 2, 100);
+a = Array(1, 2, 100);
+// Access object properties
+value = instance.property; // read
+instance.property = newValue; // write
+var n = a.length; // size of an array
+// Use object methods:
+instance.method(parameters);
+a.push(2);    // add 2 to the end of array
+lastItem = a.pop(); // get last item
+// Delete an instance (not defined using var, const or let)
+x = 5;
+delete x; // deletes global x and returns true
+delete n; // returns false and fails
+delete a[0]; // 1st item of a now undefined
+    </script>   
+</body>
+</html>
