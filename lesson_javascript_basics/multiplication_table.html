@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const N = 10;
+      document.write("<table style='font-family:monospace' summary='' border='1'>");
+      for (let y = 1; y <= N; y++) {
+        document.write("<tr>");
+        for (let x = 1; x <= N; x++) {
+          document.write(`<td style="width:4em">${x * y}<\/td>`);
+        }
+        document.write("<\/tr>");
+      }
+      document.write("<\/table>");
+    </script>
+  </body>
+</html>

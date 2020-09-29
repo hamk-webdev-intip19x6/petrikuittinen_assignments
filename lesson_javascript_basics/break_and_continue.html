@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      for (;;) /* same as while(true) */ {
+        let s = prompt("What is your age?", "");
+        if (!s) continue;
+        let age = parseInt(s);
+        if (isNaN(age) || age <= 0) {
+          alert("Age must be positive number");
+        } else {
+          break;
+        }
+      }
+    </script>
+  </body>
+</html>

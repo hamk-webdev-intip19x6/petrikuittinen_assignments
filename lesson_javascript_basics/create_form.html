@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 1.5em;}
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="myform">
+    </form>
+    <script>
+        // find out what user selected
+        function reply(event) {
+            console.log(document.querySelector("input[name=question]:checked").value);
+        }
+        // Create the form based on choice list of strings
+        function createForm(choices, targetElement, callback="reply(event)") {
+            let content = "";
+            for(let [i, choice] of choices.entries()) {
+                content += 
+                `<input type="radio" name="question" id="choice_${i}" value="${choice}">` +
+                `<label for="choice_${i}">${choice}</label><br>`;
+            }
+            content +=
+            `<input type="button" value="Reply" onclick="${callback}">`;
+
+            targetElement.innerHTML = content;
+
+        }
+        choices = ["JavaScript", "C", "C++", "C#", "Python", "PHP", "Go",
+    "Swift", "Ruby", "Kotlin", "Rust", "Scala", "Assembler", "SQL"];
+        choices.sort();
+        let targetElement = document.getElementById("myform");
+        createForm(choices, targetElement);
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .color {font-family: Courier, "Courier New", monospace; width: 150px;
+        color: #000000; padding: 3px; font-size: 20 px; height: 24px; margin: 2px;}
+        .negative {color: #ffffff;}
+    </style>
+</head>
+<body>
+    <script>
+        // return two hexadecimal digit of value x
+        function toHex(x) {
+            return x.toString(16).padStart(2, "0");
+        }
+        for(let c = 0; c <= 0xfff; c++) {
+            let r = (c >> 8) & 0xf; // get the Red component
+            let g = (c >> 4) & 0xf; // get the Green component
+            let b = c & 0xf; // get the Blue component
+            let color = `#${toHex(r*16+r)}${toHex(g*16+g)}${toHex(b*16+b)}`;
+            document.write(`<div class="color" style="background:${color}">`+
+                `${color} <span class="negative">${color}</div>`);
+        }
+    </script>
+</body>
+</html>

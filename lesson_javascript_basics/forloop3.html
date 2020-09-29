@@ -7,10 +7,17 @@
     </head>
     <body>
     <script>
-    var names = ["Jack", "Jill", "Jane", "Bob"];
-    // for( x in array ) x is indexes of the array in order
+    let names = ["Jack", "Jill", "Jane", "Bob"];
     for (var i in names)  {
         document.write(names[i]+"<br>");
+    }
+    d = {"Ford": 1, "Toyota": 2, "Nissan": 3};
+    for(let key in d) console.log(key);
+
+    let obj = {name: "Bob Smith", age: 55};
+    obj["address"] = "Example Street 123";
+    for(let attr in obj) {
+        console.log(attr, "=", obj[attr]);
     }
     </script>
     </body>
