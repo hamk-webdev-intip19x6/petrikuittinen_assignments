@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      function printX() {
+        console.log(x);
+      }
+      printX(); // undefined, instead ReferenceError: x is not defined
+      var x = 5;
+
+      function printY() {
+        console.log(y);
+      }
+      printY();
+      let y = "secret";
+    </script>
+  </body>
+</html>

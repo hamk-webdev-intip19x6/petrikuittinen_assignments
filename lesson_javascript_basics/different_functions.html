@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      // function which takes arguments and returns something
+      // perhaps the best kind of function IF it has no side effects
+      function inchesToCm(inch) {
+        return inch * 2.54;
+      }
+      // function which takes arguments, but has no return value
+      function printMany(s, n) {
+        while (n-- > 0) {
+          console.log(s);
+        }
+      }
+      // function which takes no arguments, but has a return value
+      function tellSecret() {
+        return "secret is you";
+      }
+      // function which takes no arguments and has no return value
+      function theEnd() {
+        console.log("This is the end.");
+      }
+      console.log(inchesToCm(12).toFixed(1)); // round to nearest 1 decimal precision
+      printMany("Hello", 3);
+      console.log(tellSecret());
+      theEnd();
+    </script>
+  </body>
+</html>

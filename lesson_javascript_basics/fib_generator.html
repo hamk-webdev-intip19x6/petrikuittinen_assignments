@@ -18,6 +18,13 @@
 	 for (let i = 0; i < 20; i++) {
 	     console.log(fib.next().value);
 	 }
+	 function* generatorName(params) {
+		   yield returnValue;
+		   yield* anotherGenerator;
+	}
+	 let iter = generatorName(params) // make the generator
+	 iter.next().value // will return next yield value
+	 for(let x of generatorName())
 	</script>
     </body>
 </html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+        function multiplier(x) {
+            function multiply(y) {
+                return x*y;
+            }
+            return multiply;
+        }
+        // same as:
+        var multiplier = x => (y) => x*y;
+        let m = multiplier(10);
+        console.log(m(1));
+        console.log(m(10));
+    </script>
+  </body>
+</html>
