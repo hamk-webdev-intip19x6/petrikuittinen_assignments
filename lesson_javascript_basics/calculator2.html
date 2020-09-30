@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script>
+        var value = 1;
+        function preventDefault(event) {
+            event.preventDefault();
+            return false;
+        }
+        function update() {
+            document.getElementById("result").innerHTML = value;
+        }
+        function add(amount) {
+            value += amount;
+            update();
+        }
+        function multiply(amount) {
+            value = Math.floor(value*amount);
+            update();
+        }
+        function resetCalculator(event) {
+            value = 1;
+            update();
+        }
+    </script>
+</head>
+  <body>
+    <form action="" onsubmit="preventDefault(event)" onreset="resetCalculator(event)">
+        <input type="button" value="Add 1" onclick="add(1)">
+        <input type="button" value="Minus 1" onclick="add(-1)">
+        <input type="button" value="Add 10" onclick="add(10)">
+        <input type="button" value="Minus 10" onclick="add(-10)">
+        <input type="button" value="Multiply by 2" onclick="multiply(2)">
+        <input type="button" value="Divide by 2" onclick="multiply(0.5)">
+        <input type="reset" value="Reset">
+        <br>
+        <output id="result">1</output>
+    </form>
+</body>
+</html>
