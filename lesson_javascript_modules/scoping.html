@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var globalName = "global"; // global
+        globalName2 = "global too"; // no difference to above
+        let globalName4 = "global"; // also a global
+        const globalName5 = "global"; // also a global
+        function x(localParam) {
+            globalName2 = localParam*2; // assigns to global
+            globalName3 = localParam*2; // creates new
+            console.log(globalName3);
+        }
+        function y(localParam) {
+            var localName2 = localParam*2;
+            console.log(localName2);
+        }
+        x(1);
+        y(2);
+        console.log(globalName2);
+        console.log(globalName3);
+        const LANGUAGES = ["JavaScript", "HTML", "Python"];
+        for(var language of LANGUAGES) {
+            console.log(language);
+        }
+        console.log(language); // "Python"
+        for(const language2 of LANGUAGES) {
+            console.log(language2);
+        }
+        //console.log(language2); // fails with ReferenceError
+        for(let language3 of LANGUAGES) {
+            console.log(language3);
+        }
+        console.log(language3); // fails with ReferenceError
+    </script>   
+</body>
+</html>
