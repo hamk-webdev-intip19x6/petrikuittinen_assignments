@@ -16,8 +16,8 @@
       function printY() {
         console.log(y);
       }
-      printY();
-      let y = "secret";
+      printY(); // fails because of let causes temporal dead zone (TDZ)
+      let y = "secret"; 
     </script>
   </body>
 </html>
