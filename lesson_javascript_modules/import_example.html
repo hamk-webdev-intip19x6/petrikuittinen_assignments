@@ -4,14 +4,15 @@
         <meta charset="utf-8">
         <title></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--<script src="util.js"></script>-->
     </head>
     <body>
+        <!-- NOTE: You must use type="module" -->
         <script type="module">
-            /* import {inchesToCm, cmToInches} from './util.js';
-            console.log(inchesToCm(12)); */
-            import * as Util from './util.js';
+            import {inchesToCm, cmToInches} from './util3.js';
+            console.log(inchesToCm(12));
+            import * as Util from './util3.js';
             console.log(Util.inchesToCm(12));
         </script>
+        <!-- Fallback for older browsers use <script nomodule> -->
     </body>
 </html>

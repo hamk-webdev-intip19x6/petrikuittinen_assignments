@@ -1,3 +1,4 @@
+// Traditional way to do things
 const INCH_IN_CM = 2.54;
 function inchesToCm(inch) {
     return inch*INCH_IN_CM;
