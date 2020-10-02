@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      // using Closure to create private things
+      function Person(name, age) {
+        let _age = age; // private 
+        return { // public stuff here
+          name: name, // public
+          getAge: () => _age,
+          setAge: (newAge) => (_age = newAge),
+        };
+      }
+      var p = new Person("John", 25);
+      console.log(p.name, p.getAge());
+      delete p.age; // won't affect anything!
+      p.setAge(26);
+      console.log(p.name, p.getAge());
+      console.log(p.age); // undefined
+      p.name = "Jane";
+      console.log(p.name, p.getAge());
+    </script>
+  </body>
+</html>

@@ -15,9 +15,15 @@ let object3 = Object.create(object1);
 object3.address = "Baker Street";
 console.log(object3.name, object3.age, object3.address);
 let proto = Object.getPrototypeOf(object3);
-console.log(proto);
-console.log("Object3 has address", object3.hasOwnProperty('address'));
-console.log("Object3 has name", object3.hasOwnProperty('name'));
+console.log(proto); // object1
+console.log("Object3 has address",
+object3.hasOwnProperty('address')); // true, because own
+console.log("Object3 has name",
+object3.hasOwnProperty('name')); // false because inherited
+console.log("Object2 own properties",
+Object.getOwnPropertyNames(object2));
+for(let property in object2)
+    console.log(property); // hobby, name, age
 </script>
     </body>
 </html>

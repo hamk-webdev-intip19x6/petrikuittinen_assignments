@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+d = {"Jack": "1234", "Jill Smith": '555'};
+d["Bull Gates"] = "666"; // new property
+console.log(d["Jack"]); // read property
+d.Jack = "56789"; // set property
+// check if property exists and modify it
+if (!d.hasOwnProperty("Jill Smith")) {
+    d['Jill Smith'] = "555";
+}
+d.Jill Smith = "999"; /* fails, because property names cannot have whitespace */
+    </script>   
+</body>
+</html>

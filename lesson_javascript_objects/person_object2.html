@@ -37,7 +37,14 @@ for(let person of persons) {
     }
     console.log(s);
 }
-
+// iterate through all own properties
+for(let property of Object.getOwnPropertyNames(jill)) {
+    console.log(property)
+}
+// does the same
+for(let property in jill) {
+    console.log(property)
+}
 </script>
     </body>
 </html>
