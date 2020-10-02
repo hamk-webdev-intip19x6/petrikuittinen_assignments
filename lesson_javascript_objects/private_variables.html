@@ -11,7 +11,7 @@
       function Person(name, age) {
         let _age = age; // private 
         return { // public stuff here
-          name: name, // public
+          "name": name, // public
           getAge: () => _age,
           setAge: (newAge) => (_age = newAge),
         };
@@ -22,6 +22,7 @@
       p.setAge(26);
       console.log(p.name, p.getAge());
       console.log(p.age); // undefined
+      console.log(p._age); // undefined 
       p.name = "Jane";
       console.log(p.name, p.getAge());
     </script>

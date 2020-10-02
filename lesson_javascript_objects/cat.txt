@@ -3,3 +3,28 @@ Cat
 - 4 limbs
 - 1 tail
 
+Cat without tail
+- 1 head
+- 4 limbs
+
+Cat with 3 legs and tail
+- 1 head
+- 3 limbs
+- 1 tail
+
+Cat with 3 legs and no tail
+- 1 head
+- 3 limbs
+
+Cat with 2 legs and tail
+- 1 head
+- 2 limbs
+- 1 tail
+
+Cat with wings, supersonic missiles and nuclear bombs
+
+Cat
+- name
+- getName()
+- setName()
+

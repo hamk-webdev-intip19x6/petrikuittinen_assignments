@@ -10,11 +10,15 @@
 // define a circle class with just one attribute r = radius of a circle
 // using ES6
 class Circle {
+    static PI = Math.PI;
     constructor(r) {
         this.r = r;
     }
     area() {
         return Math.PI*this.r*this.r;
+    }
+    static max(a,b) {
+        return (a.r>b.r)? a.r: b.r;
     }
 }
 
@@ -27,7 +31,10 @@ c.r = 4;
 console.log(c.r);
 console.log(c.area());
 console.log(c2.area());
-
+let twopi = Circle.PI*2;
+console.log(twopi);
+let bigger = Circle.max(c, c2); // call class method
+console.log(bigger);
 </script>
     </body>
 </html>

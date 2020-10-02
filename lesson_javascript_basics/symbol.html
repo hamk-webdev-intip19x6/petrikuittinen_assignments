@@ -8,10 +8,10 @@
   <body>
     <h1>Debug</h1>
     <script>
-      id = Symbol();
-      id2 = Symbol("id");
-      id3 = Symbol("id");
-      console.log(id2); // undefined
+      id = Symbol(); // local symbol with no description
+      id2 = Symbol("id"); // local symbol with description
+      id3 = Symbol("id"); // local symbol with description
+      console.log(id2); // Symbol(id)
       console.log(id2.description); // "id"
       console.log(id === id2); // false
       console.log(id2 === id3); // false
@@ -19,6 +19,8 @@
       g2 = Symbol.for("name"); // global symbols with same string are same
       console.log(g === g2); // true
       console.log(g); // Symbol(name)
+      console.log(Symbol.keyFor(g)); // "name"
+      console.log(Symbol.keyFor(id2)); // undefined
     </script>
   </body>
 </html>

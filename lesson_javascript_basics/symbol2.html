@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <h1>Debug</h1>
+    <script>
+      const DIRECTION = Object.freeze({
+        UP: Symbol("up"),
+        DOWN: Symbol("down"),
+        LEFT: Symbol("left"),
+        RIGHT: Symbol("right"),
+      });
+      const GAME_STATE = Object.freeze({
+        START: Symbol("start"), // start "menu"
+        GAME: Symbol("game"), // level 1
+        COMPLETE1: Symbol("complete1"), // level 1 completed
+        GAME2: Symbol("game2"), // level 2
+        WIN: Symbol("win"), // you won the game
+        LOSE: Symbol("lose"), // game over
+      });
+      let playerDirection = DIRECTION.RIGHT;
+      var gameState = GAME_STATE.START;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <script>
+      // _ is just an idiom, really not true private
+      class Person {
+        constructor(name, age) {
+          this.name = name; // public
+          this._age = age; // "private"
+        }
+        getAge() {
+          return this._age;
+        }
+        setAge(newAge) {
+          this._age = newAge;
+        }
+      }
+      var p = new Person("John", 25);
+      console.log(p.name, p.getAge());
+      p.setAge(26);
+      console.log(p.name, p.getAge());
+      console.log(p._age); // 26
+      p._age = 100; // not really private!
+      console.log(p._age); // 100
+      delete p._age; // age is gone!
+      p.name = "Jane";
+      console.log(p.name, p.getAge()); // Jane undefined
+    </script>
+  </body>
+</html>

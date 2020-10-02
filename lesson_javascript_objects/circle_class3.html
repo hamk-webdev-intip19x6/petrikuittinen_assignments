@@ -9,11 +9,15 @@
 <script>
 // define a circle class with just one attribute r = radius of a circle
 // without using prototype
-function Circle(r) {
+/* function Circle(r) {
     this.r = r;
     this.area = function() {
         return Math.PI*this.r*this.r;
     };
+} */
+function Circle(r) {
+    this.r = r;
+    this.area = () => Math.PI*this.r*this.r;
 }
 
 var c = new Circle(5);
