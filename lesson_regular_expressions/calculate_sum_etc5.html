@@ -51,7 +51,7 @@ function sumAllIntegers(s) {
 
 function calculate() {
     var s = document.getElementById("id_numbers").value;
-    if (s.match(/^[\d;:. \-]+$/)) {
+    if (/^[\d;:. \-]+$/.test(s)) {
         var numbers = convertIntoInteger(matchAllIntegers(s));
         var result = "sum: "+sum(numbers)+"<br>"+
         "average: "+average(numbers)+"<br>"+

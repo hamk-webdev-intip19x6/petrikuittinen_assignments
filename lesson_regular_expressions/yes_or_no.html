@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <script>
-        function validateMyForm() {
-            var answer = document.getElementById("answer").value;
-            if (answer.match(/^(yes|no)$/i)) {
-                return true;
-            }
-            alert("invalid input");
-            return false;
-        }
-    </script>
-    <body>
-<form onsubmit="validateMyForm()">
-<label for="answer">Yes or No?</label>
-<input type="text" id="answer" autofocus>
-<input type="submit" value="Check">
-    
-</form>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <script>
+    function validateMyForm(event) {
+      let answer = document.getElementById("answer").value;
+      if (/^(yes|no)$/i.test(answer)) {
+        //console.log("Correct");
+        document.getElementById("error").innerText = "correct input";
+        event.preventDefault();
+        //return true;
+      } else {
+        document.getElementById("error").innerText = "invalid input";
+        event.preventDefault();
+        return false;
+      }
+    }
+  </script>
+  <body>
+    <form action="" onsubmit="validateMyForm(event)">
+      <label for="answer">Yes or No?</label>
+      <input type="text" id="answer" autofocus />
+      <input type="submit" value="Check" />
+      <div id="error"></div>
+    </form>
+  </body>
 </html>

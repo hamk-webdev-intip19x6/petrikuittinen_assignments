@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strip HTML</title>
+    <script>
+        function stripHTML(event) {
+            let html = document.getElementById("input_html").value;
+            let text = html.replace(/<.+?>/g, "");
+            document.getElementById("result").innerText = text;
+            event.preventDefault();
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="stripHTML(event)">
+        <label for="input_html">Input HTML</label><br>
+        <textarea rows="8" cols="80" id="input_html" autofocus></textarea>
+        <br>
+        <input type="submit" value="Strip HTML">
+        <br>
+        <label for="result">Result:</label><br> 
+        <output id="result"></output>
+    </form>  
+</body>
+</html>

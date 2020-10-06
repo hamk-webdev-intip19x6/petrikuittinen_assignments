@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Regular Expressions</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <script>
+// var r = /pattern/flags;
+// var r = new RegExp("pattern", "flags");
+var m = "1, 2, 3 and 100".match(/\d+/g);
+console.log(m); // ["1", "2", "3", "100"]
+var s2 = "Smaller or UPPER";
+console.log(s2.match(/er/g));
+console.log(s2.match(/er/gi));
+let s = `1 JavaScript
+2 Python
+3 Java`;
+console.log(s.match(/^\d+/g)); // ["1"]
+console.log(s.match(/^\d+/gm)); // ["1", "2", "3"]
+m = "Some Chinese 你们好 and 我是老师".match(/\p{sc=Han}+/gu);
+console.log(m); // ["你们好", "我是老师"]
+s = 'The End'; let regexp = /\w+/y;
+regexp.lastIndex = 3; // starting position
+console.log(regexp.exec(s)); // null
+regexp.lastIndex = 4; // starting position
+console.log(regexp.exec(s)); // "End"
+m = "JavaScript and Java".match(/Java/g);
+console.log(m);
+m = "JavaScript and Java".match(/\bJava\b/g);
+console.log(m);
+s = "123 Cm, 55 kg";
+let results = s.matchAll(/(?<number>\d+) (?<unit>[a-z]+)/gi);
+for (let result of results) {
+    let {number, unit} = result.groups;
+    console.log(number, unit);
+}
+let html = "<body><h1>Heading</h1><p>Some text...</p></body>";
+console.log(html.match(/<.*>/g));
+console.log(html.match(/<.*?>/g));
+console.log();
+
+var searchTerm = prompt("What to search for?");
+var searchRe = new RegExp(searchTerm, "gi");
+var m = "Basic, C, C++, C#, Java, JavaScript, PHP, Python".match(searchRe);
+alert(m);
+
+
+</script>
+    </body>
+</html>

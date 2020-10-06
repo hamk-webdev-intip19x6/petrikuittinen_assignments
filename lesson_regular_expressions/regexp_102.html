@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Regular Expressions</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <script>
+const regex1 = RegExp('java', 'gi');
+const str = 'Languages: JavaScript, Python and Java';
+let matches;
+while ((matches = regex1.exec(str)) !== null) {
+  console.log(`Found ${matches[0]}. Next starts at ${regex1.lastIndex}.`);
+}
+let input = "12345";
+if(/^\d+$/.test(input)) {
+    console.log("input has only digits");
+}
+let sentence = "Programming is\neasy";
+console.log(sentence.search(/is/)); // 12
+let words = sentence.split(/\s+/);
+console.log(words.join("_")); // 'Programming_is_easy'
+
+let name = 'Petri Kuittinen';
+let s = name.replace(/(\w+)\s(\w+)/, '$2, $1');
+console.log(s);  // "Kuittinen, Petri"
+
+</script>
+    </body>
+</html>
