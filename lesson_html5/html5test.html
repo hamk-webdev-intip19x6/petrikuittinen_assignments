@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+        function doit(event) {
+            let name = document.getElementById("id_name").value;
+            console.log(name);
+            event.preventDefault();
+        }
+    </script>
+</head>
+<body>
+    <form action="" onsubmit="event.preventDefault();">
+    <!-- <form action="" onsubmit="doit(event)"> -->
+        <input type="text" size="60" id="id_name" placeholder="Your firstname lastname">
+        <input type="submit" value="Send">
+        <!--<button><b>Lähetä</b><br>Send</button>-->
+    </form>
+</body>
+</html>

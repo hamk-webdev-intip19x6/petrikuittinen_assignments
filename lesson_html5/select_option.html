@@ -6,10 +6,7 @@
   <title>Form Select Option Example</title>
   <script>
     function showSelected(form) {
-      console.log(
-        "You selected",
-        form.country.options[form.country.selectedIndex].value
-      );
+      console.log("You selected", form.country.options[form.country.selectedIndex].value );
       let selectObj = document.getElementById("id_country");
       console.log("You selected", selectObj[selectObj.selectedIndex].text);
     }
@@ -25,6 +22,8 @@
       <option value="sv">Sweden</option>
       <option value="ru">Russia</option>
     </select>
+    <input type="range" min="0" max="1000" step="10" id="price" defaultvalue="100">
+
     <input type="button" value="Show" onclick="showSelected(document.myform)" />
   </form>
 </body>
