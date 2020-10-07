@@ -30,7 +30,7 @@ m = "JavaScript and Java".match(/Java/g);
 console.log(m);
 m = "JavaScript and Java".match(/\bJava\b/g);
 console.log(m);
-s = "123 Cm, 55 kg";
+s = "123 Cm, 55 kg 185 cm, 80 kg";
 let results = s.matchAll(/(?<number>\d+) (?<unit>[a-z]+)/gi);
 for (let result of results) {
     let {number, unit} = result.groups;
