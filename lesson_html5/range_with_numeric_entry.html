@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Form Example</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+    <form action="">
+<input type="text" size="60" name="firstname" id="firstname"
+autofocus placeholder="your first name" required><br>
+<input type="password" size="20" name="password"
+id="password" pattern="^[\w,.\-:;?!]{8,20}$" required><br>
+<input type="number" name="age" id="age" min="0" max="130" value="50"><br>
+<label for="id_number_input">Range with numeric entry:</label>
+<input type="range" name="number_input" id="id_number_input" min="0" max="1000" value="500"
+step="10" oninput="id_number_output.value = this.value">
+<input type="number" id="id_number_output" value="500" min="0"
+max="1000" step="10" oninput="id_number_input.value = this.value">
+<br>
+<label for="id_message">Message:</label><br>
+<textarea name="message" id="id_message" rows="6" cols="60" maxlength="1000"
+placeholder="Type here your message. Max 1000 characters." required></textarea>
+
+<br>
+<textarea name="prefilled" id="prefilled" rows="10" cols="60">Prefilled text here, which you
+can edit</textarea>
+<br>
+<label for="country">Country:</label>
+<select name="country" id="country">
+    <optgroup label="Scandinavia">
+        <option value="de">Denmark</option>
+        <option value="no">Norway</option>
+        <option value="sv">Sweden</option>
+    </optgroup>  
+    <optgroup label="Baltic">
+        <option value="es" selected>Estonia</option>
+        <option value="lv">Latvia</option>
+        <option value="lt">Lithuania</option>
+    </optgroup>
+</select>
+<br>
+<label for="profession">Profession:</label>
+<input list="professions" id="profession" size="40">
+<datalist id="professions">  
+    <option value="nurse"></option>
+    <option value="teacher"></option>
+    <option value="plumber"></option>
+    <option value="bureaucrat"></option>
+</datalist>
+<br>
+<input type="submit" value="Send">
+    </form>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Input field example</title>
+    <script>
+      // old style
+      function show(form) {
+        console.log(document.myform.inputtext.value);
+        console.log(document.myform.textarea.value);
+      }
+      // new style using document.getElementById()
+      function show2(event) {
+        let inputtext = document.getElementById("id_inputtext").value;
+        let textarea = document.getElementById("id_textarea").value;
+        document.getElementById(
+          "result"
+        ).innerText = `inputtext = ${inputtext}\ntextarea =\n${textarea}`;
+      }
+      // writing to input fields and textarea
+      function modify(event) {
+        document.getElementById("id_inputtext").value = "New Text";
+        document.getElementById("id_textarea").value = `First line
+        second line ÄÖ`;
+      }
+    </script>
+  </head>
+  <body>
+    <form action="" method="" name="myform">
+      <label for="id_inputtext">Text:</label>
+      <input type="text" name="inputtext" id="id_inputtext" size="40" />
+      <br />
+      <label for="id_textarea">Textarea:</label><br />
+      <textarea cols="80" rows="5" name="textarea" id="id_textarea"></textarea>
+      <br />
+      <input type="button" value="Show" onclick="show(document.myform)" />
+      <input type="button" value="Show 2" onclick="show2(event)" />
+      <input type="button" value="Write" onclick="modify(event)" />
+      <br />
+      <output id="result"></output>
+    </form>
+  </body>
+</html>

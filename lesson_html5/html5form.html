@@ -5,15 +5,16 @@
         <title></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script>
-            function checkForm() {
-                var age2 = document.getElementById("id_age_input2").value;
-                alert(age2);
+            function checkForm(event) {
+                let age2 = document.getElementById("id_age_input2").value;
+                console.log(age2);
+                event.preventDefault();
                 return false;
             }
         </script>
     </head>
     <body>
-    <form action="" onsubmit="checkForm()">
+    <form action="" onsubmit="checkForm(event)">
         <label for="color">My favorite color:</label>
         <input type="color" id="color"><br>
         <label for="id_age_input">My favorite age:</label>

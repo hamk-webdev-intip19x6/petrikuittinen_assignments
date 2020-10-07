@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>My Hobbies</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Form Select Option Example</title>
-  <script type="text/javascript">
-    function showSelected(form) {
-      var hobbies = [];
-      for (var option in form.hobbies.options) {
-        if (form.hobbies.options[option].selected) {
-          hobbies.push(form.hobbies.options[option].value);
+  <head>
+    <meta charset="utf-8" />
+    <title>My Hobbies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Form Select Option Example</title>
+    <script>
+      function showSelected(event) {
+        let myHobbies = [];
+        let hobbies = document.getElementById("id_hobbies");
+        for (let hobby of hobbies.options) {
+          if (hobby.selected) {
+            myHobbies.push(hobby.value);
+          }
         }
+        console.log("Your hobbies are", myHobbies.join(", "));
+        event.preventDefault();
       }
-      alert("Your hobbies are " + hobbies.join(", "));
-    }
-  </script>
-</head>
-<body>
-  <form action="" method="get" name="myform">
-    <select name="hobbies" multiple="multiple" size="5">
-  <option value="games">games</option>
-  <option value="music">music</option>
-  <option value="reading">reading</option>
-  <option value="sports">sports</option>
-  <option value="tv">TV</option>
-  </select>
-    <input type="button" value="Show" onclick="showSelected(document.myform)">
-  </form>
-</body>
+    </script>
+  </head>
+  <body>
+    <form action="" method="get" name="myform">
+      <select name="hobbies" id="id_hobbies" multiple="multiple" size="5">
+        <option value="games">games</option>
+        <option value="music">music</option>
+        <option value="reading">reading</option>
+        <option value="sports">sports</option>
+        <option value="tv">TV</option></select
+      ><br />
+      <button onclick="showSelected(event)"><b>Choose</b><br>Valitse</button>
+    </form>
+  </body>
 </html>

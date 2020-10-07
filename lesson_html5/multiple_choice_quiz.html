@@ -1,75 +1,76 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script type="text/javascript">
-    var questions = [{
-        "question": "What is the capital of Finland?",
-        "choices": [
-          { "text": "Norway", "value": 0 },
-          { "text": "Sweden", "value": 0 },
-          { "text": "Helsinki", "value": 1 }
-        ]
-      },
-      {
-        "question": "What is the biggest ocean in the world?",
-        "choices": [
-          { "text": "Baltic sea", "value": 0 },
-          { "text": "Pacific", "value": 1 },
-          { "text": "Atlantic", "value": 0 }
-        ]
-      },
-      {
-        "question": "What is world's most widely spoken language?",
-        "choices": [
-          { "text": "English", "value": 0 },
-          { "text": "Chinese", "value": 1 }
-        ]
-      },
-    ];
+  <head>
+    <meta charset="utf-8" />
+    <title>Multiple Choice Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="text/javascript">
+      var questions = [
+        {
+          question: "What is the capital of Finland?",
+          choices: [
+            {text: "Norway", value: 0},
+            {text: "Sweden", value: 0},
+            {text: "Helsinki", value: 1},
+          ],
+        },
+        {
+          question: "What is the biggest ocean in the world?",
+          choices: [
+            {text: "Baltic sea", value: 0},
+            {text: "Pacific", value: 1},
+            {text: "Atlantic", value: 0},
+          ],
+        },
+        {
+          question: "What is world's most widely spoken language?",
+          choices: [
+            {text: "English", value: 0},
+            {text: "Chinese", value: 1},
+          ],
+        },
+      ];
 
-    function makeIdName(questionIndex, choiceIndex) {
-      return "q_" + questionIndex + "_" + choiceIndex;
-    }
-
-    function makeQuestions() {
-      var s = "";
-      for (var i in questions) {
-        var question = questions[i];
-        s += "<p>" + question.question + "</p>"
-        for (var j in question.choices) {
-          var choice = question.choices[j];
-          s += '<input type="radio" name="q' + i + '" value="' + j + '" id="' + makeIdName(i, j) + '">' +
-            '<label for="' + makeIdName(i, j) + '">' + choice.text + '</label><br>';
-        }
+      // Return id name for a specific choice of a question
+      function makeIdName(questionIndex, choiceIndex) {
+        return `q_${questionIndex}_${choiceIndex}`;
       }
-      document.getElementById("dynamic").innerHTML = s;
-    }
 
-    function reply(form) {
-      var points = 0;
-      for (var i in questions) {
-        var question = questions[i];
-        for (var j in question.choices) {
-          var choice = question.choices[j];
-          if (document.getElementById(makeIdName(i, j)).checked) {
-            points += choice.value;
+      // Create HTML for the multiple choice questions
+      function makeQuestions() {
+        let s = "";
+        for (let [i, question] of questions.entries()) {
+          s += `<p>${question.question}</p>`;
+          for (let [j, choice] of question.choices.entries()) {
+            let questionId = makeIdName(i, j);
+            s +=
+              `<input type="radio" name="q${i}" value="${j}" id="${questionId}">` +
+              ` <label for="${questionId}">${choice.text}</label><br>`;
           }
         }
+        document.getElementById("dynamic").innerHTML = s;
       }
-      alert("You got " + points + " points");
-    }
-  </script>
-</head>
 
-<body onload="makeQuestions()">
-  <form action="" method="get" name="myform">
-    <div id="dynamic"></div>
-    <br>
-    <input type="button" value="Answer" onclick="reply(document.myform)">
-  </form>
-</body>
+      // Count points from answers
+      function reply() {
+        let points = 0;
+        for (let [i, question] of questions.entries()) {
+          for (let [j, choice] of question.choices.entries()) {
+            if (document.getElementById(makeIdName(i, j)).checked) {
+              points += choice.value;
+            }
+          }
+        }
+        console.log(`You got ${points} points`);
+      }
+    </script>
+  </head>
 
+  <body onload="makeQuestions()">
+    <form action="" method="get" name="myform">
+      <div id="dynamic"></div>
+      <br />
+      <input type="button" value="Answer" onclick="reply()" />
+    </form>
+  </body>
 </html>

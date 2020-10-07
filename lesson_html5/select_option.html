@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Form Select Option Example</title>
-  <script type="text/javascript">
+  <script>
     function showSelected(form) {
-      alert("You selected " +
-        form.country.options[form.country.selectedIndex].value);
+      console.log(
+        "You selected",
+        form.country.options[form.country.selectedIndex].value
+      );
+      let selectObj = document.getElementById("id_country");
+      console.log("You selected", selectObj[selectObj.selectedIndex].text);
     }
   </script>
 </head>
 <body>
   <form action="" method="get" name="myform">
-    <select name="country">
-  <option value="dk">Denmark</option>
-  <option value="fi" selected>Finland</option>
-  <option value="lv">Latvia</option>
-  <option value="no">Norway</option>
-  <option value="sv">Sweden</option>
-  <option value="ru">Russia</option>
-  </select>
-    <input type="button" value="Show" onclick="showSelected(document.myform)">
+    <select name="country" id="id_country">
+      <option value="dk">Denmark</option>
+      <option value="fi" selected>Finland</option>
+      <option value="lv">Latvia</option>
+      <option value="no">Norway</option>
+      <option value="sv">Sweden</option>
+      <option value="ru">Russia</option>
+    </select>
+    <input type="button" value="Show" onclick="showSelected(document.myform)" />
   </form>
 </body>
 </html>

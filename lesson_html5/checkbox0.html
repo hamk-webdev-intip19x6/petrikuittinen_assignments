@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>My Hobbies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script type="text/javascript">
+    function hobbycheck() {
+      var hobbies = ["TV", "music", "games"];
+      var myHobbies = [];
+      for (i = 0; i < document.myform.hobby.length; i++) {
+        if (
+          document.myform.hobby[i].checked &&
+          document.myform.hobby[i].value == hobbies[i]
+        ) {
+          myHobbies.push(hobbies[i]);
+        }
+      }
+      if (myHobbies.length) {
+        console.log(`Your hobbies are: ${myHobbies.join(", ")}`);
+      } else {
+        console.log("You have no hobbies");
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <form action="" name="myform">
+    <label for="tv"><input type="checkbox" name="hobby" id="tv" value="TV" /> TV</label>
+    <label for="music"><input type="checkbox" name="hobby" id="music" value="music" />
+      music</label>
+    <label for="games"><input type="checkbox" name="hobby" id="games" value="games" />
+      games</label>
+    <input type="button" value="check" onclick="hobbycheck()" />
+    <br />
+    <label for="result">Result:</label><output id="result"></output>
+  </form>
+</body>
+
+</html>
