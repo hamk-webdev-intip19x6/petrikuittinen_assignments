@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Canvas test</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script>
-            var canvas, ctx;
-            function draw() {
-                canvas = document.getElementById("canvas");
-                ctx = canvas.getContext("2d");
-                // do your drawing here
-                ctx.fillStyle = "red";
-		        // fillRect(upper left x, upper left y, width, height);
-                ctx.fillRect(20, 20, 400, 300);
-            }
-        </script>
-    </head>
-    <body onload="draw()">
-        <h1>Hello world!</h1>
-        <p>Kirjoitan tähän nyt vähän suomen kieltä. Tässä on virhe.</p>
+  <head>
+    <meta charset="utf-8" />
+    <title>Canvas test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      var canvas, ctx;
+      function draw() {
+        canvas = document.getElementById("canvas");
+        ctx = canvas.getContext("2d");
+        // do your drawing here
+      }
+    </script>
+  </head>
+  <body onload="draw()">
     <canvas id="canvas" width="1024" height="768"></canvas>
-    </body>
+  </body>
 </html>
