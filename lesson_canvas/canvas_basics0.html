@@ -10,10 +10,19 @@
         canvas = document.getElementById("canvas");
         ctx = canvas.getContext("2d");
         // do your drawing here
+        ctx.fillStyle = "#ff0";
+        ctx.strokeStyle = "#f00";
+        ctx.lineWidth = 5;
+        //ctx.fillRect(100, 100, 400, 300);
+        //ctx.strokeRect(100, 100, 400, 300);
+        ctx.translate(300, 250);
+        ctx.rotate(Math.PI/2);
+        ctx.fillRect(-200, -150, 400, 300);
+        ctx.strokeRect(-200, -150, 400, 300);
       }
     </script>
   </head>
   <body onload="draw()">
-    <canvas id="canvas" width="1024" height="768"></canvas>
+    <canvas id="canvas" width="1024" height="768" style="border: 1px solid #000"></canvas>
   </body>
 </html>

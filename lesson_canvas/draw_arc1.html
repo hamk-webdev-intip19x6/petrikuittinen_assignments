@@ -15,8 +15,8 @@
                 ctx.lineWidth = 3;
                 ctx.beginPath();
 		//      x, y,    radius, startangle, endangle, anticlockwise 
-                ctx.arc(400, 300, 200, 0, 3/2*Math.PI, true);
-                ctx.fill();
+                ctx.arc(400, 300, 200, 0, Math.PI*2, false);
+                //ctx.fill();
                 ctx.stroke();
             }
         </script>

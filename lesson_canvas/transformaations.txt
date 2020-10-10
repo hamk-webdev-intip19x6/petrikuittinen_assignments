@@ -1,0 +1,21 @@
+2D/3D Computer Graphics has 4 basic transformations:
+- translation or moving origin to given coordinates (x, y)
+- scaling or stretching the axies by given amounts (this will scale everything,
+including coordinates, line widths, heights, bitmap pixels etc. Note:
+negative scaling will do mirroring)
+- rotation or rotation around the origin (0, 0)
+- skew
+
+The typical order is:
+1. translation
+2. scaling
+3. rotation
+4. drawing
+
+All these transformations can be combined in 2D graphics into 3x3 matrix, where
+the lower line is always 0 0 1, so there is actually only 6 numbers, which can
+do all the above mentioned translations and their combinations. So all
+transformations can be efficiently done by just doing one multiplication 
+3x3 matrix.
+
+In 3D graphics the matrix is 4x4, and the lowest row is always 0 0 0 1.
