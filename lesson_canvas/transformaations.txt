@@ -1,6 +1,6 @@
 2D/3D Computer Graphics has 4 basic transformations:
 - translation or moving origin to given coordinates (x, y)
-- scaling or stretching the axies by given amounts (this will scale everything,
+- scaling or stretching the axis by given amounts (this will scale everything,
 including coordinates, line widths, heights, bitmap pixels etc. Note:
 negative scaling will do mirroring)
 - rotation or rotation around the origin (0, 0)
