@@ -2,25 +2,28 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>jQuery Selectors</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script>
         $(function() {
-            $('li').filter(":odd").html("bubba");
+            $('li:even').css("color", "red");
         });
         </script>
     </head>
     <body>
-        <h1>Otsikko</h1>
-        <p>Tässä on yksi pieni esimerkkiteksti. Vähän lisää tekstiä.</p>
-        <h2>Aliotsikko</h2>
+        <h1>Header 1</h1>
+        <p>Here is little bit normal text. And one more sentence.</p>
+        <h2>Header 2</h2>
         <ul>
-            <li>yksi</li>            
-            <li>kaksi</li>
-            <li>kolme</li>
-            <li>neljä</li>
-            <li>viisi</li>
+            <li>one</li>            
+            <li>two</li>
+            <li>three</li>
+            <li>four</li>
+            <li>five</li>
         </ul>
+        <h3>Header 3</h3>
+        <h2>Header 2 again</h2>
+        <h1>This is the End</h1>
     </body>
 </html>
