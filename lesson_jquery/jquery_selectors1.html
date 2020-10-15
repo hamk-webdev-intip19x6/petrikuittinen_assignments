@@ -4,10 +4,10 @@
         <meta charset="utf-8">
         <title>jQuery Selectors</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>        
         <script>
         $(function() {
-            $('li:even').css("color", "red");
+            $('li:odd').css("color", "red");
         });
         </script>
     </head>
@@ -16,6 +16,7 @@
         <p>Here is little bit normal text. And one more sentence.</p>
         <h2>Header 2</h2>
         <ul>
+            <li>zero</li>
             <li>one</li>            
             <li>two</li>
             <li>three</li>

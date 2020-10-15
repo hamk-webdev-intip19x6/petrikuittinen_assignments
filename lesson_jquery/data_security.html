@@ -10,8 +10,8 @@
             $('#mybutton').click(
                 function(e) {
 		    let fullname = $('#fullname').val();
-                    $('#result').text("Hello "+fullname);
-                    // $('#result').html("Hello "+fullname); // XSS vulne.
+                    //$('#result').text("Hello "+fullname);
+                    $('#result').html("Hello "+fullname); // XSS vulne.
                 })
         });
         </script>

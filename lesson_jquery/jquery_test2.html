@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+    <!--<script>
+      $(function () {
+        $("#mybutton").click(function (event) {
+          $("#result").text("Hello!");
+        });
+      });
+    </script>-->
+    <script>
+        window.onload = function () {
+            document.getElementById("mybutton").onclick =
+            function(event) {
+                document.getElementById("result").innerText = "Hello!";
+            };
+        };
+    </script>
+  </head>
+  <body>
+    <form>
+      <input type="button" value="Click me!" id="mybutton" />
+      <br />
+      <output id="result"></output>
+    </form>
+  </body>
+</html>
