@@ -16,7 +16,7 @@ for (let [questionN, question] of questions.entries()) {
     form += `<fieldset data-role="controlgroup" data-type="vertical">\n`;
     for (let [choiceN, choice] of question.choices.entries()) {
         form += `<input type="radio" id="question-` +
-            `${questionN}-${choiceN} name="question-${questionN}" ` +
+            `${questionN}-${choiceN}" name="question-${questionN}" ` +
             `value="${choiceN}">`;
         form += `<label for="question-${questionN}-${choiceN}">` +
             `${choice.text}<\/label>\n`;
