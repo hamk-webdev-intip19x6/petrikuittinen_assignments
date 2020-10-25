@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destructing Assignment</title>
+</head>
+<body>
+    <script>
+let a, b, rest;
+[a, b] = [10, 20];
+console.log(a); // 10
+console.log(b); // 20
+[a, b, ...rest] = [10, 20, 30, 40, 50];
+console.log(rest); // [30, 40, 50]
+for (let [i, item] of rest.entries()) {
+    console.log(i, item); 
+}
+const user = { userId: 42, userName: "testbot" };
+const {userId, userName} = user; // destruct
+console.log(userId, userName); // 42 "testbot"
+    </script>
+</body>
+</html>
