@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--<script src="mersenne.js"></script>-->
+    <script src="dice.js"></script>
+</head>
+<body>
+    <script>
+        let rnd1 = () => randInt(1, 1000);
+        let randomArray = [];
+        function rnd2() {
+            if (randomArray.length === 0) {
+                for(let i=1; i <= 1000; i++) {
+                    randomArray.push(i);
+                }
+                shuffle(randomArray);
+            }
+            let x = randomArray.pop();
+            let y = randInt(1, 1000);
+            return Math.max(x, y);
+        }
+        function openLoot(n, rnd=rnd1) {
+            let normal = 0;
+            let rare = 0;
+            let legendary = 0;
+            while (n-- > 0) {
+                let x = rnd();
+                if (x == 1000) {
+                    legendary++;
+                } else if (x >= 950) {
+                    rare++;
+                } else {
+                    normal++;
+                }
+            }
+            return {normal, rare, legendary};
+        } 
+        for(let i = 0; i <= 100; i++) {
+            let result = openLoot(2000, rnd1);
+            let bgColor = "#fff";
+            if (result.legendary >= 4) {
+                bgColor = "#8f8";
+            } else if (result.legendary < 1) {
+                bgColor = "#f88";
+            }
+            document.write(`<p style="background:${bgColor}">`+
+                `Normal: ${result.normal} Rare: ${result.rare} `+
+                `Legendary: ${result.legendary}</p>`);
+        }
+    </script>   
+</body>
+</html>

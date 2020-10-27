@@ -1,0 +1,25 @@
+[
+    {
+        "name": "Penny Player1",
+        "x": 0,
+        "y": 0,
+        "direction": 0.0,
+        "hp": 100
+    },
+    {
+        "name": "Eric Enemy",
+        "x": 10,
+        "y": 20,
+        "direction": 0.0,
+        "hp": 1,
+        "damage": 1
+    },
+    {
+        "name": "Big Boss",
+        "x": 200,
+        "y": -50,
+        "direction": 0.0,
+        "hp": 2000,
+        "damage": 10
+    }
+]

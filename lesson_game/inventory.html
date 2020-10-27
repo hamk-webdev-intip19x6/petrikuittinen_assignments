@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Shop</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>Poor Man's Inventory System</h1>
+    <div id="id_items"></div>
+    <hr />
+    <div id="id_inventory"></div>
+    <div>Total Price: <span id="id_price">0</span> gold</div>
+    <div>Total Weight: <span id="id_weight">0</span> grams</div>
+    <script src="inventory.js"></script>
+    <script>
+      let promise = $.getJSON("items.json");
+      var items;
+      promise.done(function (data) {
+        items = data;
+        buildItemList();
+      });
+    </script>
+  </body>
+</html>

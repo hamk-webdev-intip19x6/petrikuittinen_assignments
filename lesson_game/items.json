@@ -1,0 +1,26 @@
+[
+    {
+        "id": "POTION_HEAL_MINOR",
+        "name": "minor healing potion",
+        "price": 100,
+        "weight": 50
+    },
+    {
+        "id": "SWORD_RUSTY",
+        "name": "rusty shortsword",
+        "price": 300,
+        "weight": 1000
+    },
+    {
+        "id": "SHIELD_WOOD",
+        "name": "light wooden shield",
+        "price": 400,
+        "weight": 3000
+    },
+    {
+        "id": "APPLE",
+        "name": "apple",
+        "price": 10,
+        "weight": 200
+    }
+]
