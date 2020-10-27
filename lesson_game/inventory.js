@@ -53,7 +53,7 @@ function remove(id) {
 }
 
 function buildItemList() {
-    let text = "<table border='1'><tr><th>Item<th>Weight<th>Price<th>Order";
+    let text = "<table border='1'><tr><th>Item<th>Weight<th>Price<th>Get";
     for (let item of items) {
         text += `<tr><td>${item.name}` +
             `<td>${item.weight} g`+
