@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+        var money = 10;
+        function random1to3() {
+          return Math.round(Math.random() * 2 + 1);
+        }
+        function bet(event, number) {
+            let n = random1to3();
+            let text = `You got ${n}.`;
+            if (n == number) {
+                money += 2;
+                text += " You won!";
+            } else {
+                money--;
+                text += " You lost!";
+            }
+            document.getElementById("id_message").innerText = text;
+            document.getElementById("id_money").innerText = money;
+            event.preventDefault();
+        }
+      </script>
+    </head>
+  <body>
+    <h1>Poor Man's Casino</h1>
+    <p>Guess correct to win money.</p>
+    <form>
+        <button onclick="bet(event, 1)">1</button> 
+        <button onclick="bet(event, 2)">2</button> 
+        <button onclick="bet(event, 3)">3</button> 
+    </form>
+    <p>Total Money: <span id="id_money">10</span></p>
+    <p id="id_message"></p>
+</body>
+</html>
