@@ -21,7 +21,7 @@ Cat with 2 legs and tail
 - 2 limbs
 - 1 tail
 
-Cat with wings, supersonic missiles and nuclear bombs
+Cat with wings, supersonic missiles and nuclear bombs "The boss"
 
 Cat
 - name

@@ -1,8 +1,8 @@
 [
     {
         "name": "Penny Player1",
-        "x": 0,
-        "y": 0,
+        "x": -500,
+        "y": 88,
         "direction": 0.0,
         "hp": 100
     },

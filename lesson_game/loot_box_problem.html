@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!--<script src="mersenne.js"></script>-->
+    <script src="mersenne.js"></script>
     <script src="dice.js"></script>
 </head>
 <body>
@@ -39,7 +39,7 @@
             return {normal, rare, legendary};
         } 
         for(let i = 0; i <= 100; i++) {
-            let result = openLoot(2000, rnd1);
+            let result = openLoot(2000, rnd2);
             let bgColor = "#fff";
             if (result.legendary >= 4) {
                 bgColor = "#8f8";

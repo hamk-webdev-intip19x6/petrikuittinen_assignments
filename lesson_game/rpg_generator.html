@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG Engine</title>
+    <script src="dice.js"></script>
+    <script>
+        function create(event) {
+            let name = document.getElementById("id_name").value;
+            let hp = 10+d6(2); // hitpoints = 10 + 2d6
+            let str = d6(3) // strength = 3d6
+            let character = {name, hp, str};
+            document.getElementById("id_character").innerText =
+            `name: ${character.name}
+            hit points: ${character.hp}
+            strength: ${character.str}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Create your character</h1>
+    <form>
+        <label for="id_name">Character name:</label>
+        <input type="text" id="id_name" size="40" autofocus>
+        <br>
+        <input type="button" value="Create" onclick="create(event)">
+        <p>Character:</p>
+        <output id="id_character"></output>
+    </form>
+</body>
+</html>

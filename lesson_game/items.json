@@ -18,6 +18,12 @@
         "weight": 3000
     },
     {
+        "id": "SHIELD_METAL",
+        "name": "heavy metal shield",
+        "price": 1000,
+        "weight": 6000
+    },
+    {
         "id": "APPLE",
         "name": "apple",
         "price": 10,
