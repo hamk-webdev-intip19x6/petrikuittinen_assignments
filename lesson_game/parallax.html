@@ -1,77 +1,78 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script>
-	 /* Parallax Scroller. Code by Petri Kuittinen 2020
-	 Graphics by Jacob Zinman-Jeanes for Gamedevtuts+.
-	 https://opengameart.org/content/simple-shoot-em-up-sprites-spaceship-starscape-ufo-0 */
-         var canvas, ctx, farback, farField, starField, starMap;
-         const NUMBER_OF_BITMAPS = 3; // the total number of images to load
-	 var loadCounter;
-	 
-	 class Parallax {
-	     constructor(bitmap, speed) {
-		 this.bitmap = bitmap;
-		 this.x = 0;
-		 this.speed = speed;
-	     }
-	     update(canvas) {
-		 this.x = (this.x + this.speed) % this.bitmap.width;
-	     }
-	     draw(ctx, canvas) {
-		 // manual pattern fill so that transparency also works
-		 let width = this.bitmap.width;
-		 let height = Math.min(canvas.height, this.bitmap.height);
-		 for(let y = 0; y < canvas.height; y += this.bitmap.height) {
-		     for(let x = -this.x; x < canvas.width;
-			 x += this.bitmap.width) {
-			 ctx.drawImage(this.bitmap, 0, 0, width, height,
-				       x, y, width, height);
-		     }
-		 }
-			       
-	     }
-	 }
-	 function loadBitmap(path) {
-	     var image = new Image();
-	     image.onload = loaded;
-	     image.src = path;
-	     return image;
-	 }
-	 
-         function begin() {
-             canvas = document.getElementById("canvas");
-             ctx = canvas.getContext("2d");
-             loadCounter = 0;
-	     farback = loadBitmap("../assets/farback.gif");
-	     starMap = loadBitmap("../assets/starfield.png");
-	     spaceship = loadBitmap("../assets/spaceship_64x29.png");
-         }
-	 function loaded() {
-             if (++loadCounter < NUMBER_OF_BITMAPS) return;
-	     farField = new Parallax(farback, 1);
-	     starField = new Parallax(starMap, 2);
-	     canvas.requestFullscreen();
-	     draw();
-	 }
-         // now this won't be executed until sprite is loaded
-         function draw() {
-	     window.requestAnimationFrame(draw);
-	     ctx.fillStyle = "#000";
-	     ctx.fillRect(0, 0, canvas.width, canvas.height);
-	     farField.draw(ctx, canvas);
-	     farField.update(canvas);
-	     starField.draw(ctx, canvas);
-             starField.update(canvas);
-	     ctx.drawImage(spaceship, 0, 0, 64, 29, 100, 300, 64, 29);
-         }
-        </script>
-    </head>
-    <body onload="begin()" style="margin:0">
+<head>
+	<meta charset="utf-8">
+	<title>Parallax Scroller</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script>
+		/* Parallax Scroller. Code by Petri Kuittinen 2020
+		Graphics by Jacob Zinman-Jeanes for Gamedevtuts+.
+		https://opengameart.org/content/simple-shoot-em-up-sprites-spaceship-starscape-ufo-0 */
+		var canvas, ctx, farback, farField, starField, starMap;
+		const NUMBER_OF_BITMAPS = 3; // the total number of images to load
+		var loadCounter;
+
+		class Parallax {
+			constructor(bitmap, speed) {
+				this.bitmap = bitmap;
+				this.x = 0;
+				this.speed = speed;
+			}
+			update(canvas) {
+				this.x = (this.x + this.speed) % this.bitmap.width;
+			}
+			draw(ctx, canvas) {
+				// manual pattern fill so that transparency also works
+				let width = this.bitmap.width;
+				let height = Math.min(canvas.height, this.bitmap.height);
+				for (let y = 0; y < canvas.height; y += this.bitmap.height) {
+					for (let x = -this.x; x < canvas.width; x += this.bitmap.width) {
+						ctx.drawImage(this.bitmap, 0, 0, width, height,
+							x, y, width, height);
+					}
+				}
+
+			}
+		}
+		function loadBitmap(path) {
+			var image = new Image();
+			image.onload = loaded;
+			image.src = path;
+			return image;
+		}
+
+		function begin() {
+			canvas = document.getElementById("canvas");
+			ctx = canvas.getContext("2d");
+			loadCounter = 0;
+			farback = loadBitmap("../assets/farback.gif");
+			starMap = loadBitmap("../assets/starfield.png");
+			spaceship = loadBitmap("../assets/spaceship_64x29.png");
+		}
+		function loaded() {
+			if (++loadCounter < NUMBER_OF_BITMAPS) return;
+			farField = new Parallax(farback, 1);
+			starField = new Parallax(starMap, 2);
+			canvas.requestFullscreen();
+			draw();
+		}
+		// now this won't be executed until sprite is loaded
+		function draw() {
+			window.requestAnimationFrame(draw);
+			ctx.fillStyle = "#000";
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+			farField.draw(ctx, canvas);
+			farField.update(canvas);
+			starField.draw(ctx, canvas);
+			starField.update(canvas);
+			ctx.drawImage(spaceship, 0, 0, 64, 29, 100, 300, 64, 29);
+		}
+	</script>
+</head>
+
+<body onload="begin()" style="margin:0">
 	<canvas id="canvas" width="1024" height="600"></canvas>
 	<!--<canvas id="canvas" width="1920" height="1080"></canvas>-->
-    </body>
+</body>
+
 </html>

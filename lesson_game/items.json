@@ -28,5 +28,11 @@
         "name": "apple",
         "price": 10,
         "weight": 200
+    },
+    {
+        "id": "BANANA",
+        "name": "banana",
+        "price": 15,
+        "weight": 300
     }
 ]
