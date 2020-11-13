@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mouse Input</title>
+    <script>
+      function mouseButton(event, down) {
+        // use these
+        document.getElementById("id_button").innerText = event.button;
+        let buttonMask =  event.buttons.toString(2).padStart(5, '0');
+        document.getElementById("id_buttons").innerText = buttonMask;
+        document.getElementById("id_ctrl").innerText = event.ctrlKey;
+        document.getElementById("id_shift").innerText = event.shiftKey;
+        document.getElementById("id_down").innerText = down;
+        event.preventDefault();
+        return false;
+      }
+      function mouseMove(event) {
+        document.getElementById("id_pagex").innerText = event.pageX;
+        document.getElementById("id_pagey").innerText = event.pageY;
+        document.getElementById("id_clientx").innerText = event.clientX;
+        document.getElementById("id_clienty").innerText = event.clientY;
+      }
+      function mouseWheel(event) {
+        document.getElementById("id_deltax").innerText = event.deltaX;
+        document.getElementById("id_deltay").innerText = event.deltaY;
+        let deltaMode = event.deltaMode.toString(2).padStart(3, '0');
+        document.getElementById("id_deltamode").innerText = deltaMode;
+      }
+      document.addEventListener(
+        "mousedown",
+        (event) => mouseButton(event, true),
+        false
+      );
+      document.addEventListener(
+        "mouseup",
+        (event) => mouseButton(event, false),
+        false
+      );
+      document.addEventListener("mousemove", mouseMove, false);
+      document.addEventListener('wheel', mouseWheel, false);
+      // disable the annoying context pop up menu
+      document.oncontextmenu = (event) => event.preventDefault();
+    </script>
+  </head>
+  <body>
+    <h1>Mouse Input</h1>
+    <p>pageX: <span id="id_pagex"></span></p>
+    <p>pageY: <span id="id_pagey"></span></p>
+    <p>clientX: <span id="id_clientx"></span></p>
+    <p>clientY: <span id="id_clienty"></span></p>
+    <p>Button: <span id="id_button"></span></p>
+    <p>Buttons: <span id="id_buttons"></span></p>
+    <p>Alt: <span id="id_alt"></span></p>
+    <p>Ctrl: <span id="id_ctrl"></span></p>
+    <p>Shift: <span id="id_shift"></span></p>
+    <p>Down: <span id="id_down"></span></p>
+    <p>deltaX: <span id="id_deltax"></span></p>
+    <p>deltaY: <span id="id_deltay"></span></p>
+    <p>deltaMode: <span id="id_deltamode"></span></p>
+  </body>
+</html>

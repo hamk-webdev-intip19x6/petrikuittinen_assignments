@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Load Multiple Bitmaps</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+        // an Object with property (key) code: true (pressed down) / false
+        var keyboardStatus = {};
+        // keys which can fire oneshot callbacks with keydown
+        // code: function to call
+        var keyboardFunctions = {};
+
+        var canvas, ctx, shipSprite, bulletSprite;
+        var ship;
+        const NUMBER_OF_BITMAPS = 2; // the total number of images to load
+        var loadCounter;
+
+        // track key (KeyEvent.code), callback is called when keydown occurs
+        function trackKey(code, callback) {
+            keyboardStatus[code] = false;
+            if (callback) keyboardFunctions[code] = callback;
+        }
+        // return true if key (KeyEvent.code) is down
+        function pollKey(code) {
+            return keyboardStatus[code];
+        }
+
+        function keyEvent(event, down) {
+            let code = event.code;
+            if (keyboardStatus.hasOwnProperty(code)) {
+                keyboardStatus[code] = down;
+                event.preventDefault();
+                if (keyboardFunctions.hasOwnProperty(code)) {
+                    keyboardFunctions[code](event);
+                }
+            }
+        }
+        // limit the positive or negative speed to the absolute of limit
+        function limitSpeed(speed, limit = 20) {
+            return speed > 0 ? Math.min(speed, limit) : Math.max(speed, -limit);
+        }
+        class Ship {
+            constructor(bitmap, x, y, xSpeed = 0, ySpeed = 0, xAccel = 0, yAccel = 0, maxSpeed = 5) {
+                this.bitmap = bitmap;
+                this.x = x;
+                this.y = y;
+                this.xSpeed = xSpeed;
+                this.ySpeed = ySpeed;
+                this.xAccel = xAccel;
+                this.yAccel = yAccel;
+                this.maxSpeed = maxSpeed;
+            }
+            update() {
+                this.x += this.xSpeed;
+                this.y += this.ySpeed;
+                this.xSpeed += this.xAccel;
+                this.ySpeed += this.yAccel;
+                this.xSpeed = limitSpeed(this.xSpeed, this.maxSpeed);
+                this.ySpeed = limitSpeed(this.ySpeed, this.maxSpeed);
+            }
+            draw(ctx) {
+                ctx.drawImage(this.bitmap, Math.round(this.x), Math.round(this.y));
+            }
+        }
+
+        function begin() {
+            canvas = document.getElementById("canvas");
+            ctx = canvas.getContext("2d");
+            loadCounter = 0;
+            shipSprite = new Image();
+
+            shipSprite.onload = loaded; // call draw() after image is fully loaded
+            shipSprite.src = "../assets/shmup-ship.png"; // start loading bitmap
+            bulletSprite = new Image();
+            bulletSprite.onload = loaded;
+            bulletSprite.src = "../assets/bullet.png";
+        }
+        function loaded() {
+            if (++loadCounter < NUMBER_OF_BITMAPS) return;
+            ship = new Ship(shipSprite, canvas.width / 2, canvas.height / 2);
+            anim();
+        }
+        function anim() {
+            window.requestAnimationFrame(anim);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // image, x, y (upper left hand corner)
+            let xAccel = (yAccel = 0);
+            let accelAdjustment = 1;
+            if (pollKey("KeyA") || pollKey("ArrowLeft")) {
+                xAccel += -accelAdjustment;
+            }
+            if (pollKey("KeyD") || pollKey("ArrowRight")) {
+                xAccel += accelAdjustment;
+            }
+            if (pollKey("KeyW") || pollKey("ArrowUp")) {
+                yAccel += -accelAdjustment;
+            }
+            if (pollKey("KeyS") || pollKey("ArrowDown")) {
+                yAccel += accelAdjustment;
+            }
+            ship.xAccel = xAccel;
+            ship.yAccel = yAccel;
+            ship.update();
+            //console.log(ship.xSpeed);
+            ship.draw(ctx);
+            // image, x, y, width, height
+            //ctx.drawImage(bulleSprite, 500, 200);
+        }
+
+        document.addEventListener(
+            "keydown",
+            (event) => keyEvent(event, true),
+            false
+        );
+
+        document.addEventListener(
+            "keyup",
+            (event) => keyEvent(event, false),
+            false
+        );
+    </script>
+</head>
+
+<body onload="begin()">
+    <canvas id="canvas" width="1024" height="768"></canvas>
+    <script>
+        trackKey("ArrowUp");
+        trackKey("ArrowLeft");
+        trackKey("ArrowDown");
+        trackKey("ArrowRight");
+        trackKey("KeyW");
+        trackKey("KeyA");
+        trackKey("KeyS");
+        trackKey("KeyD");
+      //trackKey("Space", shoot);
+    </script>
+</body>
+
+</html>

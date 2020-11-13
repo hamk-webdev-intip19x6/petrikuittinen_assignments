@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keyboard Input</title>
+    <script>
+      // an Object with property (key) code: true (pressed down) / false
+      var keyboardStatus = {};
+      // keys which can fire oneshot callbacks with keydown
+      // code: function to call
+      var keyboardFunctions = {};
+      function trackKey(code, callback) {
+        keyboardStatus[code] = false;
+        if (callback) keyboardFunctions[code] = callback;
+      }
+
+      function keyEvent(event, down) {
+        let code = event.code;
+        document.getElementById("id_key").innerText = `"${event.key}"`;
+        document.getElementById("id_code").innerText = `"${event.code}"`;
+        document.getElementById("id_down").innerText = down;
+        if (keyboardStatus.hasOwnProperty(code)) {
+          keyboardStatus[code] = down;
+          event.preventDefault();
+          if (keyboardFunctions.hasOwnProperty(code)) {
+            keyboardFunctions[code](event);
+          }
+        }
+        displayKeyboardStatuses();
+      }
+      function displayKeyboardStatuses() {
+        let statuses = "";
+        for (let [key, status] of Object.entries(keyboardStatus)) {
+          statuses += `${key} = ${status}\n`;
+        }
+        document.getElementById("id_statuses").innerText = statuses;
+      }
+      function shoot() {
+        document.getElementById("id_function_calls").innerText += "shoot!\n";
+      }
+      document.addEventListener(
+        "keydown",
+        (event) => keyEvent(event, true),
+        false
+      );
+      document.addEventListener(
+        "keyup",
+        (event) => keyEvent(event, false),
+        false
+      );
+    </script>
+  </head>
+  <body>
+    <h1>Keyboard input</h1>
+    <p>Key: <span id="id_key"></span></p>
+    <p>Code: <span id="id_code"></span></p>
+    <p>Down: <span id="id_down"></span></p>
+    <h2>Tracked Keys</h2>
+    <div id="id_statuses"></div>
+    <h2>Keyboard Function Calls</h2>
+    <div id="id_function_calls"></div>
+    <script>
+      trackKey("ArrowUp");
+      trackKey("ArrowLeft");
+      trackKey("ArrowDown");
+      trackKey("ArrowRight");
+      trackKey("KeyW");
+      trackKey("KeyA");
+      trackKey("KeyS");
+      trackKey("KeyD");
+      trackKey("Space", shoot);
+      displayKeyboardStatuses();
+    </script>
+  </body>
+</html>

@@ -1,35 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keyboard Input</title>
     <script>
-    function keyEvent(event, down) {
+      function keyEvent(event, down) {
         // use these
         document.getElementById("id_key").innerText = `"${event.key}"`;
+        document.getElementById("id_code").innerText = `"${event.code}"`;
         document.getElementById("id_alt").innerText = event.altKey;
         document.getElementById("id_ctrl").innerText = event.ctrlKey;
         document.getElementById("id_shift").innerText = event.shiftKey;
         document.getElementById("id_down").innerText = down;
 
         // the following are deprecated, but still often used
-        document.getElementById("id_keycode").innerText = event.which;
-        document.getElementById("id_string").innerText = String.fromCharCode(event.keyCode);    
+        document.getElementById("id_which").innerText = event.which;
+        document.getElementById("id_string").innerText = String.fromCharCode(
+          event.keyCode
+        );
 
         event.preventDefault();
-    }
-    document.addEventListener('keydown', event => keyEvent(event, true), false);
-    document.addEventListener('keyup', event =>keyEvent(event, false), false);
+      }
+      document.addEventListener(
+        "keydown",
+        (event) => keyEvent(event, true),
+        false
+      );
+      document.addEventListener(
+        "keyup",
+        (event) => keyEvent(event, false),
+        false
+      );
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <p>Key: <span id="id_key"></span></p>
-    <p>Keycode: <span id="id_keycode"></span></p>
+    <p>Code: <span id="id_code"></span></p>
+    <p>Which: <span id="id_which"></span></p>
     <p>String: <span id="id_string"></span></p>
     <p>Alt: <span id="id_alt"></span></p>
     <p>Ctrl: <span id="id_ctrl"></span></p>
     <p>Shift: <span id="id_shift"></span></p>
     <p>Down: <span id="id_down"></span></p>
-</body>
+  </body>
 </html>
