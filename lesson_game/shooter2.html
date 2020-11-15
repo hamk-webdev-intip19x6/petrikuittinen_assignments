@@ -32,7 +32,7 @@
             if (keyboardStatus.hasOwnProperty(code)) {
                 keyboardStatus[code] = down;
                 event.preventDefault();
-                if (keyboardFunctions.hasOwnProperty(code)) {
+                if (keyboardFunctions.hasOwnProperty(code) && down) {
                     keyboardFunctions[code](event);
                 }
             }

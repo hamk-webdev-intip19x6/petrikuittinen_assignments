@@ -14,6 +14,7 @@
 
         var canvas, ctx, shipSprite, bulletSprite;
         var ship;
+        var bullets = [];
         const NUMBER_OF_BITMAPS = 2; // the total number of images to load
         var loadCounter;
 
@@ -38,11 +39,11 @@
             }
         }
         // limit the positive or negative speed to the absolute of limit
-        function limitSpeed(speed, limit = 100) {
+        function limitSpeed(speed, limit = 20) {
             return speed > 0 ? Math.min(speed, limit) : Math.max(speed, -limit);
         }
         class Ship {
-            constructor(bitmap, x, y, xSpeed = 0, ySpeed = 0, xAccel = 0, yAccel = 0, maxSpeed = 10) {
+            constructor(bitmap, x, y, xSpeed = 0, ySpeed = 0, xAccel = 0, yAccel = 0, maxSpeed = 5) {
                 this.bitmap = bitmap;
                 this.x = x;
                 this.y = y;
@@ -57,6 +58,7 @@
                 this.y += this.ySpeed;
                 this.xSpeed += this.xAccel;
                 this.ySpeed += this.yAccel;
+                // doesn't take Pythagoras into consideration
                 this.xSpeed = limitSpeed(this.xSpeed, this.maxSpeed);
                 this.ySpeed = limitSpeed(this.ySpeed, this.maxSpeed);
             }
@@ -65,12 +67,32 @@
             }
         }
 
+        class Bullet {
+            constructor(bitmap, x, y, xSpeed = 0, ySpeed = -8) {
+                this.bitmap = bitmap;
+                this.x = x;
+                this.y = y;
+                this.xSpeed = xSpeed;
+                this.ySpeed = ySpeed;                
+            }
+            update() {
+                this.x += this.xSpeed;
+                this.y += this.ySpeed;
+                if (this.y < -100) {
+                    // remove offscreen bullets
+                    bullets = bullets.filter(bullet => bullet !== this); 
+                }
+            }
+            draw(ctx) {
+                ctx.drawImage(this.bitmap, Math.round(this.x), Math.round(this.y));
+            }            
+        }
+
         function begin() {
             canvas = document.getElementById("canvas");
             ctx = canvas.getContext("2d");
             loadCounter = 0;
             shipSprite = new Image();
-
             shipSprite.onload = loaded; // call draw() after image is fully loaded
             shipSprite.src = "../assets/shmup-ship.png"; // start loading bitmap
             bulletSprite = new Image();
@@ -79,6 +101,7 @@
         }
         function loaded() {
             if (++loadCounter < NUMBER_OF_BITMAPS) return;
+            bullets = [];
             ship = new Ship(shipSprite, canvas.width / 2, canvas.height / 2);
             anim();
         }
@@ -86,25 +109,39 @@
             window.requestAnimationFrame(anim);
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             // image, x, y (upper left hand corner)
+
+            for(let bullet of bullets) {
+                bullet.update();
+                bullet.draw(ctx);
+            }
+
+            const SPEED = 5;
             let xSpeed = (ySpeed = 0);
             if (pollKey("KeyA") || pollKey("ArrowLeft")) {
-                xSpeed += -5;
+                xSpeed += -SPEED;
             }
             if (pollKey("KeyD") || pollKey("ArrowRight")) {
-                xSpeed += 5;
+                xSpeed += SPEED;
             }
             if (pollKey("KeyW") || pollKey("ArrowUp")) {
-                ySpeed += -5;
+                ySpeed += -SPEED;
             }
             if (pollKey("KeyS") || pollKey("ArrowDown")) {
-                ySpeed += 5;
+                ySpeed += SPEED;
             }
-            ship.xSpeed = xSpeed;
-            ship.ySpeed = ySpeed;
+            ship.xSpeed = xSpeed; 
+            ship.ySpeed = ySpeed; 
             ship.update();
+            //console.log(ship.xSpeed);
             ship.draw(ctx);
-            // image, x, y, width, height
-            //ctx.drawImage(bulleSprite, 500, 200);
+        }
+
+        function shoot() {
+            x = ship.x+12;
+            y = ship.y+5;
+            bullets.push(new Bullet(bulletSprite, x, y));
+            bullets.push(new Bullet(bulletSprite, ship.x+5, ship.y+8));
+            bullets.push(new Bullet(bulletSprite, ship.x+19, ship.y+8));
         }
 
         document.addEventListener(
@@ -132,7 +169,7 @@
         trackKey("KeyA");
         trackKey("KeyS");
         trackKey("KeyD");
-      //trackKey("Space", shoot);
+        trackKey("Space", shoot);
     </script>
 </body>
 

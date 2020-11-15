@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Draw with Mouse</title>
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
+    <script>
+      var canvas, ctx;
+      let mouseX = null;
+      let mouseY = null;
+      let mouseDown = false;
+      function clearScreen() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+      function drawPixel(x, y) {
+        ctx.lineWidth = 3;
+        ctx.fillRect(x, y, 1, 1);
+      }
+      function mouseButton(event, down) {
+        if (event.button == 0) {
+          mouseDown = down;
+        }
+        if (event.button == 2 && down) {
+          clearScreen();
+        }
+        event.preventDefault();
+      }
+      function mouseMove(event) {
+        if (mouseDown) {
+          mouseX = event.x;
+          mouseY = event.y;
+          drawPixel(mouseX, mouseY);
+        }
+      }
+      document.addEventListener("mousedown", event => mouseButton(event, true), false);
+      document.addEventListener("mouseup", event => mouseButton(event, false), false);
+      document.addEventListener("mousemove", mouseMove, false);
+      document.oncontextmenu = (event) => event.preventDefault();
+      function begin() {
+        canvas = document.getElementById("canvas");
+        ctx = canvas.getContext("2d");
+      }
+    </script>
+  </head>
+  <body onload="begin()">
+    <canvas id="canvas" width="1024" height="768"></canvas>
+  </body>
+</html>
