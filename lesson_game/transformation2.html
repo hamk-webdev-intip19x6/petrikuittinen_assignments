@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Transform Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="transform.js"></script>
+    <script>
+      var canvas, ctx;
+      var coords = [];
+      var counter = 0;
+      function begin() {
+        counter = 0;
+        coords.push({x: -100, y: 100});
+        coords.push({x: 100, y: 100});
+        coords.push({x: 100, y: -100});
+        coords.push({x: 0, y: -200});
+        coords.push({x: -100, y: -100});
+        draw();
+      }
+      function draw() {
+        window.requestAnimationFrame(draw);
+        canvas = document.getElementById("canvas");
+        ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = "#000";
+        ctx.fillStyle = "#ff0";
+        ctx.lineWidth = 4;
+        let originX = canvas.width/2;
+        let originY = canvas.height/2;
+        let angle = counter*0.02;
+        let scaleFactor = 1+0.5*Math.sin(counter*0.01);
+        ctx.beginPath();
+
+        // let newCoord2 = translate(scale(rotate(coords[0], angle),
+        // scaleFactor, scaleFactor), originX, originY);
+        let newCoord = translateScaleRotate(coords[0],
+        originX, originY, scaleFactor, scaleFactor, angle);
+        ctx.moveTo(newCoord.x, newCoord.y);
+        for (let coord of coords.slice(1)) {
+            // let newCoord2 = translate(scale(rotate(coord, angle),
+        // scaleFactor, scaleFactor), originX, originY);
+            let newCoord = translateScaleRotate(coord,
+            originX, originY, scaleFactor, scaleFactor, angle);
+            ctx.lineTo(newCoord.x, newCoord.y);
+        }
+        ctx.closePath();
+        ctx.stroke();
+        counter++;
+      }
+    </script>
+  </head>
+  <body onload="begin()">
+    <canvas
+      id="canvas"
+      width="1024"
+      height="768"
+      style="border: 1px solid #000"
+    ></canvas>
+  </body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Load Multiple Bitmaps</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+        // an Object with property (key) code: true (pressed down) / false
+        var keyboardStatus = {};
+        // keys which can fire oneshot callbacks with keydown
+        // code: function to call
+        var keyboardFunctions = {};
+
+        // track key (KeyEvent.code), callback is called when keydown occurs
+        function trackKey(code, callback) {
+            keyboardStatus[code] = false;
+            if (callback) keyboardFunctions[code] = callback;
+        }
+        // return true if key (KeyEvent.code) is down
+        function pollKey(code) {
+            return keyboardStatus[code];
+        }
+
+        function keyEvent(event, down) {
+            let code = event.code;
+            if (keyboardStatus.hasOwnProperty(code)) {
+                keyboardStatus[code] = down;
+                event.preventDefault();
+                if (keyboardFunctions.hasOwnProperty(code) && down) {
+                    keyboardFunctions[code](event);
+                }
+            }
+        }
+
+        var canvas, ctx, sprite;
+        var spriteX, spriteY, spriteAngle;
+        const NUMBER_OF_BITMAPS = 1; // the total number of images to load
+        var loadCounter;
+        // limit the positive or negative speed to the absolute of limit
+        function limitSpeed(speed, limit = 20) {
+            return speed > 0 ? Math.min(speed, limit) : Math.max(speed, -limit);
+        }
+        class Sprite {
+            constructor(bitmap, x, y, angle, speed = 0, accel = 0, maxSpeed = 5) {
+                this.bitmap = bitmap;
+                this.x = x;
+                this.y = y;
+                this.angle = angle;
+                this.speed = speed;
+                this.accel = accel;
+                this.maxSpeed = maxSpeed;
+                this.width = this.bitmap.width;
+                this.height = this.bitmap.height;
+            }
+            update() {
+                this.x += Math.cos(this.angle) * this.speed;
+                this.y += Math.sin(this.angle) * this.speed;
+                //this.speed += this.accel;
+                // doesn't take Pythagoras into consideration
+                this.speed = limitSpeed(this.speed, this.maxSpeed);
+            }
+            draw(ctx) {
+                ctx.save();
+                ctx.translate(Math.round(this.x), Math.round(this.y));
+                ctx.rotate(this.angle);
+                ctx.drawImage(
+                    this.bitmap,
+                    -Math.floor(this.width / 2),
+                    -Math.floor(this.height / 2)
+                );
+                ctx.restore();
+            }
+        }
+
+        function begin() {
+            canvas = document.getElementById("canvas");
+            ctx = canvas.getContext("2d");
+            trackKey("ArrowUp");
+            trackKey("ArrowLeft");
+            trackKey("ArrowDown");
+            trackKey("ArrowRight");
+            trackKey("KeyW");
+            trackKey("KeyA");
+            trackKey("KeyS");
+            trackKey("KeyD");
+
+            loadCounter = 0;
+            carBitmap = new Image();
+            carBitmap.onload = loaded;
+            carBitmap.src = "../assets/car90.png"; // start loading bitmap
+        }
+        // now this won't be executed until sprite is loaded
+        function loaded() {
+            if (++loadCounter < NUMBER_OF_BITMAPS) return;
+            sprite = new Sprite(
+                carBitmap, canvas.width / 2, canvas.height / 2,
+                0, 0, 0, 10
+            );
+            anim();
+        }
+        function anim() {
+            window.requestAnimationFrame(anim);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            sprite.speed = 0;
+            if (pollKey("KeyA") || pollKey("ArrowLeft")) {
+                sprite.angle -= 0.05;
+            }
+            if (pollKey("KeyD") || pollKey("ArrowRight")) {
+                sprite.angle += 0.05;
+            }
+            if (pollKey("KeyW") || pollKey("ArrowUp")) {
+                sprite.speed = 5;
+            }
+            if (pollKey("KeyS") || pollKey("ArrowDown")) {
+                sprite.speed = -5;
+            }
+            sprite.update();
+            sprite.draw(ctx);
+            ctx.restore();
+        }
+
+        document.addEventListener(
+            "keydown",
+            (event) => keyEvent(event, true),
+            false
+        );
+
+        document.addEventListener(
+            "keyup",
+            (event) => keyEvent(event, false),
+            false
+        );        
+    </script>
+</head>
+
+<body onload="begin()">
+    <canvas id="canvas" width="1024" height="768"></canvas>
+</body>
+
+</html>

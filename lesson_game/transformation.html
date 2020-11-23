@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Transform Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      var canvas, ctx;
+      var coords = [];
+      var counter = 0;
+      function begin() {
+        counter = 0;
+        coords.push({x: -100, y: 100});
+        coords.push({x: 100, y: 100});
+        coords.push({x: 100, y: -100});
+        coords.push({x: 0, y: -200});
+        coords.push({x: -100, y: -100});
+        draw();
+      }
+      function draw() {
+        window.requestAnimationFrame(draw);
+        canvas = document.getElementById("canvas");
+        ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.save();
+        ctx.translate(canvas.width / 2, canvas.height / 2);
+        ctx.strokeStyle = "#000";
+        ctx.fillStyle = "#ff0";
+        ctx.lineWidth = 4;
+        let angle = counter*0.02;
+        ctx.rotate(angle);
+        let scaleFactor = 1+0.5*Math.sin(counter*0.01);
+        ctx.scale(scaleFactor, scaleFactor);
+        ctx.beginPath();
+        ctx.moveTo(coords[0].x, coords[0].y);
+        for (let coord of coords.slice(1)) {
+          ctx.lineTo(coord.x, coord.y);
+        }
+        ctx.closePath();
+        ctx.stroke();
+        counter++;
+        ctx.restore();
+      }
+    </script>
+  </head>
+  <body onload="begin()">
+    <canvas
+      id="canvas"
+      width="1024"
+      height="768"
+      style="border: 1px solid #000"
+    ></canvas>
+  </body>
+</html>
