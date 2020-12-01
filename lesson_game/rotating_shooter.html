@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Rotating Shooter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        body {margin: 0}
+    </style>
+    <script>
+      // an Object with property (key) code: true (pressed down) / false
+      var keyboardStatus = {};
+      // keys which can fire oneshot callbacks with keydown
+      // code: function to call
+      var keyboardFunctions = {};
+
+      var canvas, ctx, shipSprite, bulletSprite;
+      var ship;
+      var bullets = [];
+      var mouseX, mouseY;
+      const NUMBER_OF_BITMAPS = 2; // the total number of images to load
+      var loadCounter;
+
+      // track key (KeyEvent.code), callback is called when keydown occurs
+      function trackKey(code, callback) {
+        keyboardStatus[code] = false;
+        if (callback) keyboardFunctions[code] = callback;
+      }
+      // return true if key (KeyEvent.code) is down
+      function pollKey(code) {
+        return keyboardStatus[code];
+      }
+
+      function keyEvent(event, down) {
+        let code = event.code;
+        if (keyboardStatus.hasOwnProperty(code)) {
+          keyboardStatus[code] = down;
+          event.preventDefault();
+          if (keyboardFunctions.hasOwnProperty(code) && down) {
+            keyboardFunctions[code](event);
+          }
+        }
+      }
+      // limit the positive or negative speed to the absolute of limit
+      function limitSpeed(speed, limit = 20) {
+        return speed > 0 ? Math.min(speed, limit) : Math.max(speed, -limit);
+      }
+      class Ship {
+        constructor(
+          bitmap,
+          x,
+          y,
+          xSpeed = 0,
+          ySpeed = 0,
+          xAccel = 0,
+          yAccel = 0,
+          maxSpeed = 5,
+          heading = 0,
+          ) {
+          this.bitmap = bitmap;
+          this.x = x;
+          this.y = y;
+          this.xSpeed = xSpeed;
+          this.ySpeed = ySpeed;
+          this.xAccel = xAccel;
+          this.yAccel = yAccel;
+          this.maxSpeed = maxSpeed;
+          this.heading = heading;
+        }
+        update() {
+          this.x += this.xSpeed;
+          this.y += this.ySpeed;
+          this.xSpeed += this.xAccel;
+          this.ySpeed += this.yAccel;
+          // this doesn't take Pythagoras into account
+          this.xSpeed = limitSpeed(this.xSpeed, this.maxSpeed);
+          this.ySpeed = limitSpeed(this.ySpeed, this.maxSpeed);
+        }
+        draw(ctx) {
+            // draw a triangle pointing at heading
+            ctx.save();
+            ctx.translate(Math.floor(this.x), Math.floor(this.y));
+            ctx.rotate(this.heading);
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = "#f00";
+            ctx.fillStyle = "#ff0";
+            ctx.beginPath();
+            ctx.moveTo(20, 0);
+            ctx.lineTo(-20, 10);
+            ctx.lineTo(-20, -10);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.restore();
+        }
+      }
+
+      class Bullet {
+        constructor(x, y, heading, speed = 5) {
+          this.x = x;
+          this.y = y;
+          this.heading = heading;
+          this.speed = speed;
+        }
+        update() {
+
+            // movement based on heading / angle
+            this.x += Math.cos(this.heading) * this.speed;
+            this.y += Math.sin(this.heading) * this.speed;
+            const BOUNDARY = 100;
+            if (this.y < -BOUNDARY || this.x < - BOUNDARY ||
+            this.x > canvas.width+BOUNDARY || this.y > canvas.height+BOUNDARY) {
+                // remove offscreen bullets
+                bullets = bullets.filter((bullet) => bullet !== this);
+            }
+        }
+        draw(ctx) {
+            ctx.fillStyle = "#000";
+            ctx.fillRect(Math.round(this.x-1), Math.round(this.y-1), 3, 3);
+        }
+      }
+
+      function begin() {
+        canvas = document.getElementById("canvas");
+        ctx = canvas.getContext("2d");
+        bullets = [];
+        mouseX = canvas.width/2;
+        mouseY = canvas.height/2;
+        loaded();
+      }
+      function loaded() {
+        if (++loadCounter < NUMBER_OF_BITMAPS) return;
+        ship = new Ship(shipSprite, canvas.width / 2, canvas.height / 2);
+        anim();
+      }
+      function anim() {
+        window.requestAnimationFrame(anim);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let bullet of bullets) {
+          bullet.update();
+          bullet.draw(ctx);
+        }
+
+        const SPEED = 5;
+        let xSpeed = (ySpeed = 0);
+        if (pollKey("KeyA") || pollKey("ArrowLeft")) {
+          xSpeed += -SPEED;
+        }
+        if (pollKey("KeyD") || pollKey("ArrowRight")) {
+          xSpeed += SPEED;
+        }
+        if (pollKey("KeyW") || pollKey("ArrowUp")) {
+          ySpeed += -SPEED;
+        }
+        if (pollKey("KeyS") || pollKey("ArrowDown")) {
+          ySpeed += SPEED;
+        }
+        ship.xSpeed = xSpeed;
+        ship.ySpeed = ySpeed;
+        // determine angle
+        let diffX = mouseX - ship.x;
+        let diffY = mouseY - ship.y;
+        let angle = Math.atan2(diffY, diffX);
+        // console.log(mouseX, mouseY, angle);
+        ship.heading = angle;
+        ship.update();
+        ship.draw(ctx);
+      }
+
+      function shoot() {
+          const R = 15;
+          let x = ship.x + Math.cos(ship.heading)*R;
+          let y = ship.y + Math.sin(ship.heading)*R;
+        bullets.push(new Bullet(x, y, ship.heading, 8));
+      }
+      function mouseButton(event, down) {
+          mouseX = event.x;
+          mouseY = event.y;
+          if (down) {
+              shoot();
+          }
+      }
+      function mouseMove(event) {
+          mouseX = event.x;
+          mouseY = event.y;
+      }
+
+      document.addEventListener(
+        "keydown",
+        (event) => keyEvent(event, true),
+        false
+      );
+
+      document.addEventListener(
+        "keyup",
+        (event) => keyEvent(event, false),
+        false
+      );
+      document.addEventListener(
+        "mousedown",
+        (event) => mouseButton(event, true),
+        false
+      );
+      document.addEventListener(
+        "mouseup",
+        (event) => mouseButton(event, false),
+        false
+      );
+      document.addEventListener(
+        "mousemove",
+        (event) => mouseMove(event),
+        false
+      );
+    </script>
+  </head>
+
+  <body onload="begin()">
+    <canvas id="canvas" width="1024" height="768"></canvas>
+    <script>
+      trackKey("ArrowUp");
+      trackKey("ArrowLeft");
+      trackKey("ArrowDown");
+      trackKey("ArrowRight");
+      trackKey("KeyW");
+      trackKey("KeyA");
+      trackKey("KeyS");
+      trackKey("KeyD");
+    </script>
+  </body>
+</html>
