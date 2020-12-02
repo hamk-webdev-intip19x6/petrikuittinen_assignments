@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Poor Man's Physics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+        // ball "cannon"
+        var cannonAngle = 45;
+        var cannonBallSpeed = 20;
+        var cannonX;
+        var cannonY; 
+    // an Object with property (key) code: true (pressed down) / false
+      var keyboardStatus = {};
+      // keys which can fire oneshot callbacks with keydown
+      // code: function to call
+      var keyboardFunctions = {};
+
+      // track key (KeyEvent.code), callback is called when keydown occurs
+      function trackKey(code, callback) {
+        keyboardStatus[code] = false;
+        if (callback) keyboardFunctions[code] = callback;
+      }
+      // return true if key (KeyEvent.code) is down
+      function pollKey(code) {
+        return keyboardStatus[code];
+      }
+
+      function keyEvent(event, down) {
+        let code = event.code;
+        if (keyboardStatus.hasOwnProperty(code)) {
+          keyboardStatus[code] = down;
+          event.preventDefault();
+          if (keyboardFunctions.hasOwnProperty(code) && down) {
+            keyboardFunctions[code](event);
+          }
+        }
+      }
+
+      // Poor man's physics engine simulation by Petri Kuittinen
+      var canvas, ctx, sprite;
+      var balls;
+      class Ball {
+        constructor(
+          sprite,
+          x,
+          y,
+          xSpeed = 0,
+          ySpeed = 0,
+          xAccel = 0,
+          yAccel = 0,
+          bounce = 1,
+          gravity = 0,
+          maxAge = 300
+        ) {
+          this.sprite = sprite;
+          this.x = x;
+          this.y = y;
+          this.xSpeed = xSpeed;
+          this.ySpeed = ySpeed;
+          this.xAccel = xAccel; // acceleration
+          this.yAccel = yAccel;
+          this.bounce = bounce; // bounce factor, 1.0 = retain energy
+          this.gravity = gravity; // positive gravity = downwards
+          this.maxAge = maxAge;
+        }
+        update(canvas, ctx) {
+            if (this.maxAge-- <= 0) {
+                balls = balls.filter(x => x != this); // remove ball if expired
+            }
+          this.xSpeed += this.xAccel;
+          this.ySpeed += this.yAccel + this.gravity;
+          this.x += this.xSpeed;
+          this.y += this.ySpeed;
+          if (this.x < 0) {
+            this.x = 0;
+            this.xSpeed = -this.bounce * this.xSpeed;
+            this.xAccel = -this.bounce * this.xAccel;
+          } else if (this.x + sprite.width >= canvas.width) {
+            this.x = canvas.width - sprite.width;
+            this.xSpeed = -this.bounce * this.xSpeed;
+            this.xAccel = -this.bounce * this.xAccel;
+          }
+          if (this.y < 0) {
+            this.y = 0;
+            this.ySpeed = -this.bounce * this.ySpeed;
+            this.yAccel = -this.bounce * this.yAccel;
+          } else if (this.y + sprite.height >= canvas.height) {
+            this.y = canvas.height - sprite.height;
+            this.ySpeed = -this.bounce * this.ySpeed;
+            this.yAccel = -this.bounce * this.yAccel;
+          }
+        }
+        draw(ctx) {
+          ctx.drawImage(sprite, Math.round(this.x), Math.round(this.y));
+        }
+      }
+      let angleToRadians = angle => angle*Math.PI/180;
+      let radiansToAngle = rad => rad*180/Math.PI;
+      function calculatePosition(angle, radius) {
+          let rad = -angleToRadians(angle);
+          let x = radius*Math.cos(rad);
+          let y = radius*Math.sin(rad);
+          return {x, y};
+      }
+      function preload() {
+        canvas = document.getElementById("canvas");
+        ctx = canvas.getContext("2d");
+        sprite = new Image();
+        sprite.onload = create; // call draw() after image is fully loaded
+        sprite.src = "../assets/redball.png"; // start loading bitmap
+      }
+      function create() {
+        trackKey("ArrowLeft");
+        trackKey("ArrowRight");
+        trackKey("ArrowUp");
+        trackKey("ArrowDown");
+        trackKey("Space", shoot);
+        balls = [];
+        cannonX = 100;
+        cannonY = canvas.height-100;
+        draw();
+      }
+      function shoot(event) {
+        let ballVector = calculatePosition(cannonAngle, cannonBallSpeed);
+        let x = cannonX - sprite.width/2;
+        let y = cannonY - sprite.height/2;;
+        let ball = new Ball(sprite, x, y, ballVector.x, ballVector.y, 0, 0, 0.85, 1);
+        console.log(ball);
+        balls.push(ball);
+      }
+
+      // now this won't be executed until sprite is loaded
+      function draw() {
+        window.requestAnimationFrame(draw);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (pollKey("ArrowLeft")) {
+            cannonAngle = Math.min(cannonAngle+1, 90);
+        } 
+        if (pollKey("ArrowRight")) {
+            cannonAngle = Math.max(cannonAngle-1, 0);
+        } 
+        if (pollKey("ArrowUp")) {
+            cannonBallSpeed = Math.min(cannonBallSpeed+1, 40);
+        } 
+        if (pollKey("ArrowDown")) {
+            cannonBallSpeed = Math.max(cannonBallSpeed-1, 2);
+        } 
+        let cannonPosition = calculatePosition(cannonAngle, 40);
+        ctx.beginPath();
+        ctx.moveTo(cannonX, cannonY);
+        ctx.lineTo(cannonX + cannonPosition.x, cannonY + cannonPosition.y);
+        ctx.stroke();
+        for (let ball of balls) {
+          ball.update(canvas, ctx);
+          ball.draw(ctx);
+        }
+        ctx.font = "20px Arial";
+        ctx.fillText(`Angle: ${cannonAngle}`, 10, 50);
+        ctx.fillText(`Speed: ${cannonBallSpeed}`, 150, 50);
+    }
+      document.addEventListener(
+        "keydown",
+        (event) => keyEvent(event, true),
+        false
+      );
+
+      document.addEventListener(
+        "keyup",
+        (event) => keyEvent(event, false),
+        false
+      );
+    </script>
+  </head>
+  <body onload="preload()">
+    <canvas
+      id="canvas"
+      width="1024"
+      height="768"
+      style="border: 1px solid #000"
+    ></canvas>
+  </body>
+</html>
