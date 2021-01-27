@@ -125,8 +125,7 @@
         let ballVector = calculatePosition(cannonAngle, cannonBallSpeed);
         let x = cannonX - sprite.width/2;
         let y = cannonY - sprite.height/2;;
-        let ball = new Ball(sprite, x, y, ballVector.x, ballVector.y, 0, 0, 0.85, 1);
-        console.log(ball);
+        let ball = new Ball(sprite, x, y, ballVector.x, ballVector.y, 0, 0, 0.85, 0.8);
         balls.push(ball);
       }
 
