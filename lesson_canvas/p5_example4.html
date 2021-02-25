@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P5.js example</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.js"></script>
+  </head>
+  <body>
+    <h1>P5.js Move Sprite with WASD or cursor arrows</h1>
+    <script>
+      var sprite, spriteX, spriteY, spriteSpeed;
+
+      function setup() {
+        createCanvas(1024, 768);
+        spriteX = 300;
+        spriteY = 300;
+        spriteSpeed = 4;
+        sprite = loadImage("../assets/emoticon.png"); // Load the image
+      }
+
+      function draw() {
+        background(255);
+        if (keyIsDown(LEFT_ARROW) || keyIsDown("A".charCodeAt(0))) {
+            spriteX -= spriteSpeed;
+        }
+        if (keyIsDown(RIGHT_ARROW) || keyIsDown("D".charCodeAt(0))) {
+            spriteX += spriteSpeed;
+        }
+        if (keyIsDown(UP_ARROW) || keyIsDown("W".charCodeAt(0))) {
+            spriteY -= spriteSpeed;
+        }
+        if (keyIsDown(DOWN_ARROW) || keyIsDown("S".charCodeAt(0))) {
+            spriteY += spriteSpeed;
+        }
+        image(sprite, spriteX, spriteY);
+      }
+    </script>
+  </body>
+</html>

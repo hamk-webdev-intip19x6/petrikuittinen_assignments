@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P5.js example</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.js"></script>
+  </head>
+  <body>
+    <h1>P5.js Move Sprite with Mouse</h1>
+    <script>
+      var sprite;
+
+      function setup() {
+          createCanvas(1024, 768);
+          sprite = loadImage("../assets/emoticon.png");
+      }
+
+      function draw() {
+          background(255);
+          image(sprite, mouseX-sprite.width/2, mouseY-sprite.height/2);
+      }
+    </script>
+  </body>
+</html>

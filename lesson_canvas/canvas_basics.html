@@ -6,15 +6,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script>
             var canvas, ctx;
+            var counter = 0;
             function draw() {
+                window.requestAnimationFrame(draw);
                 canvas = document.getElementById("canvas");
                 ctx = canvas.getContext("2d");
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 // do your drawing here
-                ctx.fillStyle = "yellow";
-                ctx.strokeStyle = "red";
                 ctx.lineWidth = 5;
-                ctx.fillRect(10, 10, 400, 300);
-                ctx.strokeRect(10, 10, 400, 300);
+                ctx.strokeStyle = "green";
+                ctx.fillStyle = "#ffff00";
+                x = 300+200*Math.sin(counter*0.05);
+                counter++;
+                ctx.fillRect(x, 100, 400, 300);
+                ctx.strokeRect(x, 100, 400, 300);
             }
         </script>
     </head>
