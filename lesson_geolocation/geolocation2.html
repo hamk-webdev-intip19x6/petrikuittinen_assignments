@@ -20,7 +20,7 @@
           result += `Speed: ${coords.speed}\n`;
           result += `Heading: ${coords.heading}\n`;
           document.getElementById("id_result").innerText = result;
-            setTimeOut("document.location.href = 'https://google.com/maps?q=${coords.latitude}, ${coords.longitude}';", 10000);
+          //document.location.href = `https://google.com/maps?q=${coords.latitude},${coords.longitude}`;
         },
         function (error) {
             document.getElementById("id_result").innerText =
