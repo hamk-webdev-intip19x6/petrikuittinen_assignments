@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var numbers = [];
+        function compareNumbers(a, b) {
+            return a-b;
+        }
+        function addNumber(event) {
+            let n = parseFloat(document.getElementById("id_number").value);
+            if (!isNaN(n)) {
+                numbers.push(n);
+                numbers.sort(compareNumbers);
+            }
+            let result = "<ul>";
+            for(let n of numbers) {
+                result += "<li>"+n+"</li>";
+            }
+            result += "</ul>";
+
+            document.getElementById("id_result").innerHTML = result;
+            //console.log(numbers);
+            event.preventDefault();
+        }
+    </script>
+</head>
+<body>
+    <h1>Input Numbers</h1>
+    <form>
+        <input type="number" id="id_number" autofocus>
+        <input type="submit" value="Add" onclick="addNumber(event)">
+        <output id="id_result"></output>
+    </form>
+</body>
+</html>

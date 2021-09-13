@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var numbers = [];
+        function addNumber(event) {
+            let n = parseFloat(document.getElementById("id_number").value);
+            if (!isNaN(n)) {
+                numbers.push(n);
+                numbers.sort((a, b) => a-b);
+            }
+            let list = numbers.map(x => `<li>${x}</li>`);
+            document.getElementById("id_result").innerHTML = `<ul>${list.join("")}</ul>`;
+            //console.log(numbers);
+        }
+    </script>
+</head>
+<body>
+    <h1>Input Numbers</h1>
+    <form>
+        <input type="number" id="id_number" autofocus>
+        <input type="button" value="Add" onclick="addNumber(event)">
+        <output id="id_result"></output>
+    </form>
+</body>
+</html>
