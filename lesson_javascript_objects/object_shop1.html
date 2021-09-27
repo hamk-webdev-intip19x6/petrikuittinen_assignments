@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Objects UI</title>
+    <script>
+        let products = [];
+        function findProduct(newProduct, products) {
+            for(let index in products) {
+                if (products[index].name == newProduct.name) {
+                    return index;
+                }
+            }
+            return -1;
+        }
+        function addProduct(event) {
+            let nameString = document.getElementById("id_name").value;
+            let priceValue = parseFloat(document.getElementById("id_price").value);
+            if (!isNaN(priceValue) && priceValue >= 0) {
+                let newProduct = {name: nameString, price: priceValue};
+                let index = findProduct(newProduct, products);
+                if (index >= 0) {
+                    products[index] = newProduct;
+                } else {
+                    products.push(newProduct);
+                    // sort based on name attribute
+                    products.sort((a, b) => a.name>b.name?1:-1);
+                }
+            }
+            console.log(products);
+            showProducts(products);
+        }
+        function removeProduct(index) {
+            products.splice(index, 1);
+            showProducts(products);
+        }
+        function encodeHTML(s) {
+            return s.replaceAll(/&/g, "&amp;").replaceAll(/</g, "&lt;").replaceAll(/>/g,
+            "&gt;").replaceAll(/"/g, "&quot;").replaceAll(/'/g, "&apos;");
+        }
+        function showProducts(products) {
+            let result = "<tr><th>Name<th>Price<th>Action";
+            for(let index in products) {
+                let product = products[index];
+                let name = encodeHTML(product.name);
+                let price = product.price;
+                result += `<tr><td>${name}<td>${price}<td>`+
+                    `<input type="button" value="Remove" onclick="removeProduct(${index})">`;
+            }
+            document.getElementById("id_table").innerHTML = result;
+        }
+    </script>
+</head>
+<body>
+    <h1>JS Objects Shop</h1>
+    <form>
+        <label for="id_name">Name:</label>
+        <input type="text" id="id_name" size="40" autofocus>
+        <label for="id_price">Price:</label>
+        <input type="number" id="id_price" min="0">
+        <input type="button" value="Add/Change" onclick="addProduct(event)">
+        <hr>
+    </form> 
+    <table border="1" id="id_table"></table>   
+</body>
+</html>

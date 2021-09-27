@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function testForm(event) {
+            let errors = [];
+            let input1 = document.getElementById("id_input1").value;
+            console.log(input1);
+            if (!/^[a-z]+$/i.test(input1)) {
+                errors.push("Only a-z and A-Z allowed");
+            }
+            if (! (document.getElementById("gender_male").checked ||
+            document.getElementById("gender_female").checked)) {
+                errors.push("You must choose a gender");
+            }
+            if (document.getElementById("gender_male").checked) {
+                console.log("You are a man!");
+            }
+            if (document.getElementById("gender_female").checked) {
+                console.log("You are a woman!");
+            }
+            let result = document.getElementById("id_result");
+            if (errors.length > 0) {
+                result.style.color = "red";
+                result.innerHTML = errors.join("<br>");
+            } else {
+                result.style.color = "green";
+                result.innerText = "Success!";
+            }
+            event.preventDefault();
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="testForm(event)">
+        <output id="id_result"></output>
+        <br>
+        <label for="input1">Only a-z and A-Z allowed:</label>
+        <input type="text" id="id_input1" autofocus>
+        <br>
+        <label for="gender">Gender:</label>
+        <label for="gender_male"><input type="radio" name="gender"
+            id="gender_male" value="male"> male</label>
+        <label for="gender_female"><input type="radio" name="gender"
+            id="gender_female" value="female"> female</label>
+        <!--<input type="text" pattern="[a-zA-Z]+" id="id_input1" autofocus>-->
+        <br>
+        <input type="submit" value="Test!">
+    </form>    
+</body>
+</html>
