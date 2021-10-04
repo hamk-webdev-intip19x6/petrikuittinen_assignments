@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>    
+    <title>Document</title>
+</head>
+<body>
+    <h1>AJAX SUCCESS</h1>
+    <ul id="id_question_list"></ul>
+    <script>
+        let questionData;
+        let questionURL = "questions.json";
+        let promise = $.getJSON(questionURL);
+        promise.done(function (data) {
+            questionData = data;
+            console.log(questionData);
+            let result = "";
+            for(let [index, question] of Object.entries(questionData)) {
+                result += `<li>${question.text}`;
+            }
+            document.getElementById("id_question_list").innerHTML = result;
+        });
+    </script>
+</body>
+</html>

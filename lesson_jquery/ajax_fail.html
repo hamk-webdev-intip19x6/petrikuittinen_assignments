@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>    
+    <title>Document</title>
+</head>
+<body>
+    <h1>AJAX FAIL</h1>
+    <script>
+        let questionData;
+        let questionURL = "questions.json";
+        $.getJSON(questionURL, function (data) {
+            questionData = data;
+        });
+        console.log(questionData); // will print undefined because of async
+    </script>
+</body>
+</html>

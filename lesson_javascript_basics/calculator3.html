@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function calculate(event) {
+            let func = document.getElementById("id_function").value;
+            let results = [];
+            for(let x = 0; x <= 10; x++) {
+                try {
+                    with (Math) {
+                        results.push(eval(func));
+                    }
+                }
+                catch(error) {
+                    // silently ignore
+                }
+            }
+            let s = "";
+            for(let result of results) {
+                s += `${result.toFixed(3)}<br>`;
+            }
+            document.getElementById("id_result").innerHTML = s;
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <label for="id_function">Function:</label>
+        <input type="text" id="id_function">
+        <input type="button" value="Calculate" onclick="calculate(event)">
+        <hr>
+        <output id="id_result"></output>
+    </form>
+</body>
+</html>

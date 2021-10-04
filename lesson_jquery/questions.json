@@ -1,0 +1,36 @@
+[
+	{
+		"text": "Who invented World Wide Web (WWW)?",
+		"choices": [
+			{
+				"text": "Barack Obama",
+				"points": 0
+			},
+			{
+				"text": "Tim Berners-Lee",
+				"points": 1
+			},
+			{
+				"text": "Linus Torvalds",
+				"points": 0
+			}
+		]
+	},
+	{
+		"text": "Which of the following definitions uses block scope in JS?",
+		"choices": [
+			{
+				"text": "x = 5",
+				"points": 0
+			},
+			{
+				"text": "var x = 5",
+				"points": 0
+			},
+			{
+				"text": "let x = 5",
+				"points": 1
+			}
+		]
+	}
+]
